@@ -61,7 +61,7 @@ fetch('/api/test', {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
-    "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    "XSRF-TOKEN": "im39qT5A-_AcnyflQ93MsB6nSYVsD2zFOpuY"
   },
   body: JSON.stringify({ hello: 'world' })
 }).then(res => res.json()).then(data => console.log(data));
