@@ -37,6 +37,9 @@ module.exports = (sequelize, DataTypes) => {
       });
       return await User.scope('currentUser').findByPk(user.id);
     }
+    validatePassword(password) {
+      return bcrypt.compareSync(password, this.hashedPassword.toString());
+    }
   };
 
   User.init(
@@ -66,9 +69,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           len: [60, 60],
-          validatePassword(password) {
-            return bcrypt.compareSync(password, this.hashedPassword.toString());
-          }
         }
       }
     },
