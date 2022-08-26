@@ -1,4 +1,3 @@
-const { process_params } = require("express/lib/router");
 
 module.exports = {
     environment: process.env.NODE_ENV || 'development',
