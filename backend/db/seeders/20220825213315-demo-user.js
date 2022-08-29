@@ -5,18 +5,27 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [
       {
-        email: 'demo@user.io',
-        username: 'Demo-lition',
+        firstName: 'Joanna',
+        lastName: 'Gilbert',
+        email: 'joanna@gilbert.com',
+        username: 'NickelbackFan1000',
+        imageUrl: 'https://www.digitalmusicnews.com/wp-content/uploads/2016/12/nickelbackmeme7-1.jpg',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
-        email: 'user1@user.io',
-        username: 'FakeUser1',
+        firstName: 'David',
+        lastName: 'Rogers',
+        email: 'mrrogers@appacademy.io',
+        username: '9ziggy9',
+        imageUrl: 'https://media.discordapp.net/attachments/996595927831810129/1013949711088107530/unknown.png',
         hashedPassword: bcrypt.hashSync('password2')
       },
       {
-        email: 'user2@user.io',
-        username: 'FakeUser2',
+        firstName: 'Brandon',
+        lastName: 'Tasaki',
+        email: 'haichiroku@gmail.com',
+        username: 'NOT_BRANDON',
+        imageUrl:'https://www.sportspar.de/media/image/90/2a/25/770506-1tcB3OKBmikA45.jpg',
         hashedPassword: bcrypt.hashSync('password3')
       }
     ], {});
