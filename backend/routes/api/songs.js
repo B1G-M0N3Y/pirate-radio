@@ -1,3 +1,4 @@
+const { query } = require('express');
 const express = require('express');
 
 const { Song, User, Album } = require('../../db/models')
@@ -55,4 +56,41 @@ router.get(
     }
 );
 
+router.post('/',
+    restoreUser,
+    async (req, res) => {
+        const { user } = req;
+        const { title, description, url, imageUrl, albumId } = req.body;
+        if (!title || !url) {
+            res.status(400);
+            res.send({
+                "message": "Validation Error",
+                "statusCode": 400,
+                "errors": {
+                    "title": "Song title is required",
+                    "url": "Audio is required"
+                }
+            });
+        }
+        if (albumId < 0 || albumId > await Album.count()) {
+            res.status(404);
+            res.send({
+                "message": "Album couldn't be found",
+                "statusCode": 404
+            })
+        } else {
+            const newSong = await Song.create({
+                userId: user.toSafeObject().id,
+                title,
+                description,
+                url,
+                imageUrl,
+                albumId
+            })
+
+            res.json(newSong);
+        }
+    })
+
+// router.put()
 module.exports = router;
