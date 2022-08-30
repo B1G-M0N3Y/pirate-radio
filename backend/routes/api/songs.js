@@ -29,7 +29,7 @@ router.get(
             });
         } else {
 
-            const songs = await Song.findByPk(req.params.id, {
+            const songs = await Song.findByPk(id, {
                 include: [{
                     model: User,
                     as: 'Artist',
