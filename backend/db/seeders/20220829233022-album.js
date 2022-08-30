@@ -1,5 +1,7 @@
 'use strict';
 
+const { Album } = require('../models');
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     /**
@@ -11,7 +13,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return await queryInterface.bulkInsert('Albums', [
+    await Album.bulkCreate([
       {
         userId: 1,
         title: 'Finally Got My Nickel Back!',
@@ -40,5 +42,9 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    const Op = Sequelize.Op;
+    return queryInterface.bulkDelete('Albums', {
+      title: { [Op.in]: ['Finally Got My Nickel Back!', 'Ziggy Stardust', 'Brandons Mix']}
+    });
   }
 };
