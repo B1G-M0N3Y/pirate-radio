@@ -1,4 +1,7 @@
 "use strict";
+
+// const { DataTypes } = require("sequelize/types");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable("Users", {
@@ -39,7 +42,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-      }
+      },
+      imageUrl: Sequelize.STRING
     });
   },
   down: async (queryInterface, Sequelize) => {
