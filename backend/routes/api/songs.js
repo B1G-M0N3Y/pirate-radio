@@ -20,13 +20,19 @@ router.get(
 router.get(
     '/:id',
     async (req, res) => {
-        const songs = await Song.findByPk(req.params.id ,{
-            include: [{model:User,
-                       as: 'Artist'},
-                      {model:Album}]
+        const songs = await Song.findByPk(req.params.id, {
+            include: [{
+                model: User,
+                as: 'Artist',
+                attributes: ['id', 'username', 'imageUrl']
+            },
+            {
+                model: Album,
+                attributes: ['id', 'title', 'imageUrl']
+            }]
         }
         );
-        return res.json({ songs })
+        return res.json(songs)
     }
 )
 
