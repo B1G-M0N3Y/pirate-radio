@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Song.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     albumId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     title: DataTypes.STRING,

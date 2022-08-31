@@ -1,7 +1,8 @@
-const { query } = require('express');
+// const { query } = require('express');
 const express = require('express');
+// const { route } = require('express/lib/router');
 
-const { Song, User, Album } = require('../../db/models')
+const { Song, User, Album, Comment } = require('../../db/models')
 const { restoreUser } = require('../../utils/auth')
 
 const router = express.Router();
@@ -22,7 +23,8 @@ router.get(
     '/:id',
     async (req, res) => {
         const id = req.params.id;
-        if (id <= 0 || id > await Song.count()) {
+
+        if (id <= 0 || id > await Song.count() ) {
             res.status(404);
             res.send({
                 "message": "Song couldn't be found",
@@ -99,7 +101,7 @@ router.put('/:id',
         const song = await Song.findByPk(req.params.id);
         const { user } = req;
         const { title, description, url, imageUrl, albumId } = req.body;
-          console.log ( song);
+
         if(!song){
             res.status(404);
             res.send({
@@ -148,5 +150,37 @@ router.put('/:id',
 
         res.json(song);
     }
+);
+
+router.delete(
+    '/:id',
+    restoreUser,
+    async (req, res) => {
+        const { user } = req;
+        const song = await Song.findByPk(req.params.id);
+        if(!song){
+            res.status(404);
+            res.send({
+                "message": "Song couldn't be found",
+                "statusCode": 404
+              });
+        }
+        if(user.id !== song.userId){
+            res.status(403),
+            res.send({
+                "message": "Nacho song buddy!",
+                "statusCode": 403
+            })
+        }
+        if(song){
+            await song.destroy();
+
+            res.json({
+                "message": "Successfully deleted",
+                "statusCode": 200
+            });
+        }
+    }
 )
+
 module.exports = router;
