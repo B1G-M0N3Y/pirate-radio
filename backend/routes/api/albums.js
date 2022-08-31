@@ -20,7 +20,31 @@ router.get(
 router.get(
     '/:id',
     async (req, res) => {
+        const id = req.params.id;
 
+        if (id <= 0 || id > await Album.count() ) {
+            res.status(404);
+            res.send({
+                "message": "Song couldn't be found",
+                "statusCode": 404
+            });
+        } else {
+
+            const albums = await Album.findByPk(id, {
+                include: [{
+                    model: User,
+                    as: 'Artist',
+                    attributes: ['id', 'username', 'imageUrl']
+                },
+                {
+                    model: Song,
+                    as: 'Songs'
+                }]
+            }
+            );
+
+            return res.json(albums)
+        }
     }
 )
 
