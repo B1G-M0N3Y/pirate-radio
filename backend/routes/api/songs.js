@@ -130,19 +130,19 @@ router.put('/:id',
             });
         }
 
-        if (title || title !== 'null') {
+        if (title) {
             song.update({ title })
         }
-        if (description || description !== 'null') {
+        if (description) {
             song.update({ description })
         }
-        if (url || url !== 'null') {
+        if (url) {
             song.update({ url })
         }
-        if (imageUrl || imageUrl !== 'null') {
+        if (imageUrl) {
             song.update({ imageUrl })
         }
-        if (albumId || albumId !== 'null') {
+        if (albumId) {
             song.update({ albumId })
         }
 
