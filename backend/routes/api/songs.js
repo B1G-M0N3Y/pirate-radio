@@ -90,7 +90,63 @@ router.post('/',
 
             res.json(newSong);
         }
-    })
+    }
+);
 
-// router.put()
+router.put('/:id',
+    restoreUser,
+    async (req, res) => {
+        const song = await Song.findByPk(req.params.id);
+        const { user } = req;
+        const { title, description, url, imageUrl, albumId } = req.body;
+          console.log ( song);
+        if(!song){
+            res.status(404);
+            res.send({
+                "message": "Song couldn't be found",
+                "statusCode": 404
+              });
+        }
+
+        if(!title || !url){
+            res.status(400);
+            res.send({
+                "message": "Validation Error",
+                "statusCode": 400,
+                "errors": {
+                  "title": "Song title is required",
+                  "url": "Audio is required"
+                }
+              });
+        }
+
+        if (song.userId !== user.toSafeObject().id) {
+            res.status(403);
+            res.send({
+                "message": "You must have created a song to edit it",
+                "statusCode": 403,
+            });
+        }
+
+        if (title || title !== 'null') {
+            song.update({ title })
+        }
+        if (description || description !== 'null') {
+            song.update({ description })
+        }
+        if (url || url !== 'null') {
+            song.update({ url })
+        }
+        if (imageUrl || imageUrl !== 'null') {
+            song.update({ imageUrl })
+        }
+        if (albumId || albumId !== 'null') {
+            song.update({ albumId })
+        }
+
+        await song.save();
+
+        res.json(song);
+    }
+)
 module.exports = router;
