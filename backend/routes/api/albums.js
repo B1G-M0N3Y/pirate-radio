@@ -58,7 +58,27 @@ router.get(
 router.post('/',
     restoreUser,
     async (req, res) => {
+        const { user } = req;
+        const { title, description, imageUrl } = req.body;
+        if (!title) {
+            res.status(400);
+            res.send({
+                "message": "Validation Error",
+                "statusCode": 400,
+                "errors": {
+                    "title": "Album title is required"
+                }
+            });
+        } else {
+            const newAlbum = await Album.create({
+                userId: user.toSafeObject().id,
+                title,
+                description,
+                imageUrl
+            })
 
+            res.json(newAlbum);
+        }
     }
 );
 
