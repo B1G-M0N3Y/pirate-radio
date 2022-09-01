@@ -42,24 +42,7 @@ const validateSignup = [
 //         return res.json({users});
 //     }
 // )
-router.get(
-    '/:id/songs',
-    async (req, res) => {
-        const id = req.params.id;
-        if (id <= 0 || id > await Song.count()) {
-            res.status(404);
-            res.send({
-                "message": "Song couldn't be found",
-                "statusCode": 404
-            });
-        } else {
-            const songs = await Song.findAll({
-                where: { userId: id }
-            });
-            return res.json({ songs });
-        }
-    }
-);
+
 // Sign up
 router.post(
     '/',
