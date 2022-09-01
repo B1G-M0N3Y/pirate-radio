@@ -71,6 +71,43 @@ router.get(
     }
 );
 
+router.post(
+    '/:id/comments',
+    restoreUser,
+    async (req, res) => {
+        const id = req.params.id;
+        const { user } = req;
+        const { body } = req.body;
+
+        if (!body) {
+            res.status(400);
+            res.send({
+                "message": "Validation error",
+                "statusCode": 400,
+                "errors": {
+                    "body": "Comment body text is required"
+                }
+            });
+        }
+        if (!(await Song.findByPk(id))) {
+            res.status(404);
+            res.send({
+                "message": "Song couldn't be found",
+                "statusCode": 404
+            });
+        } else {
+            const newComment = await Comment.create({
+                userId: user.toSafeObject().id,
+                songId: id,
+                body
+            });
+
+            res.json(newComment);
+        }
+
+    }
+)
+
 router.post('/',
     restoreUser,
     async (req, res) => {
