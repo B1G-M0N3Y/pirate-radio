@@ -36,6 +36,38 @@ router.put(
             res.json(comment);
         }
     }
+);
+
+router.delete(
+    '/:id',
+    restoreUser,
+    async (req, res) => {
+        const { user } = req;
+        const comment = await Comment.findByPk(req.params.id);
+        if (!comment) {
+            res.status(404);
+            res.send({
+                "message": "Comment couldn't be found",
+                "statusCode": 404
+            });
+        }
+        if (user.id !== comment.userId) {
+            res.status(403),
+                res.send({
+                    "message": "Nacho comment buddy!",
+                    "statusCode": 403
+                })
+        }
+        if (comment) {
+            await comment.destroy();
+
+            res.json({
+                "message": "Successfully deleted",
+                "statusCode": 200
+            });
+        }
+    }
 )
+
 
 module.exports = router;
