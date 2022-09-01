@@ -8,6 +8,20 @@ const { restoreUser } = require('../../utils/auth')
 const router = express.Router();
 
 router.get(
+    '/:id/comments',
+    async (req, res) => {
+        const comments = await Comment.findAll({
+            where: { songId: req.params.id },
+            include: [{
+                model: User,
+                attributes: ['id', 'username']
+            }]
+        });
+        return res.json({ comments });
+    }
+)
+
+router.get(
     '/current',
     restoreUser,
     async (req, res) => {
@@ -24,7 +38,7 @@ router.get(
     async (req, res) => {
         const id = req.params.id;
 
-        if (id <= 0 || id > await Song.count() ) {
+        if (id <= 0 || id > await Song.count()) {
             res.status(404);
             res.send({
                 "message": "Song couldn't be found",
@@ -53,8 +67,7 @@ router.get(
 router.get(
     '/',
     async (req, res) => {
-        const songs = await Song.findAll();
-        return res.json({ songs });
+        return res.json(await Song.findAll());
     }
 );
 
@@ -102,24 +115,24 @@ router.put('/:id',
         const { user } = req;
         const { title, description, url, imageUrl, albumId } = req.body;
 
-        if(!song){
+        if (!song) {
             res.status(404);
             res.send({
                 "message": "Song couldn't be found",
                 "statusCode": 404
-              });
+            });
         }
 
-        if(!title || !url){
+        if (!title || !url) {
             res.status(400);
             res.send({
                 "message": "Validation Error",
                 "statusCode": 400,
                 "errors": {
-                  "title": "Song title is required",
-                  "url": "Audio is required"
+                    "title": "Song title is required",
+                    "url": "Audio is required"
                 }
-              });
+            });
         }
 
         if (song.userId !== user.toSafeObject().id) {
@@ -158,21 +171,21 @@ router.delete(
     async (req, res) => {
         const { user } = req;
         const song = await Song.findByPk(req.params.id);
-        if(!song){
+        if (!song) {
             res.status(404);
             res.send({
                 "message": "Song couldn't be found",
                 "statusCode": 404
-              });
+            });
         }
-        if(user.id !== song.userId){
+        if (user.id !== song.userId) {
             res.status(403),
-            res.send({
-                "message": "Nacho song buddy!",
-                "statusCode": 403
-            })
+                res.send({
+                    "message": "Nacho song buddy!",
+                    "statusCode": 403
+                })
         }
-        if(song){
+        if (song) {
             await song.destroy();
 
             res.json({
