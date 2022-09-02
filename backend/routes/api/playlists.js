@@ -35,11 +35,18 @@ router.get(
 router.get(
     '/:id',
     async (req, res) => {
-        const id = req.params.id
+        const id = req.params.id;
+        if (!(await Playlist.findByPk(id))) {
+            res.status(404);
+            return res.send({
+                "message": "Playlist couldn't be found",
+                "statusCode": 404
+            });
+        }
         const songIds = await PlaylistSong.findAll({
             attributes: ['songId'],
             where: { playlistId: id }
-        })
+        });
         const ids = [];
 
         songIds.forEach(songId => {
@@ -54,7 +61,7 @@ router.get(
                     id: ids
                 }
             }]
-        })
+        });
 
 
         return res.json(playlist);
