@@ -1,7 +1,7 @@
 const express = require('express');
 // const { route } = require('express/lib/router');
 
-const { Song, User, Album, Comment, Playlist, PlaylistSong } = require('../../db/models')
+const { Song, User, Album, Comment, Playlist, PlaylistSong, sequelize } = require('../../db/models')
 const { restoreUser } = require('../../utils/auth')
 
 const router = express.Router();
@@ -35,38 +35,29 @@ router.get(
 router.get(
     '/:id',
     async (req, res) => {
-        const id = req.params.id;
+        const id = req.params.id
+        const songIds = await PlaylistSong.findAll({
+            attributes: ['songId'],
+            where: { playlistId: id }
+        })
+        const ids = [];
 
-        if (id <= 0 || id > await Song.count()) {
-            res.status(404);
-            res.send({
-                "message": "Song couldn't be found",
-                "statusCode": 404
-            });
-        } else {
+        songIds.forEach(songId => {
+            ids.push(songId.dataValues.songId)
+        });
 
-            const songs = await Song.findByPk(id, {
-                include: [{
-                    model: User,
-                    as: 'Artist',
-                    attributes: ['id', 'username', 'imageUrl']
-                },
-                {
-                    model: Album,
-                    attributes: ['id', 'title', 'imageUrl']
-                }]
-            }
-            );
+        console.log(ids);
+        const playlist = await Playlist.findByPk(id, {
+            include: [{
+                model: Song,
+                where: {
+                    id: ids
+                }
+            }]
+        })
 
-            return res.json(songs)
-        }
-    }
-)
 
-router.get(
-    '/',
-    async (req, res) => {
-        return res.json(await Song.findAll());
+        return res.json(playlist);
     }
 );
 
@@ -78,7 +69,7 @@ router.post(
         const { songId } = req.body;
         const id = req.params.id;
 
-        if(!(await Playlist.findByPk(id))){
+        if (!(await Playlist.findByPk(id))) {
             res.status(404);
             return res.send({
                 "message": "Playlist couldn't be found",
@@ -94,12 +85,11 @@ router.post(
             });
         }
 
-        const greatestVal = await PlaylistSong.max('order', { where: {playlistId: id}});
-
+        const greatestVal = await PlaylistSong.max('order', { where: { playlistId: id } });
         const playlistSong = await PlaylistSong.create({
             songId,
             playlistId: id,
-            order: greatestVal ? greatestVal.order + 1 : 1
+            order: greatestVal ? greatestVal + 1 : 1
         });
 
         res.json(playlistSong);

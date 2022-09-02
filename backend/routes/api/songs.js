@@ -10,8 +10,16 @@ const router = express.Router();
 router.get(
     '/:id/comments',
     async (req, res) => {
+        const id = req.params.id;
+        if(!(await Song.findByPk(id))){
+            res.status(404);
+            return res.send({
+                "message": "Song couldn't be found",
+                "statusCode": 404
+            });
+        }
         const comments = await Comment.findAll({
-            where: { songId: req.params.id },
+            where: { songId: id },
             include: [{
                 model: User,
                 attributes: ['id', 'username']
@@ -20,6 +28,7 @@ router.get(
         return res.json({ comments });
     }
 )
+
 
 router.get(
     '/current',
