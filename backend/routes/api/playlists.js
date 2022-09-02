@@ -125,57 +125,38 @@ router.post('/',
 router.put('/:id',
     restoreUser,
     async (req, res) => {
-        const song = await Song.findByPk(req.params.id);
-        const { user } = req;
-        const { title, description, url, imageUrl, albumId } = req.body;
+        const playlist = await Playlist.findByPk(req.params.id);
+        const { name, imageUrl } = req.body;
 
-        if (!song) {
+        if (!playlist) {
             res.status(404);
             res.send({
-                "message": "Song couldn't be found",
+                "message": "Playlist couldn't be found",
                 "statusCode": 404
             });
         }
 
-        if (!title || !url) {
+        if (!name) {
             res.status(400);
             res.send({
                 "message": "Validation Error",
                 "statusCode": 400,
                 "errors": {
-                    "title": "Song title is required",
-                    "url": "Audio is required"
+                    "Name": "Playlist Name is required"
                 }
             });
         }
 
-        if (song.userId !== user.toSafeObject().id) {
-            res.status(403);
-            res.send({
-                "message": "You must have created a song to edit it",
-                "statusCode": 403,
-            });
-        }
-
-        if (title) {
-            song.update({ title })
-        }
-        if (description) {
-            song.update({ description })
-        }
-        if (url) {
-            song.update({ url })
+        if (name) {
+            playlist.update({ name })
         }
         if (imageUrl) {
-            song.update({ imageUrl })
-        }
-        if (albumId) {
-            song.update({ albumId })
+            playlist.update({ imageUrl })
         }
 
-        await song.save();
+        await playlist.save();
 
-        res.json(song);
+        res.json(playlist);
     }
 );
 
