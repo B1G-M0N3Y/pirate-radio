@@ -1,7 +1,6 @@
 'use strict';
 
 const { Playlist, sequelize } = require('../models');
-const user = require('../models/user');
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -26,7 +25,7 @@ module.exports = {
       imageUrl: 'add pic link here'
     },
     {
-      userId: 1,
+      userId: 3,
       name: 'Every song on the website',
       imageUrl: 'add pic link here'
     }

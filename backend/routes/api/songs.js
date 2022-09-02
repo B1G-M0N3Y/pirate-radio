@@ -1,5 +1,6 @@
 // const { query } = require('express');
 const express = require('express');
+// const { json } = require('sequelize/types');
 // const { route } = require('express/lib/router');
 
 const { Song, User, Album, Comment } = require('../../db/models')
@@ -10,8 +11,16 @@ const router = express.Router();
 router.get(
     '/:id/comments',
     async (req, res) => {
+        const id = req.params.id;
+        if (!(await Song.findByPk(id))) {
+            res.status(404);
+            return res.send({
+                "message": "Song couldn't be found",
+                "statusCode": 404
+            });
+        }
         const comments = await Comment.findAll({
-            where: { songId: req.params.id },
+            where: { songId: id },
             include: [{
                 model: User,
                 attributes: ['id', 'username']
@@ -20,6 +29,7 @@ router.get(
         return res.json({ comments });
     }
 )
+
 
 router.get(
     '/current',
@@ -67,7 +77,46 @@ router.get(
 router.get(
     '/',
     async (req, res) => {
-        return res.json(await Song.findAll());
+        let { page, size, title, createdAt } = req.query;
+
+        if (page < 1 || size < 1) {
+            res.status(400);
+            return res.send({
+                "message": "Validation Error",
+                "statusCode": 400,
+                "errors": {
+                    "page": "Page must be greater than or equal to 0",
+                    "size": "Size must be greater than or equal to 0",
+                    "createdAt": "CreatedAt is invalid"
+                }
+            });
+        };
+
+        if (!page) page = 1;
+        if (!size) size = 1;
+        if (page > 10) page = 10;
+        if (size > 10) size = 10;
+
+        let pagination = { limit: size, offset: size * (page - 1) };
+
+        let songs = {}
+
+        if (title && createdAt) {
+            songs.Songs = await Song.findAll({
+                where: { title, createdAt, ...pagination },
+            })
+        } else if (title) {
+            songs.Songs = await Song.findAll({ where: title, ...pagination })
+        } else if (createdAt) {
+            songs.Songs = await Song.findAll({ where: createdAt, ...pagination })
+        } else {
+            songs.Songs = await Song.findAll({ ...pagination });
+        }
+        songs.Page = Number(page);
+        songs.Size = Number(size);
+
+        res.json(songs);
+        // return res.send(songs, page, size);
     }
 );
 
