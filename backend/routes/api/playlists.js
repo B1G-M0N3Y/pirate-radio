@@ -172,23 +172,17 @@ router.delete(
     restoreUser,
     async (req, res) => {
         const { user } = req;
-        const song = await Song.findByPk(req.params.id);
-        if (!song) {
+        const playlist = await Playlist.findByPk(req.params.id);
+        if (!playlist) {
             res.status(404);
             res.send({
-                "message": "Song couldn't be found",
+                "message": "Playlist couldn't be found",
                 "statusCode": 404
             });
         }
-        if (user.id !== song.userId) {
-            res.status(403),
-                res.send({
-                    "message": "Nacho song buddy!",
-                    "statusCode": 403
-                })
-        }
-        if (song) {
-            await song.destroy();
+
+        if (playlist) {
+            await playlist.destroy();
 
             res.json({
                 "message": "Successfully deleted",
