@@ -25,10 +25,10 @@ router.get(
     restoreUser,
     async (req, res) => {
         const { user } = req;
-        const songs = await Song.findAll({
+        const playlists = await Playlist.findAll({
             where: { userId: user.toSafeObject().id }
         });
-        return res.json({ songs });
+        return res.json({ playlists });
     }
 );
 
