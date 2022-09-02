@@ -76,7 +76,7 @@ router.post('/',
                 description,
                 imageUrl
             })
-
+            res.status(201);
             res.json(newAlbum);
         }
     }

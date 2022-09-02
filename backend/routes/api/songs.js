@@ -187,7 +187,7 @@ router.post('/',
                 imageUrl,
                 albumId
             })
-
+            res.status(201);
             res.json(newSong);
         }
     }
