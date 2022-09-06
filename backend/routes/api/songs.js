@@ -93,7 +93,7 @@ router.get(
         };
 
         if (!page) page = 1;
-        if (!size) size = 1;
+        if (!size) size = 10;
         if (page > 10) page = 10;
         if (size > 10) size = 10;
 
@@ -147,7 +147,7 @@ router.post(
         } else {
             const newComment = await Comment.create({
                 userId: user.toSafeObject().id,
-                songId: id,
+                songId: Number(id),
                 body
             });
 

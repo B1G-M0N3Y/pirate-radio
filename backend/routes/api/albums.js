@@ -51,7 +51,8 @@ router.get(
 router.get(
     '/',
     async (req, res) => {
-        res.json(await Album.findAll());
+        const Albums = await Album.findAll();
+        res.json({Albums});
     }
 );
 

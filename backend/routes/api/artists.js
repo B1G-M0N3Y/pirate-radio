@@ -21,7 +21,7 @@ router.get(
             where: { userId: id }
         });
 
-        res.json(playlists);
+        res.json({playlists});
     }
 )
 
