@@ -14,6 +14,7 @@ import sessionReducer from './store/session';
 
 import * as sessionActions from './store/session';
 
+
 const rootReducer = combineReducers({
   session: sessionReducer,
 });
