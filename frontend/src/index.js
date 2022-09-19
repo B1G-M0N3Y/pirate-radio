@@ -8,16 +8,15 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import configureStore from './store';
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
 
-import sessionReducer from './store/session';
+// import sessionReducer from './store/session';
 
 import * as sessionActions from './store/session';
 
-
-const rootReducer = combineReducers({
-  session: sessionReducer,
-});
+// const rootReducer = combineReducers({
+//   session: sessionReducer,
+// });
 
 const store = configureStore();
 
