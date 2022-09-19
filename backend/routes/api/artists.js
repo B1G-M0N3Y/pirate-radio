@@ -3,6 +3,7 @@ const express = require('express');
 const { Song, User, Album, Playlist } = require('../../db/models');
 const { restoreUser } = require('../../utils/auth');
 
+
 const router = express.Router();
 
 router.get(
@@ -20,7 +21,7 @@ router.get(
             where: { userId: id }
         });
 
-        res.json(playlists);
+        res.json({playlists});
     }
 )
 

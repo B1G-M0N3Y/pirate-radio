@@ -25,21 +25,31 @@ router.post(
     async (req, res, next) => {
         const { credential, password } = req.body;
 
+        if(!credential || !password){
+            res.status(400);
+            return res.json({
+                "message": "Validation error",
+                "statusCode": 400,
+                "errors": {
+                  "credential": "Email or username is required",
+                  "password": "Password is required"
+                }
+              });
+        }
+
         const user = await User.login({ credential, password });
 
         if (!user) {
-            const err = new Error('Login failed');
-            err.status = 401;
-            err.title = 'Login failed';
-            err.errors = ['The provided credentials were invalid.'];
-            return next(err);
+            res.status(401);
+            return res.json({
+                "message": "Invalid credentials",
+                "statusCode": 401
+              })
         }
 
         await setTokenCookie(res, user);
 
-        return res.json({
-            user
-        });
+        return res.json(user);
     }
 );
 
@@ -58,36 +68,18 @@ router.get(
     restoreUser,
     (req, res) => {
         const { user } = req;
+        console.log(user)
         if (user) {
             return res.json({
-                user: user.toSafeObject()
-            });
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                username: user.username
+            }
+            );
         } else return res.json({});
     }
 );
-
-router.post(
-    '/',
-    validateLogin,
-    async (req, res, next) => {
-      const { credential, password } = req.body;
-
-      const user = await User.login({ credential, password });
-
-      if (!user) {
-        const err = new Error('Login failed');
-        err.status = 401;
-        err.title = 'Login failed';
-        err.errors = ['The provided credentials were invalid.'];
-        return next(err);
-      }
-
-      await setTokenCookie(res, user);
-
-      return res.json({
-        user
-      });
-    }
-  );
 
 module.exports = router;

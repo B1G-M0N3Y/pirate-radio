@@ -15,6 +15,8 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
+  console.log(sessionUser)
+
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
@@ -58,7 +60,7 @@ function SignupFormPage() {
         <input
           type='text'
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          onChange = {(e) => setFirstName(e.target.value)}
           required
         />
       </label>
@@ -67,7 +69,7 @@ function SignupFormPage() {
         <input
           type='text'
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          onChange = {(e) => setLastName(e.target.value)}
           required
         />
       </label>
