@@ -41,7 +41,7 @@ module.exports = {
      */
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Playlists', {
-      title: { [Op.in]: ['Favorite Nickelback Songs', 'Satanic Ritual Music', 'Every song on the website']}
+      name: { [Op.in]: ['Favorite Nickelback Songs', 'Satanic Ritual Music', 'Every song on the website']}
     });
   }
 };

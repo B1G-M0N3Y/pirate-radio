@@ -30,11 +30,20 @@ router.put(
                 "message": "Comment couldn't be found",
                 "statusCode": 404
             });
-        } else {
-            comment.update({ body });
-            await comment.save();
-            res.json(comment);
         }
+
+        if (user.id !== comment.userId) {
+            res.status(403);
+            res.send({
+                'message': 'Nacho comment buddy!',
+                'statusCode': 403
+            });
+        }
+
+        comment.update({ body });
+        await comment.save();
+        res.json(comment);
+
     }
 );
 
