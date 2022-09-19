@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
-  const sessionUser = useSelector(state => state.session);
+  const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
@@ -15,10 +15,10 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <div class= 'link'>
+        <div className='link'>
           <NavLink to="/login">Log In</NavLink>
         </div>
-        <div class= 'link'>
+        <div className='link'>
           <NavLink to="/signup">Sign Up</NavLink>
         </div>
       </>
@@ -28,7 +28,7 @@ function Navigation({ isLoaded }) {
   return (
     <ul>
       <li>
-        <div class= 'link'>
+        <div class='link'>
           <NavLink exact to="/">Home</NavLink>
         </div>
         {isLoaded && sessionLinks}
