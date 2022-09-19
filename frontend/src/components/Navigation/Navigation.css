@@ -1,0 +1,8 @@
+.link {
+    margin: 10px;
+    padding: 5px;
+    border: solid;
+    display: flex;
+    justify-content: flex-end;
+    width: fit-content;
+}
