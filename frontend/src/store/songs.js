@@ -60,7 +60,7 @@ export const createNewSong = (song) => async dispatch => {
     });
     if (response.ok) {
         const song = await response.json();
-        dispatch(addSong(song));
+        dispatch(songDetails(song));
         return song;
     }
     return null;
@@ -75,11 +75,20 @@ const songReducer = (state = initialState, action) => {
             Object.values(action.songs.Songs).map((song) => (newState[song.id] = song))
             return newState
         case SONG_DETAILS:
+            if(!state[action.details.id]) {
+                newState = {
+                    ...state,
+                    [action.details.id]: action.details,
+                    singleSong: {[action.details.id]: action.details}
+                }
+                return newState;
+            }
             newState = { ...state, singleSong: { ...state[action.details.id] } }
+
             return newState;
-        case ADD_SONG:
-            newState = { ...state, [action.song.id]: action.song }
-            return state;
+        // case ADD_SONG:
+        //     newState = { ...state, [action.song.id]: action.song }
+        //     return state;
         default:
             return state
     }
