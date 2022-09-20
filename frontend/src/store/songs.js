@@ -1,7 +1,10 @@
 // import { csrfFetch } from "./csrf";
 
+import { csrfFetch } from "./csrf"
+
 const LOAD_SONGS = 'songs/loadSongs'
 const SONG_DETAILS = 'songs/songDetails'
+const ADD_SONG = 'songs/addSong'
 
 const loadSongs = (songs) => {
     return {
@@ -17,6 +20,13 @@ const songDetails = (details) => {
     }
 }
 
+const addSong = (song) => {
+    return {
+        type: ADD_SONG,
+        song
+    }
+}
+
 export const fetchSongs = () => async (dispatch) => {
     const response = await fetch('/api/songs');
 
@@ -28,17 +38,35 @@ export const fetchSongs = () => async (dispatch) => {
 }
 
 export const fetchSongDetails = (id) => async (dispatch) => {
-    const response = await fetch(`/api/songs/${id}`);
+    let response;
+
+    response = await fetch(`/api/songs/${id}`);
 
     if (response.ok) {
-        const buttcheeks = await response.json();
-        dispatch(songDetails(buttcheeks));
-        return buttcheeks
+        const song = await response.json();
+        dispatch(songDetails(song));
+        return song
     }
     return null;
 }
 
-const initialState = {songs: {}, singleSong:{}}
+export const createNewSong = (song) => async dispatch => {
+    const response = await csrfFetch("/api/songs", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(song)
+    });
+    if (response.ok) {
+        const song = await response.json();
+        dispatch(addSong(song));
+        return song;
+    }
+    return null;
+}
+
+const initialState = { songs: {}, singleSong: {} }
 
 const songReducer = (state = initialState, action) => {
     let newState = {}
@@ -47,8 +75,11 @@ const songReducer = (state = initialState, action) => {
             Object.values(action.songs.Songs).map((song) => (newState[song.id] = song))
             return newState
         case SONG_DETAILS:
-            newState = { ...state, singleSong:{...state[action.details.id]} }
+            newState = { ...state, singleSong: { ...state[action.details.id] } }
             return newState;
+        case ADD_SONG:
+            newState = { ...state, [action.song.id]: action.song }
+            return state;
         default:
             return state
     }

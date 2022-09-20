@@ -11,21 +11,21 @@ const SongDetails = () => {
 
     const { id } = useParams();
     const songs = useSelector(state => state.songs);
-    const buttcheeks = songs?.[id]
+    const song = songs?.singleSong
 
     useEffect(() => {
         dispatch(fetchSongDetails(id))
     }, [dispatch,id]);
 
     console.log(id)
-    // console.log(song);
+    console.log(song);
 
     return (
         <>
         <div>
-            <h2>{buttcheeks?.title}</h2>
-            <img src = {buttcheeks?.imageUrl} alt=""></img>
-            <p>{buttcheeks?.description}</p>
+            <h2>{song?.title}</h2>
+            <img src = {song?.imageUrl} alt=""></img>
+            <p>{song?.description}</p>
         </div>
         </>
     )

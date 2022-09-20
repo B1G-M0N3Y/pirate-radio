@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SongsIndex from "./components/Songs/SongsIndex";
 import SongDetails from "./components/Songs/SongDetails";
+import CreateSong from "./components/Songs/CreateSong";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/songs/new'>
+            <CreateSong />
           </Route>
           <Route path='/songs/:id'>
             <SongDetails />
