@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { fetchSongs } from '../../store/songs';
 
 const SongsIndex = () => {
@@ -19,7 +19,7 @@ const SongsIndex = () => {
         <>
         <ul>
             {Object.values(songs).map( song =>{
-                return <Link key = {song.id} to={`/songs/${song.id}`}>{song.title}</Link>
+                return <NavLink key = {song.id} to={`/songs/${song.id}`}>{song.title}</NavLink>
             })}
         </ul>
         </>
