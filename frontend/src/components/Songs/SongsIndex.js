@@ -17,11 +17,13 @@ const SongsIndex = () => {
 
     return (
         <>
-        <ul>
-            {Object.values(songs).map( song =>{
-                return <NavLink key = {song.id} to={`/songs/${song.id}`}>{song.title}</NavLink>
-            })}
-        </ul>
+            <ul>
+                {Object.values(songs).map(song => {
+                    return <NavLink key={song.id} to={`/songs/${song.id}`}>
+                        {song.title}
+                    </NavLink>
+                })}
+            </ul>
         </>
     )
 }

@@ -17,8 +17,8 @@ const SongDetails = () => {
         dispatch(fetchSongDetails(id))
     }, [dispatch,id]);
 
-    console.log(id)
-    console.log(song);
+    console.log("id",id)
+    console.log("song",song);
 
     return (
         <>
@@ -26,6 +26,8 @@ const SongDetails = () => {
             <h2>{song?.title}</h2>
             <img src = {song?.imageUrl} alt=""></img>
             <p>{song?.description}</p>
+            <button>Edit Song</button>
+            <button>Delete Song</button>
         </div>
         </>
     )
