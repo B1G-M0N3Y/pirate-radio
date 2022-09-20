@@ -5,6 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import SongsIndex from "./components/Songs/SongsIndex";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,8 +25,14 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path='/songs'>
+            <h2> Hear what’s trending for free in the SoundCloud community </h2>
+            <SongsIndex />
+          </Route>
         </Switch>
       )}
+      <div>
+      </div>
     </>
   );
 }
