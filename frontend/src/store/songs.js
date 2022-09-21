@@ -4,8 +4,8 @@ import { csrfFetch } from "./csrf"
 
 const LOAD_SONGS = 'songs/loadSongs'
 const SONG_DETAILS = 'songs/songDetails'
-const ADD_SONG = 'songs/addSong'
 const UPDATE_SONG = 'songs/updateSong'
+const DELETE_SONG = 'songs/deleteSong'
 
 const loadSongs = (songs) => {
     return {
@@ -21,17 +21,17 @@ const songDetails = (details) => {
     }
 }
 
-const addSong = (song) => {
-    return {
-        type: ADD_SONG,
-        song
-    }
-}
-
 const updateSong = (song) => {
     return {
         type: UPDATE_SONG,
         song
+    }
+}
+
+const deleteSong = (id) => {
+    return {
+        type: DELETE_SONG,
+        id
     }
 }
 
@@ -91,6 +91,18 @@ export const editSong = song => async dispatch => {
     return null
 }
 
+export const deleteSingleSong = id => async dispatch => {
+    const response = await csrfFetch(`/api/songs/${id}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        const message = await response.json();
+        dispatch(deleteSong(id));
+        return message;
+    }
+}
+
 const initialState = { songs: {}, singleSong: {} }
 
 const songReducer = (state = initialState, action) => {
@@ -98,16 +110,18 @@ const songReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_SONGS:
             Object.values(action.songs.Songs).map((song) => (newState[song.id] = song))
-            return newState
+            return newState;
         case SONG_DETAILS:
             return {
                 ...state,
                 [action.details.id]: action.details,
                 singleSong: { ...action.details }
-            }
+            };
         case UPDATE_SONG:
-            newState = {...state, singleSong: {...action.song}}
-            newState[action.song.id] = action.song
+            newState = { ...state, singleSong: { ...action.song } };
+            newState[action.song.id] = action.song;
+        case DELETE_SONG:
+            delete state[action.id]
         default:
             return state
     }

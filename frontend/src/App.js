@@ -43,6 +43,9 @@ function App() {
           <Route path='/songs/:id/edit'>
             <EditSong />
           </Route>
+          <Route path='/songs/deleted'>
+            <h2>Song deleted!</h2>
+          </Route>
           <Route path='/songs/:id'>
             <SongDetails />
           </Route>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { fetchSongDetails } from '../../store/songs';
+import { deleteSingleSong, fetchSongDetails } from '../../store/songs';
 
 
 const SongDetails = () => {
@@ -9,10 +9,13 @@ const SongDetails = () => {
     // const[showEditSong, setShowEditSong] = useState(false);
     // const[showDeleteSong, setShowDeleteSong] = useState(false);
 
-
     const { id } = useParams();
     const songs = useSelector(state => state.songs);
     const song = songs?.singleSong
+
+    const deleteSong = async () => {
+        await dispatch(deleteSingleSong(id))
+    }
 
     useEffect(() => {
         dispatch(fetchSongDetails(id))
@@ -30,7 +33,9 @@ const SongDetails = () => {
                 <Link to={`/songs/${id}/edit`}>
                     <button>Edit Song</button>
                 </Link>
-                <button>Delete Song</button>
+                <Link to={`/songs/deleted`}>
+                    <button onClick={deleteSong}>Delete Song</button>
+                </Link>
             </div>
         </>
     )
