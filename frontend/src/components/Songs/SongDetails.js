@@ -21,9 +21,6 @@ const SongDetails = () => {
         dispatch(fetchSongDetails(id))
     }, [dispatch, id]);
 
-    console.log("id", id)
-    console.log("song", song);
-
     return (
         <>
             <div>
