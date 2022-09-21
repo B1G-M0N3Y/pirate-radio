@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { deleteSingleSong, fetchSongDetails } from '../../store/songs';
-
+import CommentsFromSong from '../Comments/CommentsFromSong';
 
 const SongDetails = () => {
     const dispatch = useDispatch();
@@ -33,6 +33,9 @@ const SongDetails = () => {
                 <Link to={`/songs/deleted`}>
                     <button onClick={deleteSong}>Delete Song</button>
                 </Link>
+            </div>
+            <div>
+                <CommentsFromSong />
             </div>
         </>
     )
