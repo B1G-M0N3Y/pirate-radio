@@ -13,8 +13,6 @@ const SongsIndex = () => {
         dispatch(fetchSongs())
     }, [dispatch])
 
-    console.log(Object.values(songs))
-
     return (
         <>
             <ul>

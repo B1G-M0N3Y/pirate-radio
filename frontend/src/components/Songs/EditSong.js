@@ -22,7 +22,6 @@ const EditSong = song => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = { id: Number(id), title, description, url, imageUrl, albumId }
-        console.log(payload)
         let updatedSong = await dispatch(editSong(payload))
         if (updatedSong) {
             history.push(`/songs/${updatedSong.id}`)
