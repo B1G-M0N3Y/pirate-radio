@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { fetchSongDetails } from '../../store/songs';
+
 
 const SongDetails = () => {
     const dispatch = useDispatch();
@@ -15,20 +16,22 @@ const SongDetails = () => {
 
     useEffect(() => {
         dispatch(fetchSongDetails(id))
-    }, [dispatch,id]);
+    }, [dispatch, id]);
 
-    console.log("id",id)
-    console.log("song",song);
+    console.log("id", id)
+    console.log("song", song);
 
     return (
         <>
-        <div>
-            <h2>{song?.title}</h2>
-            <img src = {song?.imageUrl} alt=""></img>
-            <p>{song?.description}</p>
-            <button>Edit Song</button>
-            <button>Delete Song</button>
-        </div>
+            <div>
+                <h2>{song?.title}</h2>
+                <img src={song?.imageUrl} alt=""></img>
+                <p>{song?.description}</p>
+                <Link to={`/songs/${id}/edit`}>
+                    <button>Edit Song</button>
+                </Link>
+                <button>Delete Song</button>
+            </div>
         </>
     )
 }

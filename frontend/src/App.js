@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import SongsIndex from "./components/Songs/SongsIndex";
 import SongDetails from "./components/Songs/SongDetails";
 import CreateSong from "./components/Songs/CreateSong";
+import EditSong from "./components/Songs/EditSong";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path='/songs/new'>
             <CreateSong />
+          </Route>
+          <Route path='/songs/:id/edit'>
+            <EditSong />
           </Route>
           <Route path='/songs/:id'>
             <SongDetails />
