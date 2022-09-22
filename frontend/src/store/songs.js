@@ -1,5 +1,3 @@
-// import { csrfFetch } from "./csrf";
-
 import { csrfFetch } from "./csrf"
 
 const LOAD_SONGS = 'songs/loadSongs'
@@ -75,7 +73,6 @@ export const createNewSong = (song) => async dispatch => {
 }
 
 export const editSong = song => async dispatch => {
-    // console.log(song)
     const response = await csrfFetch(`/api/songs/${song.id}`, {
         method: 'PUT',
         headers: {
