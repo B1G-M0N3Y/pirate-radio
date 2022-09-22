@@ -16,7 +16,6 @@ const CreateComment = () => {
         const payload = {
             body: commentBody
         }
-        console.log(id)
 
         await dispatch (createNewComment(payload, id));
     }

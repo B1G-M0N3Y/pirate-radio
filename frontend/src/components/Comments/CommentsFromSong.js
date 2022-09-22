@@ -9,16 +9,12 @@ const CommentsFromSong = () => {
     const { id } = useParams();
     const comments = useSelector(state => state.comments);
 
-    console.log('id', id)
-
     useEffect(() => {
-        console.log('use effecting')
+
         dispatch(fetchComments(id));
     }, [dispatch, id])
 
-    console.log(comments)
     const gaming = Object.values(comments)
-    console.log('gaming', gaming)
 
     return (
         <>

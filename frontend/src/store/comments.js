@@ -22,7 +22,6 @@ export const fetchComments = (id) => async (dispatch) => {
 
     if (response.ok) {
         const comments = await response.json();
-        console.log('reducer comments', comments)
         dispatch(loadComments(comments));
         return comments
     }
