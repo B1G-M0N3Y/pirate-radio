@@ -1,11 +1,19 @@
-// import { crsfFetch } from "./csrf"
+import { csrfFetch } from "./csrf"
 
 const LOAD_COMMENTS = 'comments/loadComments'
+const ADD_COMMENT = 'comments/addComment'
 
 const loadComments = (comments) => {
     return {
         type: LOAD_COMMENTS,
         comments
+    }
+}
+
+const addComment = comment => {
+    return {
+        type: ADD_COMMENT,
+        comment
     }
 }
 
@@ -21,7 +29,23 @@ export const fetchComments = (id) => async (dispatch) => {
     return null
 }
 
-const initialState = {  }
+export const createNewComment = (comment, id) => async dispatch => {
+    const response = await csrfFetch(`/api/songs/${id}/comments`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(comment)
+    });
+    if (response.ok) {
+        const comment = await response.json();
+        dispatch(addComment(comment));
+        return comment;
+    }
+    return null;
+}
+
+const initialState = {}
 
 const commentReducer = (state = initialState, action) => {
     let newState = {}
@@ -35,7 +59,11 @@ const commentReducer = (state = initialState, action) => {
                 ...allComments,
                 ...state,
             };
-
+        case ADD_COMMENT:
+            return {
+                ...state,
+                [action.comment.id]: action.comment
+            }
         default:
             return state
     }

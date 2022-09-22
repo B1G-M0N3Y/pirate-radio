@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { deleteSingleSong, fetchSongDetails } from '../../store/songs';
 import CommentsFromSong from '../Comments/CommentsFromSong';
+import CreateComment from '../Comments/CreateComment';
 
 const SongDetails = () => {
     const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const SongDetails = () => {
             </div>
             <div>
                 <CommentsFromSong />
+                <CreateComment />
             </div>
         </>
     )
