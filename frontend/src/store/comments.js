@@ -1,4 +1,4 @@
-import { crsfFetch } from "./csrf"
+// import { crsfFetch } from "./csrf"
 
 const LOAD_COMMENTS = 'comments/loadComments'
 
@@ -14,20 +14,28 @@ export const fetchComments = (id) => async (dispatch) => {
 
     if (response.ok) {
         const comments = await response.json();
-
+        console.log('reducer comments', comments)
         dispatch(loadComments(comments));
-        return comments;
+        return comments
     }
+    return null
 }
 
-const initialState = { comments: {}, singleComment: {} }
+const initialState = {  }
 
 const commentReducer = (state = initialState, action) => {
     let newState = {}
     switch (action.type) {
         case LOAD_COMMENTS:
-            Object.values(action.comments).map((comment) => (newState[comment.id] = comment))
-            return newState;
+            const allComments = {}
+            action.comments.comments.forEach(comment => {
+                allComments[comment.id] = comment;
+            });
+            return {
+                ...allComments,
+                ...state,
+            };
+
         default:
             return state
     }
