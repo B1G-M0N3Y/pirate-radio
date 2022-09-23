@@ -1,0 +1,41 @@
+.song-details {
+    display: flex;
+    align-items: row;
+    background-color: darkslategray;
+    margin: 20px;
+    justify-content: space-between
+}
+
+.song-details img {
+    padding: 15px;
+}
+
+.name-n-desc {
+    margin: 25px;
+}
+.name-n-desc h2,
+.name-n-desc p{
+    background-color: rgba(0, 0, 0, 0.726);
+    color: white;
+    padding-left: 5px;
+}
+
+.crud-clickers{
+    display: flex;
+    justify-self: flex-end;
+    flex-flow: column;
+}
+
+.edit,
+.delete {
+    text-decoration: none;
+    width: 100px;
+    height: 33px;
+    margin: 5px;
+    border: none;
+}
+
+.edit {
+    background-color: orange;
+    color: white;
+}
