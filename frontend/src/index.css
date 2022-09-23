@@ -4,12 +4,12 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .bingus{
+    margin-top: 50px;
     display: flex;
     flex-flow: column;
     max-width: 75%;
-    background-color: grey;
+    background-color: lightgrey;
 }

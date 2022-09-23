@@ -1,4 +1,4 @@
-.song-image {
+.song-pic {
     object-fit: cover;
     width: 200px;
     height: 200px;
@@ -29,6 +29,7 @@
     position: absolute;
     background-color: rgba(255, 174, 0, 0.247);
     max-width: 200px;
+    height: 200px;
 }
 
 .play-song img{
@@ -39,4 +40,13 @@
 .song-card:hover .play-song{
     visibility: visible;
     opacity: 1;
+}
+
+.song-link{
+    color: white;
+    text-decoration: none;
+}
+
+.song-title{
+    text-overflow: ellipsis;
 }
