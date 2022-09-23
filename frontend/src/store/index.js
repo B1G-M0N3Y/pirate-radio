@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import audioReducer from './audioPlayer';
 import commentReducer from './comments';
 import sessionReducer from './session';
 import songReducer from './songs';
@@ -7,7 +8,8 @@ import songReducer from './songs';
 const rootReducer = combineReducers({
     session: sessionReducer,
     songs: songReducer,
-    comments: commentReducer
+    comments: commentReducer,
+    audio: audioReducer
 });
 
 

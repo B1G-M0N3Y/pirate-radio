@@ -10,6 +10,7 @@ import SongsIndex from "./components/Songs/SongsIndex";
 import SongDetails from "./components/Songs/SongDetails";
 import CreateSong from "./components/Songs/CreateSong";
 import EditSong from "./components/Songs/EditSong";
+import Player from "./components/AudioPlayer/AudioBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ function App() {
         </Switch>
       )}
       <div>
+        <Player />
       </div>
     </>
   );

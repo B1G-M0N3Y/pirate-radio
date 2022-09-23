@@ -1,0 +1,42 @@
+img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+
+.song-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+
+.song-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    background-color: grey;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 4px;
+}
+
+.play-song{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: .25s ease;
+    position: absolute;
+    background-color: rgba(255, 255, 0, 0.247);
+    max-width: 200px;
+}
+
+.play-song img{
+    object-fit: contain;
+    max-width: 30%;
+}
+
+.song-card:hover .play-song{
+    visibility: visible;
+    opacity: 1;
+}
