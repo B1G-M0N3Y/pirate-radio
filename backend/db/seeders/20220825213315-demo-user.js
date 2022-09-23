@@ -11,21 +11,24 @@ module.exports = {
         firstName: 'Joanna',
         lastName: 'Gilbert',
         email: 'joanna@gilbert.com',
-        hashedPassword: bcrypt.hashSync('password')
+        hashedPassword: bcrypt.hashSync('password'),
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663956835/nickleback-nickelback-33858308-1024-768_kybkiz.jpg'
       },
       {
         username: '9ziggy9',
         firstName: 'David',
         lastName: 'Rogers',
         email: 'mrrogers@appacademy.io',
-        hashedPassword: bcrypt.hashSync('password2')
+        hashedPassword: bcrypt.hashSync('password2'),
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663964417/DavidZoomCrash_od9ky2.png'
       },
       {
         username: 'NOT_BRANDON',
         firstName: 'Brandon',
         lastName: 'Tasaki',
         email: 'haichiroku@gmail.com',
-        hashedPassword: bcrypt.hashSync('password3')
+        hashedPassword: bcrypt.hashSync('password3'),
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663965240/143_riq6yi.png'
       }
     ]);
   },

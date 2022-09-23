@@ -17,13 +17,25 @@ const CommentsFromSong = () => {
 
     const gaming = Object.values(comments)
 
+    console.log(gaming);
+
     return (
         <>
             <div>
                 <h2>Comments:</h2>
                 <ul>
                     {gaming?.map(comment => {
-                        return <li key={comment.id}> {comment.body} </li>
+                        console.log(comment.imageUrl)
+                        return (
+                            <div className='single-comment'>
+                                <img key={comment.User.id} src={comment.User.imageUrl} ></img>
+                                <div className='comment-text'>
+                                    <p className='comment-username'>{comment.User.username}</p>
+                                    <p className='comment-body' key={comment.id}> {comment.body} </p>
+                                    <br/>
+                                </div>
+                            </div>
+                        )
                     })}
                 </ul>
             </div>
