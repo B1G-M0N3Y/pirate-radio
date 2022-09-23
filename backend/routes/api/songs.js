@@ -23,7 +23,7 @@ router.get(
             where: { songId: id },
             include: [{
                 model: User,
-                attributes: ['id', 'username']
+                attributes: ['id', 'username', 'imageUrl']
             }]
         });
         return res.json({ comments });
@@ -48,29 +48,30 @@ router.get(
     async (req, res) => {
         const id = req.params.id;
 
-        if (id <= 0 || id > await Song.count()) {
+
+        const song = await Song.findByPk(id, {
+            include: [{
+                model: User,
+                as: 'Artist',
+                attributes: ['id', 'username', 'imageUrl']
+            },
+            {
+                model: Album,
+                attributes: ['id', 'title', 'imageUrl']
+            }]
+        }
+        );
+
+        if (!song) {
             res.status(404);
-            res.send({
+            return res.send({
                 "message": "Song couldn't be found",
                 "statusCode": 404
             });
-        } else {
-
-            const songs = await Song.findByPk(id, {
-                include: [{
-                    model: User,
-                    as: 'Artist',
-                    attributes: ['id', 'username', 'imageUrl']
-                },
-                {
-                    model: Album,
-                    attributes: ['id', 'title', 'imageUrl']
-                }]
-            }
-            );
-
-            return res.json(songs)
         }
+
+        return res.json(song)
+
     }
 )
 

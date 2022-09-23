@@ -100,7 +100,7 @@ export const deleteSingleSong = id => async dispatch => {
     }
 }
 
-const initialState = { songs: {}, singleSong: {} }
+const initialState = { singleSong: {} }
 
 const songReducer = (state = initialState, action) => {
     let newState = {}
@@ -108,12 +108,13 @@ const songReducer = (state = initialState, action) => {
         case LOAD_SONGS:
             Object.values(action.songs.Songs).map((song) => (newState[song.id] = song))
             return newState;
-        case SONG_DETAILS:
+        case SONG_DETAILS:{
+            const newState = {...state}
             return {
                 ...state,
                 [action.details.id]: action.details,
                 singleSong: { ...action.details }
-            };
+            };}
         case UPDATE_SONG:
             newState = { ...state, singleSong: { ...action.song } };
             newState[action.song.id] = action.song;

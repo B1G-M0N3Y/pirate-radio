@@ -19,7 +19,7 @@ module.exports = {
         userId: 1,
         title: 'Brand New Shiny Nickle',
         description: 'Nickelback is back with a brand new nickle',
-        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1663882745/Nickelback_-_How_You_Remind_Me_OFFICIAL_VIDEO_qj2hg6.mp3',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1663951875/joannasFavoriteSong_e3vdyk.mp3',
         imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663882070/5c4ae7e66cf99614a868eb5f-large_ozqkpu.webp'
       },
       {
@@ -35,7 +35,7 @@ module.exports = {
         userId: 3,
         title: 'Intl Brandons Anthem',
         description: 'Everyone is a Brandon',
-        url: 'https://www.youtube.com/watch?v=Q1alKKG3BiI',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1663952252/UGK_Ft_OutKast_International_Players_Anthem_Dirty_Version_ev1wx1.mp3',
         imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663898735/293123183_10223562231378110_1866346715737280205_n_bfovoe.jpg'
       }
     ])

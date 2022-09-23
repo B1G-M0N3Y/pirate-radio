@@ -6,6 +6,7 @@ const { restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
 
+
 router.get(
     '/:id/playlists',
     async (req, res) => {
@@ -21,7 +22,7 @@ router.get(
             where: { userId: id }
         });
 
-        res.json({playlists});
+        res.json({ playlists });
     }
 )
 
@@ -79,6 +80,15 @@ router.get(
 
         return res.json(artist)
     }
+)
+
+router.get(
+    '/',
+    async (req, res) => {
+        const artists = await User.findAll();
+        return res.json({artists})
+    }
+
 )
 
 module.exports = router;

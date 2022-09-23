@@ -19,11 +19,10 @@ const CreateSong = () => {
             title, description, url, imageUrl, albumId
         };
 
-        let createdSong = await dispatch(createNewSong(payload));
+        let createdSong = await dispatch(createNewSong(payload)).then(
+                history.push(`/songs/${createdSong.id}`)
+        );
 
-        if (createdSong) {
-            history.push(`/songs/${createdSong.id}`)
-        }
     }
 
     return (

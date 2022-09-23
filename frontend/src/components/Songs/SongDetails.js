@@ -12,8 +12,8 @@ const SongDetails = () => {
     // const[showDeleteSong, setShowDeleteSong] = useState(false);
 
     const { id } = useParams();
-    const songs = useSelector(state => state.songs);
-    const song = songs?.singleSong
+    const song = useSelector(state => state.songs.singleSong);
+    // const song = songs?.singleSong
 
     const deleteSong = async () => {
         await dispatch(deleteSingleSong(id))

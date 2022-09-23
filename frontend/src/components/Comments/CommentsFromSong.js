@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { fetchComments } from '../../store/comments'
+import './CommentsFromSong.css'
 
 const CommentsFromSong = () => {
     const dispatch = useDispatch();
@@ -10,9 +11,9 @@ const CommentsFromSong = () => {
     const comments = useSelector(state => state.comments);
 
     useEffect(() => {
-
         dispatch(fetchComments(id));
     }, [dispatch, id])
+
 
     const gaming = Object.values(comments)
 
