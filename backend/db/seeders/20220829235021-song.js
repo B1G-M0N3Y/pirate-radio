@@ -36,7 +36,7 @@ module.exports = {
         title: 'Intl Brandons Anthem',
         description: 'Everyone is a Brandon',
         url: 'https://www.youtube.com/watch?v=Q1alKKG3BiI',
-        imageUrl: 'brandon.png'
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663898735/293123183_10223562231378110_1866346715737280205_n_bfovoe.jpg'
       }
     ])
   },
