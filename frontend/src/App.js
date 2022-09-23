@@ -30,32 +30,36 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path='/songs/new'>
-            <CreateSong />
-          </Route>
-          <Route path='/songs/:id/edit'>
-            <EditSong />
-          </Route>
-          <Route path='/songs/deleted'>
-            <h2>Song deleted!</h2>
-          </Route>
-          <Route path='/songs/:id'>
-            <SongDetails />
-          </Route>
-          <Route path='/songs'>
-            <h2> Hear what’s trending for free in the SoundCloud community </h2>
-            <SongsIndex />
-          </Route>
-        </Switch>
-      )}
+      <div className="bungus">
+        <div className="bingus">
+          {isLoaded && (
+            <Switch>
+              <Route path="/login">
+                <LoginFormPage />
+              </Route>
+              <Route path="/signup">
+                <SignupFormPage />
+              </Route>
+              <Route path='/songs/new'>
+                <CreateSong />
+              </Route>
+              <Route path='/songs/:id/edit'>
+                <EditSong />
+              </Route>
+              <Route path='/songs/deleted'>
+                <h2>Song deleted!</h2>
+              </Route>
+              <Route path='/songs/:id'>
+                <SongDetails />
+              </Route>
+              <Route path='/songs'>
+                <h2> Hear what’s trending for free in the SoundCloud community </h2>
+                <SongsIndex />
+              </Route>
+            </Switch>
+          )}
+        </div>
+      </div>
       <div>
         <Player />
       </div>
