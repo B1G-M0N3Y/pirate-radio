@@ -37,8 +37,8 @@ const LandingPage = () => {
                     <h3>Check out more the most notorious pirate of all,</h3>
                     <h3>Noah Kerner</h3>
                     <div className="button-box">
-                        <i class="fa-brands fa-linkedin fa-10x"></i>
-                        <i class="fa-brands fa-square-github fa-10x"></i>
+                        <i class="fa-brands fa-linkedin fa-4x"></i>
+                        <i class="fa-brands fa-square-github fa-4x"></i>
                     </div>
                 </div>
             </div>

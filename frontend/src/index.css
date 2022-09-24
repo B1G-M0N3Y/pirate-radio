@@ -11,6 +11,6 @@
     margin-top: 50px;
     display: flex;
     flex-flow: column;
-    max-width: 1250px;
+    max-width:min-content;
     background-color: white;
 }
