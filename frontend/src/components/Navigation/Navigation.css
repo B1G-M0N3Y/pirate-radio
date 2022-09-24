@@ -1,8 +1,29 @@
 .link {
-    margin: 10px;
+    height: 100%;
     padding: 5px;
-    border: solid;
     display: flex;
-    justify-content: flex-end;
-    width: fit-content;
+}
+
+.navbar {
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: slateblue;
+    width: 100%;
+    height: 65px;
+}
+
+.link-list {
+    position: absolute;
+    display: flex;
+    height: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white
 }

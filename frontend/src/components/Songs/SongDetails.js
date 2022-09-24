@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { deleteSingleSong, fetchSongDetails } from '../../store/songs';
 import CommentsFromSong from '../Comments/CommentsFromSong';
 import CreateComment from '../Comments/CreateComment';
+import './SongDetails.css'
 
 const SongDetails = () => {
     const dispatch = useDispatch();
@@ -11,8 +12,8 @@ const SongDetails = () => {
     // const[showDeleteSong, setShowDeleteSong] = useState(false);
 
     const { id } = useParams();
-    const songs = useSelector(state => state.songs);
-    const song = songs?.singleSong
+    const song = useSelector(state => state.songs.singleSong);
+    // const song = songs?.singleSong
 
     const deleteSong = async () => {
         await dispatch(deleteSingleSong(id))
@@ -24,17 +25,22 @@ const SongDetails = () => {
 
     return (
         <>
-            <div>
-                <h2>{song?.title}</h2>
+            <div className='song-details'>
                 <img src={song?.imageUrl} alt=""></img>
-                <p>{song?.description}</p>
-                <Link to={`/songs/${id}/edit`}>
-                    <button>Edit Song</button>
-                </Link>
-                <Link to={`/songs/deleted`}>
-                    <button onClick={deleteSong}>Delete Song</button>
-                </Link>
+                <div className='name-n-desc'>
+                    <h2 className='title'>{song?.title}</h2>
+                    <p>{song?.description}</p>
+                </div>
+                <div className='crud-clickers'>
+                    <Link to={`/songs/${id}/edit`}>
+                        <button className='edit'>Edit Song</button>
+                    </Link>
+                    <Link to={`/songs/deleted`}>
+                        <button className='delete' onClick={deleteSong}>Delete Song</button>
+                    </Link>
+                </div>
             </div>
+            <hr></hr>
             <div>
                 <CommentsFromSong />
                 <CreateComment />

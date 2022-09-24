@@ -11,6 +11,7 @@ import SongDetails from "./components/Songs/SongDetails";
 import CreateSong from "./components/Songs/CreateSong";
 import EditSong from "./components/Songs/EditSong";
 import Player from "./components/AudioPlayer/AudioBar";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,32 +31,39 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path='/songs/new'>
-            <CreateSong />
-          </Route>
-          <Route path='/songs/:id/edit'>
-            <EditSong />
-          </Route>
-          <Route path='/songs/deleted'>
-            <h2>Song deleted!</h2>
-          </Route>
-          <Route path='/songs/:id'>
-            <SongDetails />
-          </Route>
-          <Route path='/songs'>
-            <h2> Hear what’s trending for free in the SoundCloud community </h2>
-            <SongsIndex />
-          </Route>
-        </Switch>
-      )}
+      <div className="bungus">
+        <div className="bingus">
+          {isLoaded && (
+            <Switch>
+              <Route path="/login">
+                <LoginFormPage />
+              </Route>
+              <Route path="/signup">
+                <SignupFormPage />
+              </Route>
+              <Route path='/songs/new'>
+                <CreateSong />
+              </Route>
+              <Route path='/songs/:id/edit'>
+                <EditSong />
+              </Route>
+              <Route path='/songs/deleted'>
+                <h2>Song deleted!</h2>
+              </Route>
+              <Route path='/songs/:id'>
+                <SongDetails />
+              </Route>
+              <Route path='/songs'>
+                <h2> Hear what’s trending for free in the SoundCloud community </h2>
+                <SongsIndex />
+              </Route>
+                <Route path='/'>
+                  <LandingPage />
+                </Route>
+            </Switch>
+          )}
+        </div>
+      </div>
       <div>
         <Player />
       </div>

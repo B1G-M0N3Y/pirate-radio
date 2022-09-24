@@ -26,14 +26,26 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
-      <li>
-        <div className='link'>
-          <NavLink exact to="/">Home</NavLink>
-        </div>
+    <div className='navbar'>
+      <ul className ='link-list'>
+        <li>
+          <div className='link'>
+            <NavLink className='nav-link' exact to="/">Home</NavLink>
+          </div>
+        </li>
+        <li>
+          <div className='link'>
+            <NavLink className='nav-link' exact to="/songs">Music</NavLink>
+          </div>
+        </li>
+        <li>
+          <div className='link'>
+            <NavLink className='nav-link' exact to="/songs">Add a Song</NavLink>
+          </div>
+        </li>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </ul>
+    </div>
   );
 }
 
