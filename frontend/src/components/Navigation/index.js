@@ -13,7 +13,6 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   const signInDemoUser = async () => {
-    console.log('click')
     await dispatch(sessionActions.login({credential: 'demo-user', password: 'demouser'}))
   }
 
