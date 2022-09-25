@@ -1,4 +1,6 @@
 import React from 'react';
+import * as sessionActions from "../../store/session";
+import { useDispatch } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -7,18 +9,31 @@ import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
 
 function Navigation({ isLoaded }) {
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  console.log('and the lucky user is', sessionUser)
+
+  const signInDemoUser = async () => {
+    console.log('click')
+    await dispatch(sessionActions.login({credential: 'demo-user', password: 'demouser'}))
+  }
 
   let sessionLinks;
 
   if (sessionUser?.id) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <li>
+          <div className='link'>
+            <NavLink className='nav-link' exact to="/songs/new">Add a Song</NavLink>
+          </div>
+        </li>
+        <ProfileButton user={sessionUser} />
+      </>
     );
   } else {
     sessionLinks = (
       <>
+        <button onClick={() => signInDemoUser()} className='login-button'>Demo User</button>
         <LoginFormModal />
         <SignupFormModal />
       </>
@@ -45,13 +60,8 @@ function Navigation({ isLoaded }) {
         </div>
 
         <div className='right'>
-          <li>
-            <div className='link'>
-              <NavLink className='nav-link' exact to="/songs/new">Add a Song</NavLink>
-            </div>
-          </li>
           <div className='butts'>
-          {isLoaded && sessionLinks}
+            {isLoaded && sessionLinks}
           </div>
         </div>
 
