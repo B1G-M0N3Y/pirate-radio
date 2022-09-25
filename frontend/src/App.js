@@ -35,9 +35,6 @@ function App() {
         <div className="bingus">
           {isLoaded && (
             <Switch>
-              <Route path="/login">
-                <LoginFormPage />
-              </Route>
               <Route path="/signup">
                 <SignupFormPage />
               </Route>

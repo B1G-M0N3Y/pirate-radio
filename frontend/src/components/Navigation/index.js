@@ -2,32 +2,32 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import SignupFormModal from '../SignupFormModal';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
+  console.log('and the lucky user is', sessionUser)
 
   let sessionLinks;
-  if (sessionUser) {
+
+  if (sessionUser?.id) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     );
   } else {
     sessionLinks = (
       <>
-        <div className='link'>
-          <NavLink to="/login">Log In</NavLink>
-        </div>
-        <div className='link'>
-          <NavLink to="/signup">Sign Up</NavLink>
-        </div>
+        <LoginFormModal />
+        <SignupFormModal />
       </>
     );
   }
 
   return (
     <div className='navbar'>
-      <ul className ='link-list'>
+      <ul className='link-list'>
         <li>
           <div className='link'>
             <NavLink className='nav-link' exact to="/">Home</NavLink>
@@ -40,7 +40,7 @@ function Navigation({ isLoaded }) {
         </li>
         <li>
           <div className='link'>
-            <NavLink className='nav-link' exact to="/songs">Add a Song</NavLink>
+            <NavLink className='nav-link' exact to="/songs/new">Add a Song</NavLink>
           </div>
         </li>
         {isLoaded && sessionLinks}
