@@ -9,8 +9,10 @@
 
 .bingus{
     margin-top: 50px;
+    padding-bottom: 100px;
     display: flex;
     flex-flow: column;
     max-width:min-content;
     background-color: white;
+    font-family: 'Montserrat', sans-serif;
 }

@@ -15,9 +15,7 @@ const CommentsFromSong = () => {
     }, [dispatch, id])
 
 
-    const gaming = Object.values(comments)
-
-    console.log(gaming);
+    const gaming = Object.values(comments);
 
     return (
         <>
@@ -25,7 +23,6 @@ const CommentsFromSong = () => {
                 <h2>Comments:</h2>
                 <ul>
                     {gaming?.map(comment => {
-                        console.log(comment.imageUrl)
                         return (
                             <div className='single-comment'>
                                 <img key={comment.User.id} src={comment.User.imageUrl} ></img>

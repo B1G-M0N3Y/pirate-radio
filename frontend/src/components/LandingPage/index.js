@@ -35,10 +35,14 @@ const LandingPage = () => {
                 <div className='promo-box'>
                     <h1>Like this page?</h1>
                     <h3>Check out more the most notorious pirate of all,</h3>
-                    <h3>Noah Kerner</h3>
+                    <h3 id='name'>Noah Kerner</h3>
                     <div className="button-box">
-                        <i class="fa-brands fa-linkedin fa-4x"></i>
-                        <i class="fa-brands fa-square-github fa-4x"></i>
+                        <a href='https://www.linkedin.com/in/noah-kerner-694797235/0'>
+                            <i id='linkedin' class="fa-brands fa-linkedin fa-4x"></i>
+                        </a>
+                        <a href='https://github.com/B1G-M0N3Y'>
+                            <i id='github' class="fa-brands fa-square-github fa-4x"></i>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,17 @@
+.signup {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 32em;
+    height: 45em;
+}
+
+.signup label input {
+    margin: 10px;
+    width: 30em;
+}
+
+.signup button{
+    align-self: center;
+}

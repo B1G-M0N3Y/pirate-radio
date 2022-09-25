@@ -1,0 +1,9 @@
+.player-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.player{
+    position: fixed;
+    bottom: 0;
+}
