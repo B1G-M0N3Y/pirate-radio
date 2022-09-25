@@ -15,7 +15,7 @@ function LoginForm() {
         return dispatch(sessionActions.login({ credential, password })).catch(
             async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+                if (data.statusCode === 401) setErrors(data.message);
             }
         );
     };
@@ -26,9 +26,7 @@ function LoginForm() {
             <h2>Welcome back ye' scurvy dog!</h2>
             <form className='login-form' onSubmit={handleSubmit}>
                 <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
+                    {errors}
                 </ul>
                 <label>
                     Username or Email
