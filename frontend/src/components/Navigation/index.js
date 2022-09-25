@@ -28,22 +28,33 @@ function Navigation({ isLoaded }) {
   return (
     <div className='navbar'>
       <ul className='link-list'>
-        <li>
-          <div className='link'>
-            <NavLink className='nav-link' exact to="/">Home</NavLink>
+
+        <div className='left'>
+          <li>
+            <div className='link'>
+              <NavLink className='nav-link' exact to="/">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Pirate_ship.svg"></img>
+              </NavLink>
+            </div>
+          </li>
+          <li>
+            <div className='link'>
+              <NavLink className='nav-link' exact to="/songs">Music</NavLink>
+            </div>
+          </li>
+        </div>
+
+        <div className='right'>
+          <li>
+            <div className='link'>
+              <NavLink className='nav-link' exact to="/songs/new">Add a Song</NavLink>
+            </div>
+          </li>
+          <div className='butts'>
+          {isLoaded && sessionLinks}
           </div>
-        </li>
-        <li>
-          <div className='link'>
-            <NavLink className='nav-link' exact to="/songs">Music</NavLink>
-          </div>
-        </li>
-        <li>
-          <div className='link'>
-            <NavLink className='nav-link' exact to="/songs/new">Add a Song</NavLink>
-          </div>
-        </li>
-        {isLoaded && sessionLinks}
+        </div>
+
       </ul>
     </div>
   );

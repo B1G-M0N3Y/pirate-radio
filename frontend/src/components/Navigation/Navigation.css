@@ -8,15 +8,16 @@
     top: 0;
     left: 0;
     position: fixed;
-    background-color: slateblue;
+    background-color: rgb(49, 49, 49);
     width: 100%;
     height: 65px;
+    z-index: 10000;
 }
 
 .link-list {
-    position: absolute;
-    display: flex;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 li {
@@ -26,4 +27,33 @@ li {
 .nav-link {
     text-decoration: none;
     color: white
+}
+
+.link-list img {
+    filter: invert(100%);
+    width: 3.4em;
+}
+
+.right,
+.left {
+    display: flex;
+}
+
+.right button {
+    justify-self: center;
+    height: 50%;
+    border-radius: 4px;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.login-button {
+    background-color: rgba(255, 255, 255, 0);
+    border: white solid 1px;
+}
+
+.signup-button{
+    background-color: #F26F23;
+    border: none;
 }
