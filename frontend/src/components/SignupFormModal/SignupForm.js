@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
+import './SignupForm.css'
 
 function SignupForm() {
     const dispatch = useDispatch();
@@ -29,7 +30,9 @@ function SignupForm() {
     };
 
     return (
-        <div className='signup'>
+        <div className='modal signup'>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Pirate_ship.svg"></img>
+            <h2>Hope you got the sea legs for this</h2>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}

@@ -21,7 +21,7 @@ function LoginForm() {
     };
 
     return (
-        <div className="login">
+        <div className="modal login">
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Pirate_ship.svg"></img>
             <h2>Welcome back ye' scurvy dog!</h2>
             <form className='login-form' onSubmit={handleSubmit}>

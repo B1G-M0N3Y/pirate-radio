@@ -4,7 +4,7 @@
 
 
 
-.login {
+.modal {
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@
     height: 36em;
 }
 
-.login-form {
+.modal form{
     display: flex;
     flex-direction: column;
 }
@@ -23,7 +23,7 @@
     margin-top: 5rem;
 }
 
-.login-form button {
+.modal button {
     align-self: center;
     height: 3.6em;
     width: 8.2em;
@@ -32,17 +32,17 @@
     border: none;
 }
 
-.login label{
+.modal label{
     font-size: 1.2em;
 }
 
-.login label input {
+.modal label input {
     margin: 20px;
     padding: 5px;
     border: 2px solid lightgrey;
 }
 
-.login img {
+.modal img {
     max-width: 20%;
     margin-top: 4em;
 }
