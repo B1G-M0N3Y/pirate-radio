@@ -59,9 +59,7 @@ function App() {
             </Switch>
           )}
         </div>
-      </div>
-      <div>
-        <Player />
+          <Player />
       </div>
     </>
   );
