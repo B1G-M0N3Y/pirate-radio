@@ -12,6 +12,7 @@
     width: 100%;
     height: 65px;
     z-index: 10000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .link-list {
