@@ -1,5 +1,5 @@
 /* TODO Add site wide styles */
-.bungus{
+.bungus {
     background-color: lightgrey;
     display: flex;
     flex-flow: column;
@@ -7,12 +7,39 @@
     align-items: center;
 }
 
-.bingus{
+.bingus {
     margin-top: 50px;
     padding-bottom: 100px;
     display: flex;
     flex-flow: column;
-    max-width:min-content;
+    max-width: min-content;
     background-color: white;
     font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+}
+
+.errors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+}
+
+.validation-error {
+    color: red;
+    background-color: rgba(255, 97, 97, 0.329);
+    border: 2px red solid;
+    border-radius: 6px;
+    font-weight: bold;
+    margin: 4px;
 }

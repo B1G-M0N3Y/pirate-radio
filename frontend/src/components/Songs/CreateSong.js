@@ -49,9 +49,10 @@ const CreateSong = () => {
         <form onSubmit={handleSubmit}>
             <h2>Add your shanty</h2>
             {validationErrors.length > 0 && (
-                <ul className='errors'>
-                    {validationErrors.map(error => <li key={error}>{error}</li>)}
-                </ul>
+                <div className='errors'>
+                    {validationErrors.map(error => <p className="validation-error"
+                    key={error}>{error}</p>)}
+                </div>
             )}
             <label>
                 Title

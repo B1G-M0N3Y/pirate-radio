@@ -48,9 +48,10 @@ const EditSong = song => {
             onSubmit={handleSubmit}>
             <h2>Edit Song:</h2>
             {validationErrors.length > 0 && (
-                <ul className='errors'>
-                    {validationErrors.map(error => <li key={error}>{error}</li>)}
-                </ul>
+                <div className='errors'>
+                    {validationErrors.map(error => <p className='validation-error'
+                        key={error}>{error}</p>)}
+                </div>
             )}
             <label>
                 Title
