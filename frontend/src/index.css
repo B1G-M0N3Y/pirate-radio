@@ -1,6 +1,7 @@
 /* TODO Add site wide styles */
 
 html{
+    min-height: 100%;
     background-color: light grey;
 }
 
@@ -56,4 +57,9 @@ h3 {
     .bingus{
         width: 100%;
     }
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
 }

@@ -1,0 +1,38 @@
+.jolly-roger {
+    width: 40%;
+}
+
+.deleted-container{
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.deleted{
+    margin-top:166px ;
+    background-color: black;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 14%;
+}
+
+.deleted img{
+    margin-top: 25px;
+    margin-bottom: 50px;
+    filter: invert(100%);
+}
+
+.plunder-button{
+    height: 2.4vw;
+    font-size: 1.2em;
+    width: 10vw;
+    color: white;
+    background-color: #F26F23;
+    border: none;
+    border-radius: 2px;
+    margin-bottom: 66px;
+}

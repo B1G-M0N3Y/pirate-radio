@@ -11,6 +11,7 @@ import CreateSong from "./components/Songs/CreateSong";
 import EditSong from "./components/Songs/EditSong";
 import Player from "./components/AudioPlayer/AudioBar";
 import LandingPage from "./components/LandingPage";
+import DeletedSong from "./components/Songs/DeletedSong";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ function App() {
                 <EditSong />
               </Route>
               <Route path='/songs/deleted'>
-                <h2>Song deleted!</h2>
+                <DeletedSong />
               </Route>
               <Route path='/songs/:id'>
                 <SongDetails />
