@@ -34,7 +34,10 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     url: DataTypes.STRING,
-    imageUrl: DataTypes.STRING
+    imageUrl: {
+      type:DataTypes.STRING,
+      defaultValue: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1664159594/pirates_band_of_misfits-thumb-430xauto-22644_nuajf4.jpg'
+    }
   }, {
     sequelize,
     modelName: 'Song',
