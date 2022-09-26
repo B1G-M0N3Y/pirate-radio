@@ -209,17 +209,17 @@ router.put('/:id',
             });
         }
 
-        if (!title || !url) {
-            res.status(400);
-            res.send({
-                "message": "Validation Error",
-                "statusCode": 400,
-                "errors": {
-                    "title": "Song title is required",
-                    "url": "Audio is required"
-                }
-            });
-        }
+        // if (!title || !url) {
+        //     res.status(400);
+        //     res.send({
+        //         "message": "Validation Error",
+        //         "statusCode": 400,
+        //         "errors": {
+        //             "title": "Song title is required",
+        //             "url": "Audio is required"
+        //         }
+        //     });
+        // }
 
         if (song.userId !== user.toSafeObject().id) {
             res.status(403);
