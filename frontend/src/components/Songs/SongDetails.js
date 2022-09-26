@@ -26,19 +26,22 @@ const SongDetails = () => {
     return (
         <>
             <div className='song-details'>
-                <img src={song?.imageUrl} alt=""></img>
-                <div className='name-n-desc'>
-                    <h2 className='title'>{song?.title}</h2>
-                    <p>{song?.description}</p>
+                <div className='details-left'>
+                    <img className='play-button' src="https://res.cloudinary.com/dy199z8qt/image/upload/v1663887398/songplay_tb28tn.png" />
+                    <div className='name-n-desc'>
+                        <h2 className='title'>{song?.title}</h2>
+                        <p>{song?.description}</p>
+                    </div>
                 </div>
-                <div className='crud-clickers'>
-                    <Link to={`/songs/${id}/edit`}>
-                        <button className='edit'>Edit Song</button>
-                    </Link>
-                    <Link to={`/songs/deleted`}>
-                        <button className='delete' onClick={deleteSong}>Delete Song</button>
-                    </Link>
-                </div>
+                <img className='song-pic-details' src={song?.imageUrl} alt=""></img>
+            </div>
+            <div className='crud-clickers'>
+                <Link to={`/songs/${id}/edit`}>
+                    <button className='edit'>Edit Song</button>
+                </Link>
+                <Link to={`/songs/deleted`}>
+                    <button className='delete' onClick={deleteSong}>Delete Song</button>
+                </Link>
             </div>
             <hr></hr>
             <div>
