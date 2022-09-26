@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
 import { NavLink, useHistory, useParams } from "react-router-dom";
-import { editSong } from "../../store/songs";
+import { editSong, fetchSongDetails } from "../../store/songs";
+
+const SONG_EXTENSIONS = ['mp3', 'mp4', 'wav']
 
 const EditSong = song => {
     const { id } = useParams()
@@ -12,16 +14,24 @@ const EditSong = song => {
     const [url, setUrl] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [albumId, setAlbumId] = useState();
+    const [validationErrors, setValidationErrors] = useState([]);
+
 
     useEffect(() => {
         dispatch(editSong(song))
     }, [dispatch]);
 
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        let errors = [];
+
+        if (!(SONG_EXTENSIONS.includes(url.split('.').pop()))) {
+            errors.push("Song url must link to valid")
+        }
+
         const payload = { id: Number(id), title, description, url, imageUrl, albumId }
+        console.log(payload)
         let updatedSong = await dispatch(editSong(payload))
         if (updatedSong) {
             history.push(`/songs/${updatedSong.id}`)
@@ -38,7 +48,6 @@ const EditSong = song => {
                     type='text'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    required
                 />
             </label>
             <label>
@@ -47,7 +56,6 @@ const EditSong = song => {
                     type='text'
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    required
                 />
             </label>
             <label>
@@ -56,7 +64,6 @@ const EditSong = song => {
                     type='text'
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
-                    required
                 />
             </label>
             <label>
