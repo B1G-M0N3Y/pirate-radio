@@ -23,7 +23,7 @@ function Navigation({ isLoaded }) {
       <>
         <li>
           <div className='link'>
-            <NavLink className='nav-link' exact to="/songs/new">Add a Song</NavLink>
+            <NavLink className='nav-link add-song-butt' exact to="/songs/new">Add a Song</NavLink>
           </div>
         </li>
         <ProfileButton user={sessionUser} />
@@ -53,7 +53,7 @@ function Navigation({ isLoaded }) {
           </li>
           <li>
             <div className='link'>
-              <NavLink className='nav-link' exact to="/songs">Music</NavLink>
+              <NavLink className='nav-link song-link' exact to="/songs">Music</NavLink>
             </div>
           </li>
         </div>
