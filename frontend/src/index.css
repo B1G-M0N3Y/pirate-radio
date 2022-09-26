@@ -1,10 +1,16 @@
 /* TODO Add site wide styles */
+
+html{
+    background-color: light grey;
+}
+
 .bungus {
     background-color: lightgrey;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .bingus {
@@ -14,13 +20,13 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 1240px;
     background-color: white;
     font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 250%;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -44,4 +50,10 @@ h3 {
     border-radius: 6px;
     font-weight: bold;
     margin: 4px;
+}
+
+@media screen and (max-width:1240px){
+    .bingus{
+        width: 100%;
+    }
 }

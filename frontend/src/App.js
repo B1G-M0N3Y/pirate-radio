@@ -53,13 +53,13 @@ function App() {
                 <h2> Hear what’s trending for free in the SoundCloud community </h2>
                 <SongsIndex />
               </Route>
-                <Route path='/'>
-                  <LandingPage />
-                </Route>
+              <Route path='/'>
+                <LandingPage />
+              </Route>
             </Switch>
           )}
         </div>
-          <Player />
+        <Player />
       </div>
     </>
   );

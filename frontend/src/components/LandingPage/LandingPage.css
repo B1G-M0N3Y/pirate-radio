@@ -1,6 +1,17 @@
+.landing-page{
+    width: 100%
+}
+
 .top-box,
 .bottom-box {
+    width: 100%;
     position: relative;
+    text-align: center;
+}
+
+.top-box img,
+.bottom-box img{
+    width: 100%
 }
 
 .box-text {
@@ -53,4 +64,8 @@
 #name{
     margin-top: -5px;
     margin-bottom: 40px;
+}
+
+.landing-page h3{
+    font-weight: 600;
 }
