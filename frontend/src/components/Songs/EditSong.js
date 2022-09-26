@@ -26,15 +26,20 @@ const EditSong = song => {
 
         let errors = [];
 
+        console.log(url)
+
         if (!(SONG_EXTENSIONS.includes(url.split('.').pop()))) {
             errors.push("Song url must link to valid")
         }
 
-        const payload = { id: Number(id), title, description, url, imageUrl, albumId }
-        console.log(payload)
-        let updatedSong = await dispatch(editSong(payload))
-        if (updatedSong) {
-            history.push(`/songs/${updatedSong.id}`)
+        if (errors.length > 0) {
+            setValidationErrors(errors);
+        } else {
+            const payload = { id: Number(id), title, description, url, imageUrl, albumId }
+            let updatedSong = await dispatch(editSong(payload))
+            if (updatedSong) {
+                history.push(`/songs/${updatedSong.id}`)
+            }
         }
     }
 
@@ -42,6 +47,11 @@ const EditSong = song => {
         <form
             onSubmit={handleSubmit}>
             <h2>Edit Song:</h2>
+            {validationErrors.length > 0 && (
+                <ul className='errors'>
+                    {validationErrors.map(error => <li key={error}>{error}</li>)}
+                </ul>
+            )}
             <label>
                 Title
                 <input
