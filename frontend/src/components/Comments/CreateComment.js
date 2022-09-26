@@ -5,7 +5,7 @@ import { createNewComment } from "../../store/comments";
 import { createNewSong } from "../../store/songs";
 
 const CreateComment = () => {
-    const {id} = useParams()
+    const { id } = useParams()
     const dispatch = useDispatch();
     const history = useHistory();
     const [commentBody, setCommentBody] = useState("");
@@ -17,7 +17,12 @@ const CreateComment = () => {
             body: commentBody
         }
 
-        await dispatch (createNewComment(payload, id));
+        const comment = await dispatch(createNewComment(payload, id));
+
+        if (comment) {
+            history.push(`/songs/${id}`)
+        }
+        return comment;
     }
 
     return (
@@ -25,8 +30,8 @@ const CreateComment = () => {
             <label>
                 Leave a Comment:
                 <textarea
-                value = {commentBody}
-                onChange = {(e) => setCommentBody(e.target.value)}>
+                    value={commentBody}
+                    onChange={(e) => setCommentBody(e.target.value)}>
 
                 </textarea>
             </label>

@@ -44,9 +44,10 @@ const SongDetails = () => {
                 </Link>
             </div>
             <hr></hr>
-            <div>
-                <CommentsFromSong />
+            <div className='comment-section'>
+                <h2>Comments:</h2>
                 <CreateComment />
+                <CommentsFromSong />
             </div>
         </>
     )

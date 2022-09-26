@@ -50,12 +50,12 @@ const commentReducer = (state = initialState, action) => {
     let newState = {}
     switch (action.type) {
         case LOAD_COMMENTS:
-            const allComments = {}
-            action.comments.comments.forEach(comment => {
-                allComments[comment.id] = comment;
-            });
+            // const allComments = {}
+            // action.comments.comments.forEach(comment => {
+            //     allComments[comment.id] = comment;
+            // });
             return {
-                ...allComments,
+                ...action.comments.comments,
                 ...state,
             };
         case ADD_COMMENT:

@@ -62,4 +62,5 @@ h3 {
 button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
+    cursor: pointer;
 }
