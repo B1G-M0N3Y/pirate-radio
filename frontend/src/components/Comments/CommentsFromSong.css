@@ -1,24 +1,54 @@
-.single-comment{
+.all-comments{
+    max-width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.single-comment {
     display: flex;
     flex-direction: row;
     max-height: 85px;
 }
 
 .single-comment img {
-    align-self:  center;
+    align-self: center;
     max-width: 50px;
     max-height: 50px;
-    background-color:  white;
-    border-radius: 50%
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.comment-text{
+.comment-text {
     margin-left: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 15px;
+    font-weight: 900;
 }
 
-.comment-username{
+.comment-username {
     font-size: 14px;
+    color: grey;
+}
+
+.comment-body {
+    color: black;
+}
+
+.single-comment .user-pic {
+    align-self: center;
+}
+
+.single-comment p {
+    margin: 2px;
+}
+
+.single-comment button{
+    background: transparent;
+    border: none;
+    margin-left: 26px;
 }

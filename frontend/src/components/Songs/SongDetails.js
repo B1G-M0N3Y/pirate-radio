@@ -47,7 +47,7 @@ const SongDetails = () => {
             <div className='comment-section'>
                 <h2>Comments:</h2>
                 <CreateComment />
-                <CommentsFromSong />
+                <CommentsFromSong className='all-comments'/>
             </div>
         </>
     )
