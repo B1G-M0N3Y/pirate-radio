@@ -79,6 +79,7 @@ li {
 
 .right button {
     justify-self: center;
+    align-self: center;
     height: 50%;
     border-radius: 4px;
     color: white;
