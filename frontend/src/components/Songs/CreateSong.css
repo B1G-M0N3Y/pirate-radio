@@ -1,16 +1,19 @@
 .create-song{
     width: 100%;
     background-color: black;
+    background-image: url(https://res.cloudinary.com/dy199z8qt/image/upload/v1665096226/add_song_card_tgxvvk.png);
+    background-repeat: no-repeat;
+    background-size: contain;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100%;
+
 }
 
 
 .shanty-message{
     color:white;
-    background-color: black;
     padding: 20px 120px 20px 120px;
     font-size: 2em;
     font-weight: 900;
