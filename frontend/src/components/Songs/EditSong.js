@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { editSong, fetchSongDetails } from "../../store/songs";
+import './EditSong.css'
 
 const SONG_EXTENSIONS = ['mp3', 'mp4', 'wav']
 
@@ -44,9 +45,11 @@ const EditSong = song => {
     }
 
     return (
+        <div className="edit-song">
         <form
+            className="edit-form"
             onSubmit={handleSubmit}>
-            <h2>Edit Song:</h2>
+            <h2 id="edit-song-label">Edit Song:</h2>
             {validationErrors.length > 0 && (
                 <div className='errors'>
                     {validationErrors.map(error => <p className='validation-error'
@@ -59,7 +62,7 @@ const EditSong = song => {
                     type='text'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                />
+                    />
             </label>
             <label>
                 Description
@@ -67,7 +70,7 @@ const EditSong = song => {
                     type='text'
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                />
+                    />
             </label>
             <label>
                 Song Url
@@ -75,7 +78,7 @@ const EditSong = song => {
                     type='text'
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
-                />
+                    />
             </label>
             <label>
                 Image Url
@@ -83,7 +86,7 @@ const EditSong = song => {
                     type='text'
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
-                />
+                    />
             </label>
             <label>
                 Album id
@@ -91,10 +94,11 @@ const EditSong = song => {
                     type='text'
                     value={albumId}
                     onChange={(e) => setAlbumId(e.target.value)}
-                />
+                    />
             </label>
             <button type='submit'>Update Song</button>
         </form>
+        </div>
     )
 }
 
