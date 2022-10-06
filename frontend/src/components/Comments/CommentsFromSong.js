@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Redirect, useParams } from 'react-router-dom'
 import { deleteSingleComment, fetchComments } from '../../store/comments'
 import './CommentsFromSong.css'
 
@@ -16,6 +16,7 @@ const CommentsFromSong = () => {
 
     const deleteComment = async (commentId) => {
         await dispatch(deleteSingleComment(commentId));
+        // return <Redirect to="/comments/deleted" />
     }
 
     useEffect(() => {
@@ -43,9 +44,8 @@ const CommentsFromSong = () => {
                                 <p className='comment-body' key={comment?.id}> {comment?.body} </p>
                                 <br />
                             </div>
-                            <button>
-                                <i
-                                    className="fa-solid fa-x"></i>
+                            <button onClick={() => deleteComment(comment.id)}>
+                                <i className="fa-solid fa-x"></i>
                             </button>
                         </div>
                     )
@@ -61,7 +61,7 @@ const CommentsFromSong = () => {
                                 <br />
                             </div>
                             <Link to={`/comments/deleted`}>
-                                <button hidden={!(user.id === comment?.User?.id)}
+                                <button hidden={!(user?.id === comment?.User?.id)}
                                     onClick={() => deleteComment(comment.id)}>
                                     <i className="fa-solid fa-x"></i>
                                 </button>

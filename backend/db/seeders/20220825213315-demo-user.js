@@ -29,6 +29,14 @@ module.exports = {
         email: 'haichiroku@gmail.com',
         hashedPassword: bcrypt.hashSync('password3'),
         imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663965240/143_riq6yi.png'
+      },
+      {
+        username: 'demo-user',
+        firstName: 'demo',
+        lastName: 'user',
+        email: 'demo@user.com',
+        hashedPassword: bcrypt.hashSync('demouser'),
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663956835/nickleback-nickelback-33858308-1024-768_kybkiz.jpg'
       }
     ]);
   },

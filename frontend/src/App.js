@@ -36,7 +36,7 @@ function App() {
         <div className="bingus">
           {isLoaded && (
             <Switch>
-              <Route path='comments/deleted'>
+              <Route path='/comments/deleted'>
                 <DeletedComment />
               </Route>
               <Route path='/songs/new'>

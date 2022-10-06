@@ -75,8 +75,7 @@ const commentReducer = (state = initialState, action) => {
             //     allComments[comment.id] = comment;
             // });
             return {
-                ...action.comments.comments,
-                ...state,
+                ...action.comments.comments
             };
         case ADD_COMMENT:
             return {
@@ -84,7 +83,9 @@ const commentReducer = (state = initialState, action) => {
                 [action.comment.id]: action.comment
             }
         case DELETE_COMMENT:
-            delete state[action.id]
+            newState = {...state}
+            delete newState[action.id];
+            return newState;
         default:
             return state
     }
