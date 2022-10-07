@@ -16,7 +16,6 @@ const CommentsFromSong = () => {
 
     const deleteComment = async (commentId) => {
         await dispatch(deleteSingleComment(commentId));
-        // return <Redirect to="/comments/deleted" />
     }
 
     useEffect(() => {
