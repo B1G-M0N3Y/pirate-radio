@@ -27,11 +27,12 @@ const LandingPage = () => {
                     <div className='box-text'>
                         <h1>Like what you hear?</h1>
                         <h3>Join our crew:</h3>
-                        <Link to='/signup'>
+                        {/* <Link to='/signup'>
                             <button>
                                 Set Sail
                             </button>
-                        </Link>
+                        </Link> */}
+                        <SignupFormModal text="Set Sail"/>
                     </div>
                 </div>
                 <div className='promo-box'>

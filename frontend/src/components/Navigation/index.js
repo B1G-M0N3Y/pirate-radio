@@ -34,7 +34,7 @@ function Navigation({ isLoaded }) {
       <>
         <button onClick={() => signInDemoUser()} className='login-button'>Demo User</button>
         <LoginFormModal />
-        <SignupFormModal />
+        <SignupFormModal text="Sign Up" className='signup-button'/>
       </>
     );
   }
