@@ -26,16 +26,20 @@ function SignupForm() {
                     if (data && data.errors) setErrors(data.errors);
                 });
         }
-        return setErrors(['Confirm Password field must be the same as the Password field']);
+        return setErrors(['Passwords do not match.']);
     };
 
+
+    console.log(errors)
     return (
         <div className='modal signup'>
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Pirate_ship.svg"></img>
             <h2>Hope you got the sea legs for this</h2>
             <form onSubmit={handleSubmit}>
                 <ul>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    {errors.map((error, idx) => <li key={idx} className='.validation-error'>
+                        {error}
+                        </li>)}
                 </ul>
                 <label>
                     Email

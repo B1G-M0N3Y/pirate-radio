@@ -4,7 +4,14 @@
     flex-direction: column;
     align-items: center;
     width: 32em;
-    height: 45em;
+    height: fit-content;
+}
+
+.signup ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .signup label input {
