@@ -4,7 +4,6 @@ import SongsIndex from "../Songs/SongsIndex";
 import './LandingPage.css'
 
 const LandingPage = () => {
-    // const showSignUpModal=()=> <SignupFormModal />
     return (
         <>
             <div className='landing-page'>

@@ -14,9 +14,13 @@
     height: 65px;
     z-index: 10000;
     font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
 }
 
 .link-list {
+    padding-inline-start: 0;
+    width: 1240px;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -125,11 +129,11 @@ li {
 }
 
 .left{
-    margin-left: 100px;
+    margin-left: 10px;
 }
 
 .right{
-    margin-right: 100px;
+    margin-right: 10px;
 }
 
 .song-link{
