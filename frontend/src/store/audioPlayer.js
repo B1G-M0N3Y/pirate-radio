@@ -12,7 +12,6 @@ const loadAudio = (audio) => {
 
 
 export const fetchAudioDetails = (id) => async (dispatch) => {
-    console.log('in the audio fetch')
     const response = await fetch(`/api/songs/${id}`);
 
     if (response.ok) {

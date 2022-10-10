@@ -29,8 +29,6 @@ function SignupForm() {
         return setErrors(['Passwords do not match.']);
     };
 
-
-    console.log(errors)
     return (
         <div className='modal signup'>
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Pirate_ship.svg"></img>

@@ -92,7 +92,6 @@ router.get(
     restoreUser,
     (req, res) => {
         const { user } = req;
-        console.log(user)
         if (user) {
             return res.json({
                 id: user.id,

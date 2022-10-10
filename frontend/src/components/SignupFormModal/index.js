@@ -4,8 +4,7 @@ import SignupForm from './SignupForm';
 
 function SignupFormModal(info) {
   const [showModal, setShowModal] = useState(false);
-  console.log("info", info);
-  
+
   return (
     <>
       <button  className = {info.styling}

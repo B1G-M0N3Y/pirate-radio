@@ -7,7 +7,6 @@ function ProfileButton({ user }) {
     const currUser = useSelector(state => {
         return state.session.user
     });
-    console.log(currUser);
     const [showMenu, setShowMenu] = useState(false);
 
 

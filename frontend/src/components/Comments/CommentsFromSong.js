@@ -31,7 +31,6 @@ const CommentsFromSong = () => {
     return (
         <>
             {gaming?.map(comment => {
-                console.log(user)
                 if (!comment.User) {
                     return (
                         <div className='single-comment'>

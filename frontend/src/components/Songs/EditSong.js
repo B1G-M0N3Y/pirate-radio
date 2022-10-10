@@ -27,8 +27,6 @@ const EditSong = song => {
 
         let errors = [];
 
-        console.log(url)
-
         if (!(SONG_EXTENSIONS.includes(url.split('.').pop()))) {
             errors.push("Song url must link to valid")
         }
