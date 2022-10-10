@@ -43,7 +43,7 @@ const CommentsFromSong = () => {
                                 <br />
                             </div>
                             <button onClick={() => deleteComment(comment.id)}>
-                                <i className="fa-solid fa-x"></i>
+                                <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </div>
                     )
@@ -61,7 +61,7 @@ const CommentsFromSong = () => {
                             <Link to={`/comments/deleted`}>
                                 <button hidden={!(user?.id === comment?.User?.id)}
                                     onClick={() => deleteComment(comment.id)}>
-                                    <i className="fa-solid fa-x"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </Link>
                         </div>

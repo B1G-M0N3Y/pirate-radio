@@ -1,7 +1,7 @@
 .create-song{
     width: 100%;
     background-color: black;
-    background-image: url(https://res.cloudinary.com/dy199z8qt/image/upload/v1665097873/add_song_card_2_sf9e1b.png);
+    background-image: url(https://res.cloudinary.com/dy199z8qt/image/upload/v1665444130/add_song_card_3_endnvq.png);
     background-repeat: no-repeat;
     background-size: contain;
     display: flex;
@@ -56,6 +56,7 @@
 }
 
 #yo-ho-box{
+    margin-top: 15px;
     white-space: nowrap;
     overflow: hidden;
     width: 100%;
