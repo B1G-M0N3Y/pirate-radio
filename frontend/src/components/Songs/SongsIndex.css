@@ -1,19 +1,21 @@
 .song-pic {
+    align-self: center;
     object-fit: cover;
-    width: 200px;
-    height: 200px;
+    width: 165px;
+    height: 165px;
+    border: 1px inset solid rgba(211, 211, 211, 0.5);
 }
 
 .song-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 
 .song-card {
     display: flex;
     flex-direction: column;
-    max-width: 200px;
+    max-width: 11em;
     background-color: grey;
     padding: 5px;
     margin: 10px;
@@ -21,14 +23,15 @@
 }
 
 .play-song{
+    align-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     position: absolute;
     background-color: rgba(255, 174, 0, 0.247);
-    max-width: 200px;
-    height: 200px;
+    max-width: 165px;
+    height: 165px;
 }
 
 .play-song img{
@@ -42,12 +45,14 @@
 }
 
 .song-link{
-    color: white;
+    color: rgb(63, 63, 63);
     text-decoration: none;
+    font-weight: 900;
 }
 
 .song-title{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    padding-left: 7.5%;
 }
