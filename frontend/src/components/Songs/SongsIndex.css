@@ -3,7 +3,7 @@
     object-fit: cover;
     width: 165px;
     height: 165px;
-    border: 1px inset solid rgba(211, 211, 211, 0.5);
+    border: 1px solid rgba(211, 211, 211, 0.5);
 }
 
 .song-grid {
@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     max-width: 11em;
-    background-color: grey;
+    /* background-color: grey; */
     padding: 5px;
     margin: 10px;
     border-radius: 4px;
@@ -45,14 +45,20 @@
 }
 
 .song-link{
+    align-self: center;
     color: rgb(63, 63, 63);
     text-decoration: none;
     font-weight: 900;
+    width: 165px;
 }
 
 .song-title{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    padding-left: 7.5%;
+    margin-top: 8px;
+}
+
+#treasure-trove{
+    padding-left: 15px;
 }

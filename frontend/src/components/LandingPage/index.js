@@ -19,7 +19,7 @@ const LandingPage = () => {
 
                     </div>
                 </div>
-                <h2>Hear what's new from the soundcloud community</h2>
+                <h2 id='treasure-trove'>See the treasure trove of good music:</h2>
                 <SongsIndex />
                 <div className='bottom-box'>
                     <img src="https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists-8081257b.jpg"></img>
