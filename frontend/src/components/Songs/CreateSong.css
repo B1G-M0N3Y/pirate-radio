@@ -1,0 +1,65 @@
+.create-song{
+    width: 100%;
+    background-color: black;
+    background-image: url(https://res.cloudinary.com/dy199z8qt/image/upload/v1665444130/add_song_card_3_endnvq.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+
+}
+
+
+.shanty-message{
+    color:white;
+    padding: 20px 120px 20px 120px;
+    font-size: 2em;
+    font-weight: 900;
+}
+
+.song-form{
+    background-color: white;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.song-form label{
+    color: rgb(56, 56, 56);
+    font-weight: bolder;
+    padding-left: 30px;
+    margin-top: 20px;
+}
+
+.song-form label input{
+    font-weight: 900;
+    margin-top: 10px;
+    padding: 10px;
+    margin-right: 80px;
+    margin-left: 50px;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.song-form button{
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F26F23;
+    padding: 1em;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    align-self: center;
+    margin-top: 66px;
+    margin-bottom: 66px;
+}
+
+#yo-ho-box{
+    margin-top: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    background-color: black;
+    color: white;
+}

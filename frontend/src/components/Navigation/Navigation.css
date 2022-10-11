@@ -1,7 +1,8 @@
 .link {
     height: 100%;
-    padding: 5px;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar {
@@ -13,12 +14,17 @@
     height: 65px;
     z-index: 10000;
     font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
 }
 
 .link-list {
+    padding-inline-start: 0;
+    width: 1240px;
     height: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top: 0;
 }
 
 li {
@@ -40,8 +46,44 @@ li {
     display: flex;
 }
 
+.butts {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-junk {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-dropdown {
+    background-color: white;
+    position: absolute;
+    top: 65px;
+    right: 8px;
+    border: rgb(88, 88, 88) 1px solid;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 5px;
+}
+
+.profile-dropdown hr{
+    width: 100%;
+}
+
+.profile-dropdown p{
+    padding: 10px;
+}
+
+
 .right button {
     justify-self: center;
+    align-self: center;
     height: 50%;
     border-radius: 4px;
     color: white;
@@ -49,12 +91,52 @@ li {
     margin-right: 5px;
 }
 
+.profile-dropdown button{
+    height: 2vw;
+    border: none;
+    font-size: 1.4em;
+    margin-bottom:5px;
+}
+
 .login-button {
     background-color: rgba(255, 255, 255, 0);
     border: white solid 1px;
 }
 
-.signup-button{
+.user-pic{
+    color: white;
+    font-weight: 900;
+    background-color: #F26F23;
+    margin-right: 20px;
+    margin-left: 15px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
+    border-radius: 50%;
+}
+
+.signup-button {
     background-color: #F26F23;
     border: none;
+}
+
+.add-song-butt{
+    font-weight: 900;
+}
+
+.left{
+    margin-left: 10px;
+}
+
+.right{
+    margin-right: 10px;
+}
+
+.song-link{
+    margin-left: 15px;
+    font-weight: 900;
 }

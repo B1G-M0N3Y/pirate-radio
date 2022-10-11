@@ -1,18 +1,66 @@
 /* TODO Add site wide styles */
-.bungus{
+
+html{
+    min-height: 100%;
+    background-color: light grey;
+}
+
+.bungus {
     background-color: lightgrey;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
-.bingus{
+.bingus {
     margin-top: 50px;
     padding-bottom: 100px;
     display: flex;
     flex-flow: column;
-    max-width:min-content;
+    justify-content: center;
+    align-items: center;
+    width: 1240px;
     background-color: white;
     font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-size: 250%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+}
+
+.errors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+}
+
+.validation-error {
+    color: red;
+    background-color: rgba(255, 97, 97, 0.329);
+    border: 2px red solid;
+    border-radius: 6px;
+    font-weight: bold;
+    margin: 4px;
+}
+
+@media screen and (max-width:1240px){
+    .bingus{
+        width: 100%;
+    }
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    cursor: pointer;
 }

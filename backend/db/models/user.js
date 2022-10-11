@@ -94,7 +94,10 @@ module.exports = (sequelize, DataTypes) => {
           len: [60, 60],
         }
       },
-      imageUrl: DataTypes.STRING
+      imageUrl: {
+        type: DataTypes.STRING,
+        defaultValue: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1664159121/istockphoto-1128616752-612x612_onv6ye.jpg'
+      }
     },
     {
       sequelize,

@@ -53,7 +53,6 @@ router.get(
             ids.push(songId.dataValues.songId)
         });
 
-        console.log(ids);
         const playlist = await Playlist.findByPk(id, {
             include: [{
                 model: Song,

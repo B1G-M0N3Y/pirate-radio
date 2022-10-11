@@ -11,6 +11,8 @@ import CreateSong from "./components/Songs/CreateSong";
 import EditSong from "./components/Songs/EditSong";
 import Player from "./components/AudioPlayer/AudioBar";
 import LandingPage from "./components/LandingPage";
+import DeletedSong from "./components/Songs/DeletedSong";
+import DeletedComment from "./components/Comments/DeletedComment";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,8 +36,8 @@ function App() {
         <div className="bingus">
           {isLoaded && (
             <Switch>
-              <Route path="/signup">
-                <SignupFormPage />
+              <Route path='/comments/deleted'>
+                <DeletedComment />
               </Route>
               <Route path='/songs/new'>
                 <CreateSong />
@@ -44,7 +46,7 @@ function App() {
                 <EditSong />
               </Route>
               <Route path='/songs/deleted'>
-                <h2>Song deleted!</h2>
+                <DeletedSong />
               </Route>
               <Route path='/songs/:id'>
                 <SongDetails />
@@ -53,13 +55,13 @@ function App() {
                 <h2> Hear what’s trending for free in the SoundCloud community </h2>
                 <SongsIndex />
               </Route>
-                <Route path='/'>
-                  <LandingPage />
-                </Route>
+              <Route path='/'>
+                <LandingPage />
+              </Route>
             </Switch>
           )}
         </div>
-          <Player />
+        <Player />
       </div>
     </>
   );

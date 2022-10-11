@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SignupFormModal from "../SignupFormModal";
 import SongsIndex from "../Songs/SongsIndex";
 import './LandingPage.css'
 
@@ -25,11 +26,7 @@ const LandingPage = () => {
                     <div className='box-text'>
                         <h1>Like what you hear?</h1>
                         <h3>Join our crew:</h3>
-                        <Link to='/signup'>
-                            <button>
-                                Set Sail
-                            </button>
-                        </Link>
+                        <SignupFormModal text="Set Sail" styling="set-sail"/>
                     </div>
                 </div>
                 <div className='promo-box'>
