@@ -4,12 +4,15 @@ export const CurrSongContext = createContext();
 
 export default function CurrSongProvider(props) {
     const [ currSong, setCurrSong ] = useState({});
+    const [ isPlaying, setIsPlaying ] = useState(false);
 
     return (
         <CurrSongContext.Provider
         value={{
             currSong,
-            setCurrSong
+            setCurrSong,
+            isPlaying,
+            setIsPlaying
         }}
         >
             {props.children}

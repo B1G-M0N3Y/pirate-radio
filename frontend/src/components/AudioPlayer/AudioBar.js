@@ -9,7 +9,7 @@ import "./AudioBar.css";
 const Player = () => {
   const audio = useSelector((state) => state.audio.currentAudio);
   const player = useRef();
-
+  const {setIsPlaying} = useCurrSong();
   let {setCurrSong} = useCurrSong();
 
   useEffect(()=>{
@@ -22,7 +22,8 @@ const Player = () => {
         ref={player}
         autoPlay
         src={audio.url}
-        // onPlay={e => console.log("onPlay")}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
         // other props here
         className="player"
       />
