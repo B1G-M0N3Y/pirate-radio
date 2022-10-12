@@ -78,7 +78,7 @@ router.get(
 router.get(
     '/',
     async (req, res) => {
-        let { page, size, title, createdAt } = req.query;
+        let { page, size } = req.query;
 
         if (page < 1 || size < 1) {
             res.status(400);
@@ -102,22 +102,18 @@ router.get(
 
         let songs = {}
 
-        if (title && createdAt) {
             songs.Songs = await Song.findAll({
-                where: { title, createdAt, ...pagination },
+                ...pagination,
+                include: [{
+                    model: User,
+                    as: 'Artist',
+                    attributes: ['id', 'username', 'imageUrl']
+                }]
             })
-        } else if (title) {
-            songs.Songs = await Song.findAll({ where: title, ...pagination })
-        } else if (createdAt) {
-            songs.Songs = await Song.findAll({ where: createdAt, ...pagination })
-        } else {
-            songs.Songs = await Song.findAll({ ...pagination });
-        }
         songs.Page = Number(page);
         songs.Size = Number(size);
 
         res.json(songs);
-        // return res.send(songs, page, size);
     }
 );
 
