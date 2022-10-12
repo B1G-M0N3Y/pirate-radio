@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
+import { fetchAudioDetails } from '../../store/audioPlayer';
 import { deleteSingleSong, fetchSongDetails } from '../../store/songs';
 import CommentsFromSong from '../Comments/CommentsFromSong';
 import CreateComment from '../Comments/CreateComment';
@@ -19,6 +20,10 @@ const SongDetails = () => {
         await dispatch(deleteSingleSong(id))
     }
 
+    const changeSong = async () => {
+        await dispatch(fetchAudioDetails(id))
+    }
+
     useEffect(() => {
         dispatch(fetchSongDetails(id))
     }, [dispatch, id]);
@@ -27,7 +32,7 @@ const SongDetails = () => {
         <>
             <div className='song-details'>
                 <div className='details-left'>
-                    <img className='play-button' src="https://res.cloudinary.com/dy199z8qt/image/upload/v1663887398/songplay_tb28tn.png" />
+                    <img className='play-button' onClick={() => changeSong()} src="https://res.cloudinary.com/dy199z8qt/image/upload/v1663887398/songplay_tb28tn.png" />
                     <div className='name-n-desc'>
                         <h2 className='title'>{song?.title}</h2>
                         <p>{song?.description}</p>
