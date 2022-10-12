@@ -8,7 +8,7 @@ const SongCard = ({ song }) => {
   const changeSong = async (id) => {
     await dispatch(fetchAudioDetails(id));
   };
-
+  
   return (
     <div className="song-card" onClick={() => changeSong(song.id)}>
       <img className="song-pic" src={song.imageUrl} />
