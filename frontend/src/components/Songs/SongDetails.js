@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchAudioDetails } from "../../store/audioPlayer";
 import { deleteSingleSong, fetchSongDetails } from "../../store/songs";
+import PlayPause from "../AudioPlayer/PlayPause";
 import CommentsFromSong from "../Comments/CommentsFromSong";
 import CreateComment from "../Comments/CreateComment";
 import "./SongDetails.css";
@@ -32,11 +33,7 @@ const SongDetails = () => {
     <>
       <div className="song-details">
         <div className="details-left">
-          <img
-            className="play-button"
-            onClick={() => changeSong()}
-            src="https://res.cloudinary.com/dy199z8qt/image/upload/v1663887398/songplay_tb28tn.png"
-          />
+          <PlayPause id={id} styling={'details-play'}/>
           <div className="name-n-desc">
             <h2 className="title">{song?.title}</h2>
             <p>{song?.description}</p>
