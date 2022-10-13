@@ -10,6 +10,10 @@ import "./SongDetails.css";
 
 const SongDetails = () => {
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => {
+    return state.session.user;
+  });
   // const[showEditSong, setShowEditSong] = useState(false);
   // const[showDeleteSong, setShowDeleteSong] = useState(false);
 
@@ -21,19 +25,18 @@ const SongDetails = () => {
     await dispatch(deleteSingleSong(id));
   };
 
-  const changeSong = async () => {
-    await dispatch(fetchAudioDetails(id));
-  };
-
   useEffect(() => {
     dispatch(fetchSongDetails(id));
   }, [dispatch, id]);
+
+  console.log("id from song", song?.userId);
+  console.log("id from user", user.id);
 
   return (
     <>
       <div className="song-details">
         <div className="details-left">
-          <PlayPause id={id} styling={'details-play'}/>
+          <PlayPause id={id} styling={"details-play"} />
           <div className="name-n-desc">
             <h2 className="title">{song?.title}</h2>
             <p>{song?.description}</p>
@@ -43,10 +46,14 @@ const SongDetails = () => {
       </div>
       <div className="crud-clickers">
         <Link to={`/songs/${id}/edit`}>
-          <button className="edit">Edit Song</button>
+          <button className="edit" hidden={!(user.id === song?.userId)}>
+            Edit Song
+          </button>
         </Link>
         <Link to={`/songs/deleted`}>
-          <button className="delete" onClick={deleteSong}>
+          <button className="delete"
+          hidden={!(user.id === song?.userId)}
+          onClick={deleteSong}>
             Delete Song
           </button>
         </Link>
