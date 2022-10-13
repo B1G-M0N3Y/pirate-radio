@@ -26,7 +26,7 @@ const CreateComment = () => {
       if (comment) {
         history.push(`/songs/${id}`);
       }
-
+      setCommentBody("")
       return comment;
     }
   };

@@ -66,6 +66,7 @@ li {
     border-bottom-right-radius: 6px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+    font-size: 12px;
     display:flex;
     flex-direction: column;
     text-align: left;
@@ -78,8 +79,12 @@ li {
 
 .profile-dropdown p{
     padding: 10px;
+    margin: 0;
 }
 
+.profile-dropdown button{
+    background-color: #F26F23;
+}
 
 .right button {
     justify-self: center;
