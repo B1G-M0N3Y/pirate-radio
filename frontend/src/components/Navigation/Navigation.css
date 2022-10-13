@@ -33,12 +33,17 @@ li {
 
 .nav-link {
     text-decoration: none;
+    font-weight: 900;
     color: white
 }
 
 .link-list img {
     filter: invert(100%);
     width: 3.4em;
+}
+
+.music-button{
+    margin-left: 20px;
 }
 
 .right,
