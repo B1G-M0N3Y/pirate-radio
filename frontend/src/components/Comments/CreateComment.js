@@ -9,9 +9,14 @@ const CreateComment = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [commentBody, setCommentBody] = useState("");
+    const [validationError, setValidationError] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if(!commentBody) {
+            setValidationError("You must write a comment before posting");
+        }
 
         const payload = {
             body: commentBody
@@ -22,11 +27,15 @@ const CreateComment = () => {
         if (comment) {
             history.push(`/songs/${id}`)
         }
+
         return comment;
     }
 
     return (
         <form onSubmit={handleSubmit}>
+            <div className = "errors">
+                <p>{validationError}</p>
+            </div>
             <label>
                 Leave a Comment:
                 <textarea
