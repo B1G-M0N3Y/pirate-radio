@@ -14,12 +14,7 @@ const SongCard = ({ song }) => {
   let{ currSong, isPlaying } = useCurrSong();
   const audio = useSelector((state) => state.audio.currentAudio);
 
-  console.log(player);
-
-
   const playPause = async (id) => {
-    // setPlayIcon(!playIcon);
-    console.log("play clicked!");
     if(player.classList.value.includes('rhap_play-status--playing')){
       currSong.current.audio.current.pause();
     } else {
