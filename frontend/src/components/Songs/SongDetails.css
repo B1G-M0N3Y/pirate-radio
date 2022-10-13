@@ -79,3 +79,7 @@
 html{
     background-color: lightgrey;
 }
+
+.details-play img{
+    width: 100px;
+}
