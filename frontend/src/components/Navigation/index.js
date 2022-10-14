@@ -53,7 +53,7 @@ function Navigation({ isLoaded }) {
           </li>
           <li>
             <div className='link'>
-              <NavLink className='nav-link' exact to="/songs">Music</NavLink>
+              <NavLink className='nav-link music-button' exact to="/songs">Music</NavLink>
             </div>
           </li>
         </div>
