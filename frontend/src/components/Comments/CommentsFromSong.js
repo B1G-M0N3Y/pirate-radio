@@ -41,7 +41,10 @@ const CommentsFromSong = () => {
                 </p>
                 <br />
               </div>
-              <button onClick={() => deleteComment(comment.id)}>
+              <button
+                className="trash-can"
+                onClick={() => deleteComment(comment.id)}
+              >
                 <i class="fa-solid fa-trash-can"></i>
               </button>
             </div>
@@ -49,25 +52,29 @@ const CommentsFromSong = () => {
         } else {
           return (
             <div className="single-comment">
-              <div className="user-pic">
-                {comment.User.username.slice(0, 1)}
+              <div className='comment-left'>
+                <div className="user-pic">
+                  {comment.User.username.slice(0, 1)}
+                </div>
+                <div className="comment-text">
+                  <p className="comment-username">
+                    {" "}
+                    {comment?.User?.username}{" "}
+                  </p>
+                  <p className="comment-body" key={comment?.id}>
+                    {" "}
+                    {comment?.body}{" "}
+                  </p>
+                  <br />
+                </div>
               </div>
-              <div className="comment-text">
-                <p className="comment-username"> {comment?.User?.username} </p>
-                <p className="comment-body" key={comment?.id}>
-                  {" "}
-                  {comment?.body}{" "}
-                </p>
-                <br />
-              </div>
-              <Link to={`/comments/deleted`}>
-                <button
-                  hidden={!(user?.id === comment?.User?.id)}
-                  onClick={() => deleteComment(comment.id)}
-                >
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
-              </Link>
+              <button
+                className="trash-can"
+                hidden={!(user?.id === comment?.User?.id)}
+                onClick={() => deleteComment(comment.id)}
+              >
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
             </div>
           );
         }
