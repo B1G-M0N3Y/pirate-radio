@@ -26,10 +26,11 @@ const artistReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
     case LOAD_ARTISTS:
-      Object.values(action.artists.Artists).map(
-        (artist) => (newState[artist.id] = artist)
-      );
-      return newState;
+    //   Object.values(action.artists).map(
+    //     (artist) => (newState[artist.id] = artist)
+    //   );
+    //   return newState;
+    return {...action.artists.artists}
     default:
       return state;
   }
