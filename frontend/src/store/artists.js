@@ -1,4 +1,3 @@
-import { application } from "express";
 import { csrfFetch } from "./csrf";
 
 const LOAD_ARTISTS = "artists/loadArtists";
@@ -10,7 +9,7 @@ const loadArtists = (artists) => {
   };
 };
 
-export const fetchArtists = (id) => async (dispatch) => {
+export const fetchArtists = () => async (dispatch) => {
   const response = await fetch(`/api/artists`);
 
   if (response.ok) {
@@ -23,9 +22,9 @@ export const fetchArtists = (id) => async (dispatch) => {
 
 const initialState = {};
 
-const artistReducer = (state = initialState) => {
+const artistReducer = (state = initialState, action) => {
   let newState = {};
-  switch (application.type) {
+  switch (action.type) {
     case LOAD_ARTISTS:
       Object.values(action.artists.Artists).map(
         (artist) => (newState[artist.id] = artist)
@@ -35,3 +34,5 @@ const artistReducer = (state = initialState) => {
       return state;
   }
 };
+
+export default artistReducer;
