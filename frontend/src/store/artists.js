@@ -38,7 +38,7 @@ export const fetchArtistDetails = (id) => async (dispatch) => {
   }
 };
 
-const initialState = {};
+const initialState = {singleArtist: {}};
 
 const artistReducer = (state = initialState, action) => {
   let newState = {};
