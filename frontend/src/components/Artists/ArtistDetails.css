@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     background-color: rgb(82, 82, 82);
-    margin: 25px;
     width: 100%
 }
 
@@ -21,4 +20,36 @@
     color: white;
     padding: 2px;
     background-color: rgba(0, 0, 0, 0.445);
+ }
+
+ .song-card-profile{
+    display: flex;
+ }
+
+ .profile-play{
+    display: flex;
+ }
+
+ .profile-play img{
+    object-fit: cover;
+    height: 80px;
+    width: 80px
+ }
+
+.song-link-profile {
+    font-size: 1.6em;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+ .profile-song-info{
+    display: flex;
+ }
+
+ .artist-details-songs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin: 20px;
  }

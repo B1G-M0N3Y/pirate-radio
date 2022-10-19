@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchArtistDetails } from "../../store/artists";
 import "./ArtistDetails.css";
+import SongCardProfile from "../Songs/SongCardProfile";
 
 const ArtistDetails = () => {
   const dispatch = useDispatch();
@@ -30,9 +31,11 @@ const ArtistDetails = () => {
           </h4>
         </div>
       </div>
-      {artist.songs.map((song) => (
-        <p>{song.title}</p>
-      ))}
+      <div className="artist-details-songs">
+        {artist.songs?.map((song) => (
+          <SongCardProfile song={song} />
+        ))}
+      </div>
     </>
   );
 };
