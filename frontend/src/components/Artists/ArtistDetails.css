@@ -1,0 +1,24 @@
+.user-banner{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(82, 82, 82);
+    margin: 25px;
+    width: 100%
+}
+
+.profile-pic{
+    object-fit: cover;
+    width: 400px;
+    height: 400px;
+    margin: 25px;
+}
+
+.profile-info{
+    margin-left: 10px;
+}
+ .profile-info h2,
+ .profile-info h4 {
+    color: white;
+    padding: 2px;
+    background-color: rgba(0, 0, 0, 0.445);
+ }

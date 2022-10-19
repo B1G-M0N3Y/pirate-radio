@@ -30,11 +30,16 @@ export const fetchArtists = () => async (dispatch) => {
 
 export const fetchArtistDetails = (id) => async (dispatch) => {
   const response = await fetch(`/api/artists/${id}`);
+  const songsFetch = await fetch (`/api/artists/${id}/songs`);
 
   if (response.ok) {
     const artist = await response.json();
-    dispatch(artistDetails(artist));
-    return artist;
+    const songs = await songsFetch.json();
+
+    const singleArtist = { ...artist, ...songs}
+
+    dispatch(artistDetails(singleArtist));
+    return singleArtist;
   }
 };
 
