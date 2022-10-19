@@ -13,7 +13,6 @@ import Player from "./components/AudioPlayer/AudioBar";
 import LandingPage from "./components/LandingPage";
 import DeletedSong from "./components/Songs/DeletedSong";
 import DeletedComment from "./components/Comments/DeletedComment";
-import ArtistIndex from "./components/Artists/ArtistIndex";
 import ArtistDetails from "./components/Artists/ArtistsDetails";
 
 function App() {
@@ -40,9 +39,6 @@ function App() {
             <Switch>
               <Route path='/artists/:id'>
                 <ArtistDetails />
-              </Route>
-              <Route path='/artists'>
-                <ArtistIndex />
               </Route>
               <Route path='/comments/deleted'>
                 <DeletedComment />

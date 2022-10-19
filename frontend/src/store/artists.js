@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_ARTISTS = "artists/loadArtists";
 const ARTIST_DETAILS = "artists/artistsDetails";
+const CLEAR_CURR_ARTIST = "artists/clearCurrArtist"
 
 const loadArtists = (artists) => {
   return {
@@ -16,6 +17,12 @@ const artistDetails = (details) => {
     details,
   };
 };
+
+export const clearCurrArtist = () => {
+  return {
+    type: CLEAR_CURR_ARTIST
+  }
+}
 
 export const fetchArtists = () => async (dispatch) => {
   const response = await fetch(`/api/artists`);
@@ -60,6 +67,10 @@ const artistReducer = (state = initialState, action) => {
         [action.details.id]: action.details,
         singleArtist: { ...action.details },
       };
+      case CLEAR_CURR_ARTIST:
+        newState = {...state}
+        newState.singleArtist = {}
+        return newState
     default:
       return state;
   }

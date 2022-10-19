@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchArtistDetails } from "../../store/artists";
+import { clearCurrArtist, fetchArtistDetails } from "../../store/artists";
 import "./ArtistDetails.css";
 import SongCardProfile from "../Songs/SongCardProfile";
 
@@ -16,6 +16,9 @@ const ArtistDetails = () => {
 
   useEffect(() => {
     dispatch(fetchArtistDetails(id));
+    return (() =>
+      dispatch(clearCurrArtist())
+    )
   }, [dispatch, id]);
 
   console.log(artist);
