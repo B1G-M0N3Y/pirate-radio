@@ -13,6 +13,7 @@ import Player from "./components/AudioPlayer/AudioBar";
 import LandingPage from "./components/LandingPage";
 import DeletedSong from "./components/Songs/DeletedSong";
 import DeletedComment from "./components/Comments/DeletedComment";
+import ArtistDetails from "./components/Artists/ArtistsDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
         <div className="bingus">
           {isLoaded && (
             <Switch>
+              <Route path='/artists/:id'>
+                <ArtistDetails />
+              </Route>
               <Route path='/comments/deleted'>
                 <DeletedComment />
               </Route>
