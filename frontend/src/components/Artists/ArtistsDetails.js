@@ -16,12 +16,12 @@ const ArtistDetails = () => {
     dispatch(fetchArtistDetails(id));
   }, [dispatch, id]);
 
-  console.log(artist);
-  return(
+  return (
     <>
-        <h2>{artist.username}</h2>
+      <img src={artist.imageUrl}></img>
+      <h2>{artist.username}</h2>
     </>
-  )
+  );
 };
 
 export default ArtistDetails;
