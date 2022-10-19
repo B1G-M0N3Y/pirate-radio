@@ -10,7 +10,7 @@ const SongCard = ({ song }) => {
       <NavLink key={song.id} className="song-link" to={`/songs/${song.id}`}>
         <p className="song-title">{song.title}</p>
       </NavLink>
-      <NavLink to={`/artists/${song.Artist?.id}`}>
+      <NavLink className = "song-link" to={`/artists/${song.Artist?.id}`}>
         <p className="song-user">{song.Artist?.username}</p>
       </NavLink>
     </div>
