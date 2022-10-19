@@ -109,7 +109,7 @@ const songReducer = (state = initialState, action) => {
             Object.values(action.songs.Songs).map((song) => (newState[song.id] = song))
             return newState;
         case SONG_DETAILS:{
-            const newState = {...state}
+            // const newState = {...state}
             return {
                 ...state,
                 [action.details.id]: action.details,
