@@ -24,6 +24,7 @@
 
  .song-card-profile{
     display: flex;
+    margin-left: 20px;
  }
 
  .profile-play{
