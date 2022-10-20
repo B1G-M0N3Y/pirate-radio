@@ -15,10 +15,10 @@ export const fetchSearchResults = (query) => async (dispatch) => {
     const songsJSON = await songs.json();
     const artistsJSON = await artists.json();
 
-    console.log('da songs', songsJSON);
-    console.log('da artists', artistsJSON);
+    console.log('da songs', songsJSON.Songs);
+    console.log('da artists', artistsJSON.artists);
 
-    const results = { ...songsJSON.Songs , ...artistsJSON.artists };
+    const results = [ ...songsJSON.Songs , ...artistsJSON.artists ];
 
     dispatch(searchResults(results));
     return results;

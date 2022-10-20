@@ -4,7 +4,7 @@ import { fetchSearchResults } from "../../store/search";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [allResults, setAllResults] = useState({});
 
   const results = useSelector((state) => {
@@ -12,21 +12,22 @@ const SearchBar = () => {
   });
 
   useEffect(() => {
-    if(search.length){
-      dispatch(fetchSearchResults(search));
-      setAllResults(results);
+    if (search.length) {
+      dispatch(fetchSearchResults(search)).then(setAllResults(results));
+
     } else {
-      setAllResults('')
+      setAllResults("");
     }
   }, [dispatch, search]);
 
   console.log("da results", results);
-  console.log('da length', Object.values(results).length)
+  console.log("da length", Object.values(results).length);
 
   return (
-    <>
+    <div>
       <form>
         <input
+          className="search-bar"
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -34,13 +35,13 @@ const SearchBar = () => {
         <button type="submit"></button>
         {Object.values(allResults).length > 0 && (
           <div className="search-results">
-            {Object.values(results).map(result => (
-              result.albumId ? <p>{result.title}</p> : <p>{result.username}</p>
-            ))}
+            {Object.values(results).map((result) =>
+              result.title ? <p>{result.title}</p> : <p>{result.username}</p>
+            )}
           </div>
         )}
       </form>
-    </>
+    </div>
   );
 };
 

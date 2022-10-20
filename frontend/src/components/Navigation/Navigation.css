@@ -146,6 +146,11 @@ li {
     margin-right: 10px;
 }
 
+.search-bar{
+    width: 500px;
+    justify-self: center;
+}
+
 .search-results{
     background-color: white;
 }
