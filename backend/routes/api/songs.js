@@ -2,7 +2,7 @@
 const express = require("express");
 // const { json } = require('sequelize/types');
 // const { route } = require('express/lib/router');
-const { Op, where } = require("sequelize");
+const { Op } = require("sequelize");
 const { Song, User, Album, Comment } = require("../../db/models");
 const { restoreUser } = require("../../utils/auth");
 
