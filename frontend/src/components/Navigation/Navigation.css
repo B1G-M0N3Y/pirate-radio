@@ -145,3 +145,7 @@ li {
 .right{
     margin-right: 10px;
 }
+
+.search-results{
+    background-color: white;
+}
