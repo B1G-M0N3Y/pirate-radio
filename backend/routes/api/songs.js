@@ -109,8 +109,11 @@ router.get("/", async (req, res) => {
       },
     ],
   });
-  songs.Page = Number(page);
-  songs.Size = Number(size);
+
+  if (!search) {
+    songs.Page = Number(page);
+    songs.Size = Number(size);
+  }
 
   console.log("da songs", songs);
 
