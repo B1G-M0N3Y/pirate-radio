@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { fetchSearchResults } from "../../store/search";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [search, setSearch] = useState("");
   const [allResults, setAllResults] = useState({});
+
+  const clearSearch = () => {
+    setSearch("")
+  }
 
   const results = useSelector((state) => {
     return state.search;
@@ -23,9 +28,17 @@ const SearchBar = () => {
   console.log("da results", results);
   console.log("da length", Object.values(results).length);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    history.push(`/results?search=${search}`);
+    clearSearch();
+  }
+
   return (
     <div className="search">
-      <form className="search-bar">
+      <form className="search-bar"
+      onSubmit={handleSubmit}>
         <input
           className="search-field"
           type="text"
@@ -43,9 +56,21 @@ const SearchBar = () => {
           </p>
           {Object.values(results).map((result) =>
             result.title ? (
-              <NavLink className="search-result" to={`/songs/${result.id}`}>{result?.title}</NavLink>
+              <div onClick={clearSearch}
+              className="search-result">
+                <i class="fa-solid fa-music"></i>
+                <NavLink className="search-result" to={`/songs/${result.id}`}>
+                  {result?.title}
+                </NavLink>
+              </div>
             ) : (
-              <NavLink className="search-result" to={`/artists/${result.id}`}>{result?.username}</NavLink>
+              <div onClick={clearSearch}
+              className="search-result">
+                <i class="fa-solid fa-user"></i>
+                <NavLink className="search-result" to={`/artists/${result.id}`}>
+                  {result?.username}
+                </NavLink>
+              </div>
             )
           )}
         </div>
