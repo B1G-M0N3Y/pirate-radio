@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { fetchSearchResults } from "../../store/search";
+import SongCardProfile from "../Songs/SongCardProfile";
 
 const SearchPage = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const SearchPage = () => {
     <>
       <h2>Here's what we found for "{search}":</h2>
       {Object.values(results).map((result) => (
-          result.title ? <h4>{result?.title}</h4> : <h4>{result?.username}</h4>
+          result.title ? <SongCardProfile song ={result}/>: <h4>{result?.username}</h4>
       ))
       }
     </>
