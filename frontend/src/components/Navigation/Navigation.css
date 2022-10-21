@@ -176,6 +176,27 @@ li {
 }
 
 .search-results{
-    position: relative;
-    background-color: white;
+    color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 65px;
+    width: 546px;
+    background-color: black;
+}
+
+.search-results-header{
+    margin: 0px;
+    padding:10px;
+    background-color: rgb(49,49,49);
+}
+
+.search-result{
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.search-result:hover {
+    background-color: rgb(49, 49, 49);
 }

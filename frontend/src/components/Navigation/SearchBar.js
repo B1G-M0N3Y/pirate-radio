@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { fetchSearchResults } from "../../store/search";
 
 const SearchBar = () => {
@@ -37,8 +38,15 @@ const SearchBar = () => {
       </form>
       {Object.values(allResults).length > 0 && (
         <div className="search-results">
+          <p className="search-results-header">
+            Avast ye, here's what we found for "{search}"
+          </p>
           {Object.values(results).map((result) =>
-            result.title ? <p>{result.title}</p> : <p>{result.username}</p>
+            result.title ? (
+              <NavLink className="search-result" to={`/songs/${result.id}`}>{result?.title}</NavLink>
+            ) : (
+              <NavLink className="search-result" to={`/artists/${result.id}`}>{result?.username}</NavLink>
+            )
           )}
         </div>
       )}
