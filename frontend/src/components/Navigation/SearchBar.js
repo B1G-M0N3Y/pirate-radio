@@ -14,7 +14,6 @@ const SearchBar = () => {
   useEffect(() => {
     if (search.length) {
       dispatch(fetchSearchResults(search)).then(setAllResults(results));
-
     } else {
       setAllResults("");
     }
@@ -24,23 +23,25 @@ const SearchBar = () => {
   console.log("da length", Object.values(results).length);
 
   return (
-    <div>
-      <form>
+    <div className="search">
+      <form className="search-bar">
         <input
-          className="search-bar"
+          className="search-field"
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         ></input>
-        <button type="submit"></button>
-        {Object.values(allResults).length > 0 && (
-          <div className="search-results">
-            {Object.values(results).map((result) =>
-              result.title ? <p>{result.title}</p> : <p>{result.username}</p>
-            )}
-          </div>
-        )}
+        <button type="submit">
+          <i class="fa-solid fa-anchor"></i>
+        </button>
       </form>
+      {Object.values(allResults).length > 0 && (
+        <div className="search-results">
+          {Object.values(results).map((result) =>
+            result.title ? <p>{result.title}</p> : <p>{result.username}</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
