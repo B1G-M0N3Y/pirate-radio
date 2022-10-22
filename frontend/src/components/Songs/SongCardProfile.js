@@ -7,14 +7,14 @@ const SongCardProfile = ({ song }) => {
   const artist = useSelector((state) => state.artists.singleArtist);
 
   const profileOrSearch = () => {
-    if(song.Artist){
-      return song.Artist
+    if (song.Artist) {
+      return song.Artist;
     } else {
-      return artist
+      return artist;
     }
-  }
-  console.log('artist', artist)
-  console.log('thingy', profileOrSearch)
+  };
+  console.log("artist", artist);
+  console.log("thingy", profileOrSearch);
 
   return (
     <div className="song-card-profile">
@@ -22,14 +22,19 @@ const SongCardProfile = ({ song }) => {
       <div className="profile-song-info">
         <PlayPause id={song.id} styling={"profile-play"} />
         <div className="profile-song-text">
-          <NavLink key={song.id} className="song-link-profile" to={`/songs/${song.id}`}>
+          <NavLink
+            key={song.id}
+            className="song-link-profile"
+            to={`/songs/${song.id}`}
+          >
             <p className="song-title">{song.title}</p>
           </NavLink>
-          <NavLink to={`/artists/${profileOrSearch().id}`} className="song-artist">{song.Artist ? (
-            song.Artist?.username
-            ):(
-              artist.username
-            )}</NavLink>
+          <NavLink
+            to={`/artists/${profileOrSearch().id}`}
+            className="song-artist"
+          >
+            {profileOrSearch().username}
+          </NavLink>
         </div>
       </div>
     </div>

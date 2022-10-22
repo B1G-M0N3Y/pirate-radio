@@ -54,3 +54,7 @@
     width: 100%;
     margin: 20px;
  }
+
+ .song-artist{
+   text-decoration: none;
+ }
