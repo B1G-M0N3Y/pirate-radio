@@ -12,3 +12,18 @@
 .artist-text{
     text-decoration: none;
 }
+
+.artist-username{
+    margin: 0;
+    margin-top: 8px;
+    padding-left: 10px;
+    font-size: 1.6em;
+    font-weight: 900;
+    color: black;
+}
+
+ .artist-realname{
+    padding-left: 10px;
+    font-weight: 900;
+    color: black;
+ }
