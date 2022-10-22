@@ -4,6 +4,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { fetchSearchResults } from "../../store/search";
 import ArtistCard from "../Artists/ArtistCard";
 import SongCardProfile from "../Songs/SongCardProfile";
+import './SearchPage.css'
 
 const SearchPage = () => {
   const dispatch = useDispatch();
@@ -16,16 +17,16 @@ const SearchPage = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="search-page">
       <h2>Here's what we found for "{search}":</h2>
       {Object.values(results).map((result) =>
         result.title ? (
-          <SongCardProfile song={result} />
+          <SongCardProfile className='search-page-result' song={result} />
         ) : (
-            <ArtistCard artist={result} />
+          <ArtistCard className='search-page-result' artist={result} />
         )
       )}
-    </>
+    </div>
   );
 };
 
