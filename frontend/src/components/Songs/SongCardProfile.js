@@ -6,6 +6,16 @@ import ProfileButton from "../Navigation/ProfileButton";
 const SongCardProfile = ({ song }) => {
   const artist = useSelector((state) => state.artists.singleArtist);
 
+  const profileOrSearch = () => {
+    if(song.Artist){
+      return song.Artist
+    } else {
+      return artist
+    }
+  }
+  console.log('artist', artist)
+  console.log('thingy', profileOrSearch)
+
   return (
     <div className="song-card-profile">
       <img className="song-pic" src={song.imageUrl} />
@@ -15,7 +25,11 @@ const SongCardProfile = ({ song }) => {
           <NavLink key={song.id} className="song-link-profile" to={`/songs/${song.id}`}>
             <p className="song-title">{song.title}</p>
           </NavLink>
-          <p className="song-artist">{artist.username}</p>
+          <NavLink to={`/artists/${profileOrSearch().id}`} className="song-artist">{song.Artist ? (
+            song.Artist?.username
+            ):(
+              artist.username
+            )}</NavLink>
         </div>
       </div>
     </div>

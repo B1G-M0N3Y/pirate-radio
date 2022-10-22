@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { fetchSearchResults } from "../../store/search";
+import ArtistCard from "../Artists/ArtistCard";
 import SongCardProfile from "../Songs/SongCardProfile";
 
 const SearchPage = () => {
@@ -11,16 +12,19 @@ const SearchPage = () => {
   const search = new URLSearchParams(url).get("search");
 
   useEffect(() => {
-    dispatch(fetchSearchResults(search))
-  },[dispatch]);
+    dispatch(fetchSearchResults(search));
+  }, [dispatch]);
 
   return (
     <>
       <h2>Here's what we found for "{search}":</h2>
-      {Object.values(results).map((result) => (
-          result.title ? <SongCardProfile song ={result}/>: <h4>{result?.username}</h4>
-      ))
-      }
+      {Object.values(results).map((result) =>
+        result.title ? (
+          <SongCardProfile song={result} />
+        ) : (
+            <ArtistCard artist={result} />
+        )
+      )}
     </>
   );
 };
