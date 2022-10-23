@@ -9,7 +9,7 @@ const CreateComment = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [commentBody, setCommentBody] = useState("");
-  const [validationError, setValidationError] = useState("");
+  const [validationError, setValidationError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const CreateComment = () => {
     if (!commentBody || commentBody.length > 500) {
       setValidationError("Your comment must be between 1 and 500 characters");
     } else {
-      setValidationError()
+      setValidationError('');
       const payload = {
         body: commentBody,
       };
@@ -27,16 +27,18 @@ const CreateComment = () => {
       if (comment) {
         history.push(`/songs/${id}`);
       }
-      setCommentBody("")
+      setCommentBody("");
       return comment;
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="errors">
-        <p className="validation-error">{validationError}</p>
-      </div>
+      {validationError.length > 1 && (
+        <div className="errors">
+          <p className="validation-error">{validationError}</p>
+        </div>
+      )}
       <label>
         Leave a Comment:
         <textarea
