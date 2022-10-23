@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { loadCurrUserAlbums } from "../../store/albums";
 import songReducer, { createNewSong } from "../../store/songs";
 import "./CreateSong.css";
@@ -21,7 +21,7 @@ const CreateSong = () => {
 
   useEffect(() => {
     dispatch(loadCurrUserAlbums());
-  }, [dispatch]);
+  }, [dispatch])
 
   console.log("da albums", albums);
 
@@ -120,11 +120,6 @@ const CreateSong = () => {
             ))}
             <option> N/A </option>
           </select>
-          {/* <input
-                        type='text'
-                        value={albumId}
-                        onChange={(e) => setAlbumId(e.target.value)}
-                    /> */}
         </label>
         <button type="submit">Create Song</button>
       </form>

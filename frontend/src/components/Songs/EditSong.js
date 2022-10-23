@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import { loadCurrUserAlbums } from "../../store/albums";
 import { editSong, fetchSongDetails } from "../../store/songs";
 import "./EditSong.css";
 
 const SONG_EXTENSIONS = ["mp3", "mp4", "wav"];
 
 const EditSong = (song) => {
-  const { id } = useParams();
   const dispatch = useDispatch();
+  const { id } = useParams();
+  const albums = useSelector((state) => state.albums);
+  // const song = useSelector((state)=> state.song[id])
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -17,8 +20,11 @@ const EditSong = (song) => {
   const [albumId, setAlbumId] = useState();
   const [validationErrors, setValidationErrors] = useState([]);
 
+  console.log('hhhhh',song)
+
   useEffect(() => {
     dispatch(editSong(song));
+    dispatch(loadCurrUserAlbums())
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
@@ -94,12 +100,18 @@ const EditSong = (song) => {
           />
         </label>
         <label>
-          Album id
-          <input
-            type="text"
+          Album
+          <select
+            className="album-select"
+            disabled={Object.values(albums).length === 0}
             value={albumId}
             onChange={(e) => setAlbumId(e.target.value)}
-          />
+          >
+            {Object.values(albums).map((album) => (
+              <option value = {album.id}>{album.title}</option>
+            ))}
+            <option> N/A </option>
+          </select>
         </label>
         <button type="submit">Update Song</button>
       </form>
