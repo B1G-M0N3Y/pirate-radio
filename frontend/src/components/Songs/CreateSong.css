@@ -62,3 +62,8 @@
     background-color: black;
     color: white;
 }
+
+.album-select{
+     padding: 10px;
+     margin: 10px 80px 0px 50px;
+}

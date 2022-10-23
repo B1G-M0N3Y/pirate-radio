@@ -110,6 +110,7 @@ const CreateSong = () => {
         <label>
           Album
           <select
+            className="album-select"
             disabled={Object.values(albums).length === 0}
             value={albumId}
             onChange={(e) => setAlbumId(e.target.value)}
@@ -117,7 +118,7 @@ const CreateSong = () => {
             {Object.values(albums).map((album) => (
               <option value = {album.id}>{album.title}</option>
             ))}
-            <option value={null} > N/A </option>
+            <option> N/A </option>
           </select>
           {/* <input
                         type='text'
