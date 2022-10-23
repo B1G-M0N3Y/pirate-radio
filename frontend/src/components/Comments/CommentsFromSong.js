@@ -32,14 +32,16 @@ const CommentsFromSong = () => {
         if (!comment.User) {
           return (
             <div className="single-comment">
-              <div className="user-pic">{user?.username?.slice(0, 1)}</div>
-              <div className="comment-text">
-                <p className="comment-username"> {user?.username} </p>
-                <p className="comment-body" key={comment?.id}>
-                  {" "}
-                  {comment?.body}{" "}
-                </p>
-                <br />
+              <div className="comment-left">
+                <div className="user-pic">{user?.username?.slice(0, 1)}</div>
+                <div className="comment-text">
+                  <p className="comment-username"> {user?.username} </p>
+                  <p className="comment-body" key={comment?.id}>
+                    {" "}
+                    {comment?.body}{" "}
+                  </p>
+                  <br />
+                </div>
               </div>
               <button
                 className="trash-can"
@@ -52,7 +54,7 @@ const CommentsFromSong = () => {
         } else {
           return (
             <div className="single-comment">
-              <div className='comment-left'>
+              <div className="comment-left">
                 <div className="user-pic">
                   {comment.User.username.slice(0, 1)}
                 </div>
