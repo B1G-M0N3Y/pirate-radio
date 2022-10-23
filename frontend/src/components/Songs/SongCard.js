@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import PlayPause from "../AudioPlayer/PlayPause";
 
 const SongCard = ({ song }) => {
-  console.log(song.Artist)
   return (
     <div className="song-card">
       <img className="song-pic" src={song.imageUrl} />

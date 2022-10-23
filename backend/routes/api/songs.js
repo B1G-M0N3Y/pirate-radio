@@ -85,8 +85,6 @@ router.get("/", async (req, res) => {
   let songs = {};
   const whereParams = {};
 
-  console.log("da search", search);
-
   if (search) {
     const title = { [Op.like]: `%${search}%` };
     whereParams.title = title;
@@ -114,8 +112,6 @@ router.get("/", async (req, res) => {
     songs.Page = Number(page);
     songs.Size = Number(size);
   }
-
-  console.log("da songs", songs);
 
   res.json(songs);
 });

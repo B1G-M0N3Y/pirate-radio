@@ -23,8 +23,6 @@ const CreateSong = () => {
     dispatch(loadCurrUserAlbums());
   }, [dispatch])
 
-  console.log("da albums", albums);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 

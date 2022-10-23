@@ -25,9 +25,6 @@ const SearchBar = () => {
     }
   }, [dispatch, search]);
 
-  console.log("da results", results);
-  console.log("da length", Object.values(results).length);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 

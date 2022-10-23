@@ -20,8 +20,6 @@ const EditSong = (song) => {
   const [albumId, setAlbumId] = useState();
   const [validationErrors, setValidationErrors] = useState([]);
 
-  console.log('hhhhh',song)
-
   useEffect(() => {
     dispatch(editSong(song));
     dispatch(loadCurrUserAlbums())
