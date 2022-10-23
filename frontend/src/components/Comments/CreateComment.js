@@ -17,6 +17,7 @@ const CreateComment = () => {
     if (!commentBody) {
       setValidationError("You must write a comment before posting");
     } else {
+      setValidationError()
       const payload = {
         body: commentBody,
       };
