@@ -7,6 +7,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
+import SearchBar from './SearchBar';
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ function Navigation({ isLoaded }) {
             </div>
           </li>
         </div>
-
+        <SearchBar />
         <div className='right'>
           <div className='butts'>
             {isLoaded && sessionLinks}

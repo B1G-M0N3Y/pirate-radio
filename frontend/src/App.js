@@ -14,6 +14,7 @@ import LandingPage from "./components/LandingPage";
 import DeletedSong from "./components/Songs/DeletedSong";
 import DeletedComment from "./components/Comments/DeletedComment";
 import ArtistDetails from "./components/Artists/ArtistsDetails";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,7 +60,10 @@ function App() {
                 <h2> Hear what’s trending for free in the SoundCloud community </h2>
                 <SongsIndex />
               </Route>
-              <Route path='/'>
+              <Route path='/results'>
+                <SearchPage />
+              </Route>
+              <Route path='/' exact>
                 <LandingPage />
               </Route>
             </Switch>

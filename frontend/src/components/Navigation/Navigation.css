@@ -145,3 +145,58 @@ li {
 .right{
     margin-right: 10px;
 }
+
+.search{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.search-bar{
+    background-color: white;
+    border-radius: 4px;
+}
+
+.search-field{
+    border-radius: 4px;
+    width: 500px;
+    padding: 8px;
+    border: none;
+}
+
+.search button{
+    background: none;
+    border: none;
+    align-self: center;
+}
+
+.search-bar i{
+    font-size: 1.2em;
+    justify-self: center;
+}
+
+.search-results{
+    color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 65px;
+    width: 546px;
+    background-color: black;
+}
+
+.search-results-header{
+    margin: 0px;
+    padding:10px;
+    background-color: rgb(49,49,49);
+}
+
+.search-result{
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.search-result:hover {
+    background-color: rgb(49, 49, 49);
+}
