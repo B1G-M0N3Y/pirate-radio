@@ -34,7 +34,8 @@
  .profile-play img{
     object-fit: cover;
     height: 80px;
-    width: 80px
+    width: 80px;
+    padding-left: 15px;
  }
 
 .song-link-profile {
@@ -57,4 +58,10 @@
 
  .song-artist{
    text-decoration: none;
+   font-weight: 900;
+   color: black;
+ }
+
+ .profile-song-text{
+   padding-left: 15px;
  }
