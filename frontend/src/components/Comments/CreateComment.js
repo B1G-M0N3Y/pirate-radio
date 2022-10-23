@@ -14,8 +14,8 @@ const CreateComment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!commentBody) {
-      setValidationError("You must write a comment before posting");
+    if (!commentBody || commentBody.length > 500) {
+      setValidationError("Your comment must be between 1 and 500 characters");
     } else {
       setValidationError()
       const payload = {
@@ -35,7 +35,7 @@ const CreateComment = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="errors">
-        <p>{validationError}</p>
+        <p className="validation-error">{validationError}</p>
       </div>
       <label>
         Leave a Comment:
