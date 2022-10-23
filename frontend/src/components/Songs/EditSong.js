@@ -11,18 +11,19 @@ const EditSong = (song) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const albums = useSelector((state) => state.albums);
-  // const song = useSelector((state)=> state.song[id])
+  const singleSong = useSelector((state)=> state.songs.singleSong)
   const history = useHistory();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [title, setTitle] = useState(singleSong.title);
+  const [description, setDescription] = useState(singleSong.description);
+  const [url, setUrl] = useState(singleSong.url);
+  const [imageUrl, setImageUrl] = useState(singleSong.imageUrl);
   const [albumId, setAlbumId] = useState();
   const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
     dispatch(editSong(song));
     dispatch(loadCurrUserAlbums())
+    dispatch(fetchSongDetails(id))
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
