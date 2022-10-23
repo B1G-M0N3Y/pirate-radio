@@ -17,7 +17,7 @@ const EditSong = (song) => {
   const [description, setDescription] = useState(singleSong.description);
   const [url, setUrl] = useState(singleSong.url);
   const [imageUrl, setImageUrl] = useState(singleSong.imageUrl);
-  const [albumId, setAlbumId] = useState();
+  const [albumId, setAlbumId] = useState(singleSong.albumId);
   const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
