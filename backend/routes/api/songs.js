@@ -86,7 +86,7 @@ router.get("/", async (req, res) => {
   const whereParams = {};
 
   if (search) {
-    const title = { [Op.iLike]: `%${search}%` };
+    const title = { [Op.like]: `%${search}%` };
     whereParams.title = title;
   } else {
     if (!page) page = 1;
