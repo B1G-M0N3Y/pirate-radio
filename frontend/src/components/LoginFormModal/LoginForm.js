@@ -28,7 +28,8 @@ function LoginForm() {
             <h2>Welcome back ye' scurvy dog!</h2>
             <form className='login-form' onSubmit={handleSubmit}>
                 <ul>
-                    <li className="validation-error">{errors}</li>
+                    {errors.length > 1 &&
+                    <li className="validation-error">{errors}</li>}
                 </ul>
                 <label>
                     Username or Email
