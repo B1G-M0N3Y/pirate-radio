@@ -29,8 +29,6 @@ const SongDetails = () => {
     dispatch(fetchSongDetails(id));
   }, [dispatch, id]);
 
-  console.log("wwwwww", Object.values(user));
-
   return (
     <>
       <div className="song-details">
