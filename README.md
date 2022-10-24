@@ -6,6 +6,8 @@ Link to live site: https://pirate-radio.herokuapp.com/
 Pirate Radio is a fun, pirate themed clone of the popular music sharing platform SoundCloud. Learn more about the app
 [here](https://github.com/B1G-M0N3Y/pirate-radio/wiki)
 
+To get started, simply just clone the repo by clicking on the clone button on the top right of this page. One you have successfully downloaded the project, npm install in both the frontend and backend folders. When you are ready to spin up a local server, run the npm start command in both your backend and front end respectively.
+
 # Important Links
 ## [Home](https://github.com/B1G-M0N3Y/pirate-radio/wiki)
 ## [Features](https://github.com/B1G-M0N3Y/pirate-radio/wiki/Features)
@@ -24,4 +26,10 @@ This is the landing page which displays a list of songs
 
 <img src='https://res.cloudinary.com/dy199z8qt/image/upload/v1666602202/landingpage_iyqsri.png'>
 
+## Roadmap:
+
+Here is a list features I plan on implementing in the future:
+
+### Likes feature TODO
+### Plays feature TODO
 
