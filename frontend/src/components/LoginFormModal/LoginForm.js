@@ -20,13 +20,15 @@ function LoginForm() {
         );
     };
 
+    console.log(errors);
+
     return (
         <div className="modal login">
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Pirate_ship.svg"></img>
             <h2>Welcome back ye' scurvy dog!</h2>
             <form className='login-form' onSubmit={handleSubmit}>
                 <ul>
-                    {errors}
+                    <li className="validation-error">{errors}</li>
                 </ul>
                 <label>
                     Username or Email

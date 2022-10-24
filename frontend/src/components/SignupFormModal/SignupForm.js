@@ -35,7 +35,7 @@ function SignupForm() {
             <h2>Hope you got the sea legs for this</h2>
             <form onSubmit={handleSubmit}>
                 <ul>
-                    {errors.map((error, idx) => <li key={idx} className='.validation-error'>
+                    {errors.map((error, idx) => <li key={idx} className='validation-error'>
                         {error}
                         </li>)}
                 </ul>
