@@ -9,7 +9,7 @@ const CreateComment = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [commentBody, setCommentBody] = useState("");
-  const [validationError, setValidationError] = useState('');
+  const [validationError, setValidationError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const CreateComment = () => {
     if (!commentBody || commentBody.length > 500) {
       setValidationError("Your comment must be between 1 and 500 characters");
     } else {
-      setValidationError('');
+      setValidationError("");
       const payload = {
         body: commentBody,
       };
@@ -39,14 +39,17 @@ const CreateComment = () => {
           <p className="validation-error">{validationError}</p>
         </div>
       )}
-      <label>
-        Leave a Comment:
-        <textarea
-          value={commentBody}
-          onChange={(e) => setCommentBody(e.target.value)}
-        ></textarea>
-      </label>
-      <button type="submit">Post Comment</button>
+      <label id='leave-comment'>Leave a Comment: </label>
+      <div className="comment-field">
+        {/* <label>
+          Leave a Comment: */}
+          <input
+            value={commentBody}
+            onChange={(e) => setCommentBody(e.target.value)}
+          ></input>
+        {/* </label> */}
+        <button type="submit">Post Comment</button>
+      </div>
     </form>
   );
 };
