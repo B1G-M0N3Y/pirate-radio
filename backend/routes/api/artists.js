@@ -74,7 +74,7 @@ router.get("/", async (req, res) => {
   const whereParams = {};
 
   if ( search ){
-    const username = { [Op.like]: `%${search}%`}
+    const username = { [Op.iLike]: `%${search}%`}
     whereParams.username = username
   }
 
