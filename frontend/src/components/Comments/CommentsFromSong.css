@@ -58,3 +58,24 @@
     background: transparent;
     border: none;
 }
+
+.comment-field{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+
+.comment-field input{
+    width:350%;
+}
+
+.comment-field button{
+    background-color: #F26F23;
+    border: none;
+    color: white;
+    padding: 6px;
+}
+
+#leave-comment{
+    font-weight: 900;
+}
