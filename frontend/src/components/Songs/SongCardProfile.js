@@ -13,8 +13,6 @@ const SongCardProfile = ({ song }) => {
       return artist;
     }
   };
-  console.log("artist", artist);
-  console.log("thingy", profileOrSearch);
 
   return (
     <div className="song-card-profile">

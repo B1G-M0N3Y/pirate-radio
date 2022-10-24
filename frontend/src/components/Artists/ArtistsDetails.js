@@ -21,8 +21,6 @@ const ArtistDetails = () => {
     )
   }, [dispatch, id]);
 
-  console.log(artist);
-
   return (
     <>
       <div className="user-banner">

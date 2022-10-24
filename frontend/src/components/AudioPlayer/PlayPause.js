@@ -19,9 +19,6 @@ const PlayPause = ({ id, styling }) => {
     } else {
       currSong.current.audio.current.play();
     }
-    // console.log("isplaying", isPlaying);
-    console.log("audio id", audio.id);
-    console.log("prop id", id)
     await dispatch(fetchAudioDetails(id));
   };
 

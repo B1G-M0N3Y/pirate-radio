@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import albumsReducer from './albums';
 import artistReducer from './artists';
 import audioReducer from './audioPlayer';
 import commentReducer from './comments';
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     comments: commentReducer,
     audio: audioReducer,
     artists: artistReducer,
-    search: searchReducer
+    search: searchReducer,
+    albums: albumsReducer
 });
 
 

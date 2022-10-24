@@ -29,9 +29,6 @@ const SongDetails = () => {
     dispatch(fetchSongDetails(id));
   }, [dispatch, id]);
 
-  console.log("id from song", song?.userId);
-  console.log("id from user", user.id);
-
   return (
     <>
       <div className="song-details">
@@ -46,14 +43,16 @@ const SongDetails = () => {
       </div>
       <div className="crud-clickers">
         <Link to={`/songs/${id}/edit`}>
-          <button className="edit" hidden={!(user.id === song?.userId)}>
+          <button className="edit" hidden={!(user?.id === song?.userId)}>
             Edit Song
           </button>
         </Link>
         <Link to={`/songs/deleted`}>
-          <button className="delete"
-          hidden={!(user.id === song?.userId)}
-          onClick={deleteSong}>
+          <button
+            className="delete"
+            hidden={!(user.id === song?.userId)}
+            onClick={deleteSong}
+          >
             Delete Song
           </button>
         </Link>
@@ -61,7 +60,8 @@ const SongDetails = () => {
       <hr></hr>
       <div className="comment-section">
         <h2>Comments:</h2>
-        <CreateComment />
+        {Object.values(user).length > 0 && <CreateComment />}
+        {/* <CreateComment /> */}
         <CommentsFromSong className="all-comments" />
       </div>
     </>

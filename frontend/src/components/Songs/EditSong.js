@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import { loadCurrUserAlbums } from "../../store/albums";
 import { editSong, fetchSongDetails } from "../../store/songs";
 import "./EditSong.css";
 
 const SONG_EXTENSIONS = ["mp3", "mp4", "wav"];
 
 const EditSong = (song) => {
-  const { id } = useParams();
   const dispatch = useDispatch();
+  const { id } = useParams();
+  const albums = useSelector((state) => state.albums);
+  const singleSong = useSelector((state)=> state.songs.singleSong)
   const history = useHistory();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [albumId, setAlbumId] = useState();
+  const [title, setTitle] = useState(singleSong.title);
+  const [description, setDescription] = useState(singleSong.description);
+  const [url, setUrl] = useState(singleSong.url);
+  const [imageUrl, setImageUrl] = useState(singleSong.imageUrl);
+  const [albumId, setAlbumId] = useState(singleSong.albumId);
   const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
     dispatch(editSong(song));
+    dispatch(loadCurrUserAlbums())
+    dispatch(fetchSongDetails(id))
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
@@ -94,12 +99,18 @@ const EditSong = (song) => {
           />
         </label>
         <label>
-          Album id
-          <input
-            type="text"
+          Album
+          <select
+            className="album-select"
+            disabled={Object.values(albums).length === 0}
             value={albumId}
             onChange={(e) => setAlbumId(e.target.value)}
-          />
+          >
+            {Object.values(albums).map((album) => (
+              <option value = {album.id}>{album.title}</option>
+            ))}
+            <option> N/A </option>
+          </select>
         </label>
         <button type="submit">Update Song</button>
       </form>
