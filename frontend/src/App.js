@@ -57,7 +57,7 @@ function App() {
                 <SongDetails />
               </Route>
               <Route path='/songs'>
-                <h2> Hear what’s trending for free in the SoundCloud community </h2>
+                <h2> Hear what’s trending for free in the Pirate Radio community </h2>
                 <SongsIndex />
               </Route>
               <Route path='/results'>

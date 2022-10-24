@@ -50,7 +50,7 @@ const SongDetails = () => {
         <Link to={`/songs/deleted`}>
           <button
             className="delete"
-            hidden={!(user.id === song?.userId)}
+            hidden={!(user?.id === song?.userId)}
             onClick={deleteSong}
           >
             Delete Song
