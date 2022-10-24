@@ -29,6 +29,8 @@ const SongDetails = () => {
     dispatch(fetchSongDetails(id));
   }, [dispatch, id]);
 
+  console.log(user)
+
   return (
     <>
       <div className="song-details">
@@ -60,7 +62,7 @@ const SongDetails = () => {
       <hr></hr>
       <div className="comment-section">
         <h2>Comments:</h2>
-        {Object.values(user).length > 0 && <CreateComment />}
+        {user?.id && <CreateComment />}
         {/* <CreateComment /> */}
         <CommentsFromSong className="all-comments" />
       </div>
