@@ -41,13 +41,10 @@ const CreateComment = () => {
       )}
       <label id='leave-comment'>Leave a Comment: </label>
       <div className="comment-field">
-        {/* <label>
-          Leave a Comment: */}
           <input
             value={commentBody}
             onChange={(e) => setCommentBody(e.target.value)}
           ></input>
-        {/* </label> */}
         <button type="submit">Post Comment</button>
       </div>
     </form>
