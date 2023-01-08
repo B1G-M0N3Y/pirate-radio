@@ -3,10 +3,26 @@ const express = require("express");
 // const { json } = require('sequelize/types');
 // const { route } = require('express/lib/router');
 const { Op } = require("sequelize");
-const { Song, User, Album, Comment } = require("../../db/models");
+const { Song, User, Album, Comment, Like } = require("../../db/models");
+const like = require("../../db/models/like");
 const { restoreUser } = require("../../utils/auth");
 
 const router = express.Router();
+
+router.get("/:id/likes", async (req, res) => {
+  const id = req.params.id
+  if (!(await Song.findByPk(id))) {
+    res.status(404);
+    return res.send({
+      message: "Song couldn't be found",
+      statusCode: 404,
+    });
+  }
+  const likes = await Like.count(
+   {where: {songId: id}}
+  )
+  return res.json({ likes })
+})
 
 router.get("/:id/comments", async (req, res) => {
   const id = req.params.id;
