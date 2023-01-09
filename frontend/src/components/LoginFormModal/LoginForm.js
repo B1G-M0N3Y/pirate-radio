@@ -20,8 +20,6 @@ function LoginForm() {
         );
     };
 
-    console.log(errors);
-
     return (
         <div className="modal login">
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Pirate_ship.svg"></img>
