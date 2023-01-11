@@ -17,9 +17,9 @@ const SongDetails = () => {
   const song = useSelector((state) => state.songs.singleSong);
 
   // Manages if current user has liked this song on initialization
-  const isLiked = (likes) =>{
-    for(let i = 0; i < likes?.length; i++){
-      if(likes[i].userId === user?.id){
+  const isLiked = (likes) => {
+    for (let i = 0; i < likes?.length; i++) {
+      if (likes[i].userId === user?.id) {
         return true
       }
     }
@@ -32,21 +32,23 @@ const SongDetails = () => {
   };
 
   const like = async () => {
-    if(!userLikesThis && user){
+
+    if (!userLikesThis) {
       await csrfFetch(`/api/songs/${id}/likes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
       });
+      setUserLikesThis(!userLikesThis)
+      dispatch(fetchSongDetails(id));
     } else {
       await csrfFetch(`/api/songs/${id}/likes`, {
         method: 'DELETE'
       });
+      setUserLikesThis(!userLikesThis)
+      dispatch(fetchSongDetails(id));
     }
-
-    dispatch(fetchSongDetails(id));
-    setUserLikesThis(!userLikesThis)
   }
 
   useEffect(() => {
@@ -87,12 +89,16 @@ const SongDetails = () => {
       </div>
       <hr></hr>
       <div className="comment-section">
-      <div className="likes-section">
-        <button onClick={like} className={`like-${userLikesThis}`}>
-          <i class="fa-solid fa-heart"></i>
-        </button>
-        {song?.Likes?.length}
-      </div>
+        <div className="likes-section">
+          {user &&
+            <button onClick={like} className={`like-${userLikesThis}`}>
+            </button>
+          }
+          {!user &&
+            <i class="fa-solid fa-heart like-logged-out" ></i>
+          }
+          {song?.Likes?.length}
+        </div>
         <h2>Comments:</h2>
         {user?.id && <CreateComment />}
         {/* <CreateComment /> */}
