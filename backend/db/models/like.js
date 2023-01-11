@@ -2,7 +2,7 @@
 const {
   Model
 } = require('sequelize');
-const song = require('./song');
+
 module.exports = (sequelize, DataTypes) => {
   class Like extends Model {
     /**

@@ -57,6 +57,9 @@ const SongDetails = () => {
         </Link>
       </div>
       <hr></hr>
+      <div className="likes-section">
+        {song?.Likes.length}
+      </div>
       <div className="comment-section">
         <h2>Comments:</h2>
         {user?.id && <CreateComment />}
