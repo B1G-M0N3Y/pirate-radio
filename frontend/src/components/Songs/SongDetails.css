@@ -84,19 +84,23 @@ html{
     width: 100px;
 }
 
-.liketrue{
+.likes-section button{
+    margin-right: .5em;
+}
+
+.like-true{
     background-color: #f26f23;
     border: none;
     border-radius: 1em;
     color: white;
 }
 
-.likefalse{
+.like-false{
     background-color: white;
     border: none;
     border-radius: 1em;
 }
 
-.likefalse:hover{
+.like-false:hover{
     border: solid black 1px;
 }

@@ -86,13 +86,13 @@ const SongDetails = () => {
         </Link>
       </div>
       <hr></hr>
+      <div className="comment-section">
       <div className="likes-section">
-        <button onClick={like} className={`like${userLikesThis}`}>
+        <button onClick={like} className={`like-${userLikesThis}`}>
           <i class="fa-solid fa-heart"></i>
         </button>
         {song?.Likes?.length}
       </div>
-      <div className="comment-section">
         <h2>Comments:</h2>
         {user?.id && <CreateComment />}
         {/* <CreateComment /> */}
