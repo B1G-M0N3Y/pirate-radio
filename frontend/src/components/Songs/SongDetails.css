@@ -83,3 +83,9 @@ html{
 .details-play img{
     width: 100px;
 }
+
+.true{
+    background-color: #f26f23;
+    border: none;
+    border-radius: 1em;
+}

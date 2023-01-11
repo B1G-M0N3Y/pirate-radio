@@ -19,12 +19,18 @@ const SongDetails = () => {
   // Manages if current user has liked this song on initialization
   const isLiked = (likes) =>{
     for(let i = 0; i < likes?.length; i++){
-      if(likes[i].userId === user?.id) return true
+      console.log(likes[i].userId)
+      console.log(user.id)
+      if(likes[i].userId === user?.id){
+        console.log('here')
+        return true
+      }
     }
+    console.log('why')
     return false
   }
-  const [userLikesThis, setUserLikesThis] = useState(isLiked(song?.Likes));
-
+  const [userLikesThis, setUserLikesThis] = useState();
+  console.log(userLikesThis)
   // const song = songs?.singleSong
 
   const deleteSong = async () => {
@@ -51,7 +57,8 @@ const SongDetails = () => {
 
   useEffect(() => {
     dispatch(fetchSongDetails(id));
-  }, [dispatch, id]);
+    setUserLikesThis(isLiked(song?.Likes));
+  }, [dispatch, id, isLiked]);
 
   return (
     <>
@@ -83,7 +90,7 @@ const SongDetails = () => {
       </div>
       <hr></hr>
       <div className="likes-section">
-        <button onClick={like} className={userLikesThis}>
+        <button onClick={like} className={`${userLikesThis}`}>
           <i class="fa-solid fa-heart"></i>
         </button>
         {song?.Likes?.length}
