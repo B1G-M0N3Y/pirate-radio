@@ -4,6 +4,7 @@ import albumsReducer from './albums';
 import artistReducer from './artists';
 import audioReducer from './audioPlayer';
 import commentReducer from './comments';
+import likesReducer from './likes';
 import searchReducer from './search';
 import sessionReducer from './session';
 import songReducer from './songs';
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     audio: audioReducer,
     artists: artistReducer,
     search: searchReducer,
-    albums: albumsReducer
+    albums: albumsReducer,
+    likes: likesReducer,
 });
 
 
