@@ -90,7 +90,7 @@ const SongDetails = () => {
       </div>
       <hr></hr>
       <div className="likes-section">
-        <button onClick={like} className={`${userLikesThis}`}>
+        <button onClick={like} className={`like${userLikesThis}`}>
           <i class="fa-solid fa-heart"></i>
         </button>
         {song?.Likes?.length}

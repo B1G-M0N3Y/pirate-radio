@@ -84,8 +84,20 @@ html{
     width: 100px;
 }
 
-.true{
+.liketrue{
     background-color: #f26f23;
     border: none;
     border-radius: 1em;
+    color: white;
+}
+
+.likefalse{
+    background-color: white;
+    border: none;
+    border-radius: 1em;
+}
+
+.likefalse:hover{
+    border: solid black 1px;
+
 }
