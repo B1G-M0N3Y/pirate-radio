@@ -57,8 +57,11 @@ const SongDetails = () => {
 
   useEffect(() => {
     dispatch(fetchSongDetails(id));
+  }, [dispatch, id]);
+
+  useEffect(() => {
     setUserLikesThis(isLiked(song?.Likes));
-  }, [dispatch, id, isLiked]);
+  }, [dispatch, id, isLiked])
 
   return (
     <>
