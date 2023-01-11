@@ -84,6 +84,11 @@ html{
     width: 100px;
 }
 
+.likes-section{
+    color: black;
+    font-weight: 900;
+}
+
 .likes-section button{
     margin-right: .5em;
 }
