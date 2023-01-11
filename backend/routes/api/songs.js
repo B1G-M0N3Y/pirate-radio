@@ -10,7 +10,6 @@ const router = express.Router();
 
 router.post("/:id/likes",
   restoreUser,
-  requireAuth,
   async (req, res) => {
     const id = req.params.id
     const { user } = req;

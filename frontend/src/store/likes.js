@@ -7,12 +7,6 @@ const LOAD_SONG_LIKES = (likes) => {
     }
 }
 
-const LIKE_SONG = () => {
-    return{
-        
-    }
-}
-
 const initialState = {}
 
 const likesReducer = (state = initialState, action) => {

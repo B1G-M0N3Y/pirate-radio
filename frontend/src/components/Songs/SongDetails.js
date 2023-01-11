@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { csrfFetch } from "../../store/csrf";
 import { deleteSingleSong, fetchSongDetails } from "../../store/songs";
 import PlayPause from "../AudioPlayer/PlayPause";
 import CommentsFromSong from "../Comments/CommentsFromSong";
@@ -17,12 +18,12 @@ const SongDetails = () => {
 
   // Manages if current user has liked this song on initialization
   const isLiked = (likes) =>{
-    for(let i = 0; i < likes.length; i++){
-      if(likes[i].userId === user.id) return true
+    for(let i = 0; i < likes?.length; i++){
+      if(likes[i].userId === user?.id) return true
     }
     return false
   }
-  const [userLikes, setUserLikes] = useState(isLiked(song?.Likes));
+  const [userLikesThis, setUserLikesThis] = useState(isLiked(song?.Likes));
 
   // const song = songs?.singleSong
 
@@ -31,7 +32,21 @@ const SongDetails = () => {
   };
 
   const like = async () => {
-    await dispatch()
+    if(!userLikesThis && user){
+      await csrfFetch(`/api/songs/${id}/likes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+    } else {
+      await csrfFetch(`/api/songs/${id}/likes`, {
+        method: 'DELETE'
+      });
+    }
+
+    dispatch(fetchSongDetails(id));
+    setUserLikesThis(!userLikesThis)
   }
 
   useEffect(() => {
@@ -68,7 +83,7 @@ const SongDetails = () => {
       </div>
       <hr></hr>
       <div className="likes-section">
-        <button onClick={like}>
+        <button onClick={like} className={userLikesThis}>
           <i class="fa-solid fa-heart"></i>
         </button>
         {song?.Likes?.length}
