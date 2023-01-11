@@ -61,6 +61,7 @@ router.post('/',
     restoreUser,
     async (req, res) => {
         const { user } = req;
+        console.log('user', user.toSafeObject())
         const { title, description, imageUrl } = req.body;
         if (!title) {
             res.status(400);

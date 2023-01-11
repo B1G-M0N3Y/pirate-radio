@@ -4,14 +4,13 @@ const express = require("express");
 // const { route } = require('express/lib/router');
 const { Op } = require("sequelize");
 const { Song, User, Album, Comment, Like } = require("../../db/models");
-const { restoreUser } = require("../../utils/auth");
+const { restoreUser, requireAuth } = require("../../utils/auth");
 
 const router = express.Router();
 
-router.post("/:id/likes", async (req,res) => {
+router.post("/:id/likes", restoreUser, requireAuth, async (req,res) => {
   const id = req.params.id
   const { user } = req;
-
 
   if (!(await Song.findByPk(id))) {
     res.status(404);
@@ -26,7 +25,8 @@ router.post("/:id/likes", async (req,res) => {
     songId: Number(id)
   })
 
-  res.json(newLike);
+  res.status(200)
+  return res.json(newLike);
 })
 
 router.get("/:id/likes", async (req, res) => {

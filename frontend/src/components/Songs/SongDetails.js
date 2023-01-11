@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchAudioDetails } from "../../store/audioPlayer";
 import { deleteSingleSong, fetchSongDetails } from "../../store/songs";
 import PlayPause from "../AudioPlayer/PlayPause";
 import CommentsFromSong from "../Comments/CommentsFromSong";
@@ -28,7 +27,7 @@ const SongDetails = () => {
   useEffect(() => {
     dispatch(fetchSongDetails(id));
   }, [dispatch, id]);
-  
+
   return (
     <>
       <div className="song-details">
