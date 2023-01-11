@@ -8,26 +8,52 @@ const { restoreUser, requireAuth } = require("../../utils/auth");
 
 const router = express.Router();
 
-router.post("/:id/likes", restoreUser, requireAuth, async (req,res) => {
-  const id = req.params.id
-  const { user } = req;
+router.post("/:id/likes",
+  restoreUser,
+  requireAuth,
+  async (req, res) => {
+    const id = req.params.id
+    const { user } = req;
 
-  if (!(await Song.findByPk(id))) {
-    res.status(404);
-    return res.send({
-      message: "Song couldn't be found",
-      statusCode: 404,
-    });
-  }
+    if (!(await Song.findByPk(id))) {
+      res.status(404);
+      return res.send({
+        message: "Song couldn't be found",
+        statusCode: 404,
+      });
+    }
 
-  const newLike = await Like.create({
-    userId: user.toSafeObject().id,
-    songId: Number(id)
+    const newLike = await Like.create({
+      userId: user.toSafeObject().id,
+      songId: Number(id)
+    })
+
+    res.status(200)
+    return res.json(newLike);
   })
 
-  res.status(200)
-  return res.json(newLike);
-})
+router.delete(
+  "/:id/likes",
+  restoreUser,
+  async (req, res) => {
+    const id = req.params.id
+    const { user } = req;
+
+    const like = await Like.findOne({where:{
+      songId: id,
+      userId: user.id
+    }});
+
+    if(like){
+      await like.destroy();
+
+      res.json({
+        "message": "Successfully deleted",
+        "statusCode": 200
+      })
+    }
+  }
+);
 
 router.get("/:id/likes", async (req, res) => {
   const id = req.params.id
@@ -39,7 +65,7 @@ router.get("/:id/likes", async (req, res) => {
     });
   }
   const likes = await Like.count(
-   {where: {songId: id}}
+    { where: { songId: id } }
   )
   return res.json({ likes })
 })
