@@ -26,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
       Song.belongsTo(models.Album, {
         foreignKey: 'albumId'
       });
+      Song.hasMany(models.Like, {
+        foreignKey: 'songId'
+      })
     }
   }
   Song.init({

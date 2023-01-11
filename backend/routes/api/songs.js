@@ -3,7 +3,7 @@ const express = require("express");
 // const { json } = require('sequelize/types');
 // const { route } = require('express/lib/router');
 const { Op } = require("sequelize");
-const { Song, User, Album, Comment, Like } = require("../../db/models");
+const { Song, User, Album, Comment, Like, Sequelize } = require("../../db/models");
 const { restoreUser, requireAuth } = require("../../utils/auth");
 
 const router = express.Router();
@@ -55,20 +55,20 @@ router.delete(
   }
 );
 
-router.get("/:id/likes", async (req, res) => {
-  const id = req.params.id
-  if (!(await Song.findByPk(id))) {
-    res.status(404);
-    return res.send({
-      message: "Song couldn't be found",
-      statusCode: 404,
-    });
-  }
-  const likes = await Like.count(
-    { where: { songId: id } }
-  )
-  return res.json({ likes })
-})
+// router.get("/:id/likes", async (req, res) => {
+//   const id = req.params.id
+//   if (!(await Song.findByPk(id))) {
+//     res.status(404);
+//     return res.send({
+//       message: "Song couldn't be found",
+//       statusCode: 404,
+//     });
+//   }
+//   const likes = await Like.count(
+//     { where: { songId: id } }
+//   )
+//   return res.json({ likes })
+// })
 
 router.get("/:id/comments", async (req, res) => {
   const id = req.params.id;
@@ -113,6 +113,7 @@ router.get("/:id", async (req, res) => {
         model: Album,
         attributes: ["id", "title", "imageUrl"],
       },
+      {model: Like}
     ],
   });
 
@@ -167,6 +168,7 @@ router.get("/", async (req, res) => {
         as: "Artist",
         attributes: ["id", "username", "imageUrl"],
       },
+      {model: Like}
     ],
   });
 
@@ -256,18 +258,6 @@ router.put("/:id", restoreUser, async (req, res) => {
       statusCode: 404,
     });
   }
-
-  // if (!title || !url) {
-  //     res.status(400);
-  //     res.send({
-  //         "message": "Validation Error",
-  //         "statusCode": 400,
-  //         "errors": {
-  //             "title": "Song title is required",
-  //             "url": "Audio is required"
-  //         }
-  //     });
-  // }
 
   if (song.userId !== user.toSafeObject().id) {
     res.status(403);
