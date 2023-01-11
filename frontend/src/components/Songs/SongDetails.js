@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { deleteSingleSong, fetchSongDetails } from "../../store/songs";
@@ -9,20 +9,30 @@ import "./SongDetails.css";
 
 const SongDetails = () => {
   const dispatch = useDispatch();
-
   const user = useSelector((state) => {
     return state.session.user;
   });
-  // const[showEditSong, setShowEditSong] = useState(false);
-  // const[showDeleteSong, setShowDeleteSong] = useState(false);
-
   const { id } = useParams();
   const song = useSelector((state) => state.songs.singleSong);
+
+  // Manages if current user has liked this song on initialization
+  const isLiked = (likes) =>{
+    for(let i = 0; i < likes.length; i++){
+      if(likes[i].userId === user.id) return true
+    }
+    return false
+  }
+  const [userLikes, setUserLikes] = useState(isLiked(song?.Likes));
+
   // const song = songs?.singleSong
 
   const deleteSong = async () => {
     await dispatch(deleteSingleSong(id));
   };
+
+  const like = async () => {
+    await dispatch()
+  }
 
   useEffect(() => {
     dispatch(fetchSongDetails(id));
@@ -58,7 +68,10 @@ const SongDetails = () => {
       </div>
       <hr></hr>
       <div className="likes-section">
-        {song?.Likes.length}
+        <button onClick={like}>
+          <i class="fa-solid fa-heart"></i>
+        </button>
+        {song?.Likes?.length}
       </div>
       <div className="comment-section">
         <h2>Comments:</h2>
