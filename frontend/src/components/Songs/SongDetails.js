@@ -19,19 +19,13 @@ const SongDetails = () => {
   // Manages if current user has liked this song on initialization
   const isLiked = (likes) =>{
     for(let i = 0; i < likes?.length; i++){
-      console.log(likes[i].userId)
-      console.log(user.id)
       if(likes[i].userId === user?.id){
-        console.log('here')
         return true
       }
     }
-    console.log('why')
     return false
   }
   const [userLikesThis, setUserLikesThis] = useState();
-  console.log(userLikesThis)
-  // const song = songs?.singleSong
 
   const deleteSong = async () => {
     await dispatch(deleteSingleSong(id));
