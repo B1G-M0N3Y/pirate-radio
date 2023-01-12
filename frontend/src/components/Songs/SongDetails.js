@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchAudioDetails } from "../../store/audioPlayer";
+import { csrfFetch } from "../../store/csrf";
 import { deleteSingleSong, fetchSongDetails } from "../../store/songs";
 import PlayPause from "../AudioPlayer/PlayPause";
 import CommentsFromSong from "../Comments/CommentsFromSong";
@@ -10,26 +10,54 @@ import "./SongDetails.css";
 
 const SongDetails = () => {
   const dispatch = useDispatch();
-
   const user = useSelector((state) => {
     return state.session.user;
   });
-  // const[showEditSong, setShowEditSong] = useState(false);
-  // const[showDeleteSong, setShowDeleteSong] = useState(false);
-
   const { id } = useParams();
   const song = useSelector((state) => state.songs.singleSong);
-  // const song = songs?.singleSong
+
+  // Manages if current user has liked this song on initialization
+  const isLiked = (likes) => {
+    for (let i = 0; i < likes?.length; i++) {
+      if (likes[i].userId === user?.id) {
+        return true
+      }
+    }
+    return false
+  }
+  const [userLikesThis, setUserLikesThis] = useState();
 
   const deleteSong = async () => {
     await dispatch(deleteSingleSong(id));
   };
 
+  const like = async () => {
+
+    if (!userLikesThis) {
+      await csrfFetch(`/api/songs/${id}/likes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      setUserLikesThis(!userLikesThis)
+      dispatch(fetchSongDetails(id));
+    } else {
+      await csrfFetch(`/api/songs/${id}/likes`, {
+        method: 'DELETE'
+      });
+      setUserLikesThis(!userLikesThis)
+      dispatch(fetchSongDetails(id));
+    }
+  }
+
   useEffect(() => {
     dispatch(fetchSongDetails(id));
   }, [dispatch, id]);
 
-  console.log(user)
+  useEffect(() => {
+    setUserLikesThis(isLiked(song?.Likes));
+  }, [dispatch, id, isLiked])
 
   return (
     <>
@@ -61,9 +89,19 @@ const SongDetails = () => {
       </div>
       <hr></hr>
       <div className="comment-section">
+        <div className="likes-section">
+          {user?.id &&
+            <button onClick={like} className={`like-${userLikesThis}`}>
+              <i class="fa-solid fa-heart" ></i>
+            </button>
+          }
+          {!user?.id &&
+            <i class="fa-solid fa-heart like-logged-out" ></i>
+          }
+          {song?.Likes?.length}
+        </div>
         <h2>Comments:</h2>
         {user?.id && <CreateComment />}
-        {/* <CreateComment /> */}
         <CommentsFromSong className="all-comments" />
       </div>
     </>

@@ -83,3 +83,34 @@ html{
 .details-play img{
     width: 100px;
 }
+
+.likes-section{
+    color: black;
+    font-weight: 900;
+}
+
+.likes-section button{
+    margin-right: .5em;
+}
+
+.like-true{
+    background-color: #f26f23;
+    border: none;
+    border-radius: 1em;
+    color: white;
+}
+
+.like-false{
+    background-color: white;
+    border: none;
+    border-radius: 1em;
+}
+
+.like-logged-out{
+    color: #808080;
+    margin-right: .5em;
+}
+
+.like-false:hover{
+    border: solid black 1px;
+}

@@ -31,7 +31,67 @@ module.exports = {
         title: 'Brandons Mix',
         description: 'Songs by Brandons for Brandons',
         imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
-      }
+      },
+      {
+        userId: 1,
+        title: 'Nickelback is The Best',
+        description: 'Needs no further description 😎',
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
+      {
+        userId: 4,
+        title: 'Demo Tape',
+        description: 'Songs from around the world',
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
+      {
+        userId: 4,
+        title: 'My Greatest Hits',
+        description: 'The best of the best',
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
+      {
+        userId: 6,
+        title: "Zigan's Room",
+        description: 'In my Feelings',
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
+      {
+        userId: 6,
+        title: "2 Zigan 2 Zerious",
+        description: "He's back and Ziganer than ever",
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
+      {
+        userId: 6,
+        title: 'Zigan in da House',
+        description: 'Zigan out here frfr',
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
+      {
+        userId: 7,
+        title: 'Gaming is for the People',
+        description: 'You ever gamed before?',
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
+      {
+        userId: 7,
+        title: 'Gamers Unite',
+        description: 'Unite Gamers, it is time.',
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
+      {
+        userId: 8,
+        title: 'Daddy Phat $tax',
+        description: 'Daaaaaaaaaaaaaang, look at all this money.',
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
+      {
+        userId: 8,
+        title: 'Money 2 da Ceilin',
+        description: 'These ceilings vaulted too!',
+        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      },
     ])
   },
 
