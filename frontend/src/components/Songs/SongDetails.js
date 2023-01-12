@@ -94,14 +94,14 @@ const SongDetails = () => {
             <button onClick={like} className={`like-${userLikesThis}`}>
             </button>
           }
-          {!user &&
+          {console.log(user)}
+          {!user.id &&
             <i class="fa-solid fa-heart like-logged-out" ></i>
           }
           {song?.Likes?.length}
         </div>
         <h2>Comments:</h2>
         {user?.id && <CreateComment />}
-        {/* <CreateComment /> */}
         <CommentsFromSong className="all-comments" />
       </div>
     </>

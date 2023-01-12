@@ -37,7 +37,39 @@ module.exports = {
         email: 'demo@user.com',
         hashedPassword: bcrypt.hashSync('demouser'),
         imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663956835/nickleback-nickelback-33858308-1024-768_kybkiz.jpg'
-      }
+      },
+      {
+        username: 'gamer-gus',
+        firstName: 'gamer',
+        lastName: 'gus',
+        email: 'gamer@gus.com',
+        hashedPassword: bcrypt.hashSync('password'),
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663956835/nickleback-nickelback-33858308-1024-768_kybkiz.jpg'
+      },
+      {
+        username: 'Zigan',
+        firstName: 'Epic',
+        lastName: 'Gamer',
+        email: 'zigan@user.com',
+        hashedPassword: bcrypt.hashSync('password'),
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663956835/nickleback-nickelback-33858308-1024-768_kybkiz.jpg'
+      },
+      {
+        username: 'papalopaz',
+        firstName: 'Dmitri',
+        lastName: 'Hodnett',
+        email: 'dmitri@hodnett.com',
+        hashedPassword: bcrypt.hashSync('password'),
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663956835/nickleback-nickelback-33858308-1024-768_kybkiz.jpg'
+      },
+      {
+        username: 'B1G-M0N3Y',
+        firstName: 'Noah',
+        lastName: 'Kerner',
+        email: 'noah@kerner.com',
+        hashedPassword: bcrypt.hashSync('password'),
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663956835/nickleback-nickelback-33858308-1024-768_kybkiz.jpg'
+      },
     ]);
   },
 
