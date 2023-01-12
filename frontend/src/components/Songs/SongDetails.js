@@ -95,7 +95,6 @@ const SongDetails = () => {
               <i class="fa-solid fa-heart" ></i>
             </button>
           }
-          {console.log(user)}
           {!user?.id &&
             <i class="fa-solid fa-heart like-logged-out" ></i>
           }
