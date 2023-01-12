@@ -90,12 +90,13 @@ const SongDetails = () => {
       <hr></hr>
       <div className="comment-section">
         <div className="likes-section">
-          {user &&
+          {user?.id &&
             <button onClick={like} className={`like-${userLikesThis}`}>
+              <i class="fa-solid fa-heart" ></i>
             </button>
           }
           {console.log(user)}
-          {!user.id &&
+          {!user?.id &&
             <i class="fa-solid fa-heart like-logged-out" ></i>
           }
           {song?.Likes?.length}
