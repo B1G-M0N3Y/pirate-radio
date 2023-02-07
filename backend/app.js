@@ -22,6 +22,7 @@ app.use(morgan('dev'));
 // middleware for parsing JSON bodies of requests with `Content-Type` of
 // "application/json"
 app.use(cookieParser());
+app.use(urlencoded({ extended: false }));
 app.use(express.json());
 
 //import routes
@@ -62,6 +63,7 @@ app.use((_req, _res, next) => {
 });
 
 const { ValidationError } = require('sequelize');
+const { urlencoded } = require('express');
 // Process sequelize errors
 app.use((err, _req, _res, next) => {
     // check if error is a Sequelize error:

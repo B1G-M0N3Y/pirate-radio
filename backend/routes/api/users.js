@@ -6,6 +6,7 @@ const { User, Song } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 
 const router = express.Router();
 
@@ -44,19 +45,42 @@ const validateSignup = [
 // )
 
 // Sign up
+// router.post(
+//     '/',
+//     validateSignup,
+//     async (req, res) => {
+//         const { firstName, lastName, email, password, username } = req.body;
+//         const user = await User.signup({ firstName, lastName, email, username, password });
+
+//         await setTokenCookie(res, user);
+
+//         return res.json(
+//             user
+//         );
+//     }
+// );
+
+// Post /api/users ---Sign up
 router.post(
-    '/',
+    "/",
+    singleMulterUpload("image"),
     validateSignup,
-    async (req, res) => {
-        const { firstName, lastName, email, password, username } = req.body;
-        const user = await User.signup({ firstName, lastName, email, username, password });
+    asyncHandler(async (req, res) => {
+      const { email, password, username } = req.body;
+      const profileImageUrl = await singlePublicFileUpload(req.file);
+      const user = await User.signup({
+        username,
+        email,
+        password,
+        profileImageUrl,
+      });
 
-        await setTokenCookie(res, user);
+      setTokenCookie(res, user);
 
-        return res.json(
-            user
-        );
-    }
-);
+      return res.json({
+        user,
+      });
+    })
+  );
 
 module.exports = router;
