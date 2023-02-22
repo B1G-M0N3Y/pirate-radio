@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf"
 
 const LOAD_SONGS = 'songs/loadSongs'
 const LOAD_RANDOM_SONGS = 'songs/loadRandomSongs'
+const LOAD_COUNT = 'songs/loadCount'
 const SONG_DETAILS = 'songs/songDetails'
 const UPDATE_SONG = 'songs/updateSong'
 const DELETE_SONG = 'songs/deleteSong'
@@ -17,6 +18,13 @@ const loadRandomSongs = (songs) => {
     return {
         type: LOAD_RANDOM_SONGS,
         songs
+    }
+}
+
+const loadCount = (count) => {
+    return {
+        type: LOAD_COUNT,
+        count
     }
 }
 
@@ -60,6 +68,16 @@ export const fetchSongDetails = (id) => async (dispatch) => {
         return song
     }
     return null;
+}
+
+export const fetchSongCount = () => async (dispatch) => {
+    let response = await fetch('/api/songs/count')
+
+    if (response.ok) {
+        const count = await response.json();
+        dispatch(loadCount(count));
+        return count
+    }
 }
 
 export const fetchRandomSongs = () => async (dispatch) => {
@@ -116,19 +134,25 @@ export const deleteSingleSong = id => async dispatch => {
     }
 }
 
-const initialState = { singleSong: {} }
+const initialState = { songs: [], singleSong: {}, count:undefined }
 
 const songReducer = (state = initialState, action) => {
     let newState = {}
     switch (action.type) {
         case LOAD_SONGS:
-            Object.values(action.songs.Songs).map((song) => (newState[song.id] = song))
+            newState.count = state?.count
+            newState.songs = {}
+            Object.values(action.songs.Songs).map((song) => (newState.songs[song.id] = song))
             return newState;
         case LOAD_RANDOM_SONGS:
             action.songs.songs.map(song => (
                 newState[song.id] = song
             ))
             return newState
+        case LOAD_COUNT:
+            newState = {...state};
+            newState.count = action.count;
+            return newState;
         case SONG_DETAILS: {
             // const newState = {...state}
             return {
@@ -140,6 +164,7 @@ const songReducer = (state = initialState, action) => {
         case UPDATE_SONG:
             newState = { ...state, singleSong: { ...action.song } };
             newState[action.song.id] = action.song;
+            break
         case DELETE_SONG:
             newState = { ...state }
             delete newState[action.id];

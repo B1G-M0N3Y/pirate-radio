@@ -91,6 +91,13 @@ router.delete(
 });
 
 
+router.get("/count", async(req ,res) => {
+  const count = await Song.count()
+  
+  return res.json(count)
+})
+
+
 router.get("/random", async(req, res) => {
   const songs = await Song.findAll({
     order: Sequelize.literal('random()'),

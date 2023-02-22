@@ -8,7 +8,7 @@ import "./SongsIndex.css";
 const SongsIndex = () => {
   const dispatch = useDispatch();
   const songs = useSelector((state) => {
-    return state.songs;
+    return state.songs.songs;
   });
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const SongsIndex = () => {
   return (
     <>
       <div className="song-grid">
-        {Object.values(songs).map((song) => {
+        {songs && Object.values(songs).map((song) => {
           return (
             <SongCard song = {song} />
           );
