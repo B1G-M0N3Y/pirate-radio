@@ -37,7 +37,9 @@ const LandingPage = () => {
                 <div className="song-grid">
                 {songs &&
                     Object.values(songs).map(song => {
-                        return <SongCard song = {song} />
+                        if(song){
+                            return <SongCard song = {song} />
+                        }
                     })
                 }
                 </div>
