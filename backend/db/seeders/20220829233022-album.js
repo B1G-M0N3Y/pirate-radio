@@ -58,53 +58,61 @@ module.exports = {
       },
       // 7
       {
-        userId: 6,
-        title: "Zigan's Room",
-        description: 'In my Feelings',
-        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
-      },
-      // 8
-      {
-        userId: 6,
-        title: "2 Zigan 2 Zerious",
-        description: "He's back and Ziganer than ever",
-        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
-      },
-      // 9
-      {
-        userId: 6,
-        title: 'Zigan in da House',
-        description: 'Zigan out here frfr',
-        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
-      },
-      // 10
-      {
-        userId: 7,
-        title: 'Gaming is for the People',
-        description: 'You ever gamed before?',
-        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
-      },
-      // 11
-      {
-        userId: 7,
-        title: 'Gamers Unite',
-        description: 'Unite Gamers, it is time.',
-        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
-      },
-      // 12
-      {
-        userId: 8,
-        title: 'Daddy Phat $tax',
-        description: 'Daaaaaaaaaaaaaang, look at all this money.',
-        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
-      },
-      // 13
-      {
-        userId: 8,
-        title: 'Money 2 da Ceilin',
-        description: 'These ceilings vaulted too!',
-        imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
-      },
+        userId: 9,
+        title: 'A Foreign Winter Pink',
+        description: 'My deepest and darkest secrets of all time',
+        imageUrl:'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      }
+
+      // extra seeds for when I have more songs and a larger cloud storage system
+      // {
+      //   userId: 6,
+      //   title: "Zigan's Room",
+      //   description: 'In my Feelings',
+      //   imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      // },
+
+      // {
+      //   userId: 6,
+      //   title: "2 Zigan 2 Zerious",
+      //   description: "He's back and Ziganer than ever",
+      //   imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      // },
+
+      // {
+      //   userId: 6,
+      //   title: 'Zigan in da House',
+      //   description: 'Zigan out here frfr',
+      //   imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      // },
+
+      // {
+      //   userId: 7,
+      //   title: 'Gaming is for the People',
+      //   description: 'You ever gamed before?',
+      //   imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      // },
+
+      // {
+      //   userId: 7,
+      //   title: 'Gamers Unite',
+      //   description: 'Unite Gamers, it is time.',
+      //   imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      // },
+
+      // {
+      //   userId: 8,
+      //   title: 'Daddy Phat $tax',
+      //   description: 'Daaaaaaaaaaaaaang, look at all this money.',
+      //   imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      // },
+
+      // {
+      //   userId: 8,
+      //   title: 'Money 2 da Ceilin',
+      //   description: 'These ceilings vaulted too!',
+      //   imageUrl: 'https://www.cheryls.com/blog/wp-content/uploads/2022/07/Unicorn-feature-hero-1.jpg'
+      // },
     ])
   },
 
