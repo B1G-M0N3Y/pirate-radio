@@ -19,35 +19,26 @@ const AllSongsPage = () => {
     dispatch(fetchSongCount())
   }, [dispatch, currPage])
 
-  // const pageBack = async () => {
-  //   setCurrPage(currPage - 1)
-  //   await dispatch(fetchSongs(currPage))
-  // }
-
-  // const pageForward = async () => {
-  //   console.log('da page b4', currPage)
-  //   setCurrPage(currPage + 1)
-  //   console.log('da page b5', currPage)
-  //   await dispatch(fetchSongs(currPage))
-  // }
 
   return (
     <>
       <h2> Hear what’s trending for free in the Pirate Radio community </h2>
       <SongsIndex />
-      <div>
+      <div className="pagination-button-container">
         {currPage > 1 &&
           <button
+            className="pagination-button"
             onClick={() => setCurrPage(currPage - 1)}
-          >
+            >
             <i
               class="fa-solid fa-chevron-left"
-            ></i>
+              ></i>
           </button>
         }
         {currPage} / {totalPages}
         {currPage < totalPages &&
           <button
+            className="pagination-button"
             onClick={() => setCurrPage(currPage + 1)}
           >
             <i

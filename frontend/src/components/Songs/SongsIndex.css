@@ -69,3 +69,21 @@
 #treasure-trove{
     padding-left: 15px;
 }
+
+.pagination-button-container{
+    display:flex;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 900;
+}
+
+.pagination-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.87em;
+    width: 1.87em;
+    margin: 0 1.3em 0 1.3em;
+    border-radius: 50%;
+    border: none;
+}
