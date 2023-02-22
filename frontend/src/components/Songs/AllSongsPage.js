@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSongCount } from "../../store/songs";
+import { fetchSongCount, fetchSongs } from "../../store/songs";
 import SongsIndex from "./SongsIndex";
 
 const DEFAULT_SIZE = 12
@@ -15,18 +15,21 @@ const AllSongsPage = () => {
 
 
   useEffect(() => {
+    dispatch(fetchSongs(currPage))
     dispatch(fetchSongCount())
-    console.log('totalPages', totalPages)
-  }, [dispatch])
+  }, [dispatch, currPage])
 
-  const pageBack = async() => {
+  // const pageBack = async () => {
+  //   setCurrPage(currPage - 1)
+  //   await dispatch(fetchSongs(currPage))
+  // }
 
-  }
-
-  const pageForward = async() => {
-
-
-  }
+  // const pageForward = async () => {
+  //   console.log('da page b4', currPage)
+  //   setCurrPage(currPage + 1)
+  //   console.log('da page b5', currPage)
+  //   await dispatch(fetchSongs(currPage))
+  // }
 
   return (
     <>
@@ -34,17 +37,23 @@ const AllSongsPage = () => {
       <SongsIndex />
       <div>
         {currPage > 1 &&
-          <i
-          class="fa-solid fa-chevron-left"
-          onClick={pageBack}
-          ></i>
+          <button
+            onClick={() => setCurrPage(currPage - 1)}
+          >
+            <i
+              class="fa-solid fa-chevron-left"
+            ></i>
+          </button>
         }
         {currPage} / {totalPages}
         {currPage < totalPages &&
-          <i
-          class="fa-solid fa-chevron-right"
-          onClick={pageForward}
-          ></i>
+          <button
+            onClick={() => setCurrPage(currPage + 1)}
+          >
+            <i
+              class="fa-solid fa-chevron-right"
+            ></i>
+          </button>
         }
       </div>
     </>

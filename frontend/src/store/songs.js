@@ -49,8 +49,8 @@ const deleteSong = (id) => {
     }
 }
 
-export const fetchSongs = () => async (dispatch) => {
-    const response = await fetch('/api/songs');
+export const fetchSongs = (page = 1) => async (dispatch) => {
+    const response = await fetch(`/api/songs?page=${page}`);
 
     if (response.ok) {
         const songs = await response.json();
