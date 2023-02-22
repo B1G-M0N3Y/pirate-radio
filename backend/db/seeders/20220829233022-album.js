@@ -124,8 +124,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Albums', {
-      title: { [Op.in]: ['Finally Got My Nickel Back!', 'Ziggy Stardust', 'Brandons Mix']}
-    });
+    return queryInterface.bulkDelete('Albums');
   }
 };
