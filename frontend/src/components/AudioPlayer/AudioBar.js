@@ -24,6 +24,8 @@ const Player = () => {
         src={audio.url}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
+        showSkipControls={false}
+        showJumpControls={false}
         // other props here
         className="player"
       />
