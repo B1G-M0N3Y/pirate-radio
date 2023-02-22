@@ -15,6 +15,7 @@ import DeletedSong from "./components/Songs/DeletedSong";
 import DeletedComment from "./components/Comments/DeletedComment";
 import ArtistDetails from "./components/Artists/ArtistsDetails";
 import SearchPage from "./components/SearchPage";
+import AllSongsPage from "./components/Songs/AllSongsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,8 +58,7 @@ function App() {
                 <SongDetails />
               </Route>
               <Route path='/songs'>
-                <h2> Hear what’s trending for free in the Pirate Radio community </h2>
-                <SongsIndex />
+                <AllSongsPage />
               </Route>
               <Route path='/results'>
                 <SearchPage />
