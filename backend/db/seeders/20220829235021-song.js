@@ -138,6 +138,95 @@ module.exports = {
         url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1676921562/Gigi_D_Agostino_Bla_Bla_Bla_wquazz.mp3',
         imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663880401/cld-sample-2.jpg'
       },
+      // Papa Peden songs
+      {
+        albumId: 6,
+        userId: 9,
+        title: 'Abbey',
+        description: 'King of the snails yo',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025320/Abbey_3.20.16_Final_y1sgvx.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'If Not Winter',
+        description: 'If not winter why not now?',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025319/If_Not_Winter__Final_w6ccza.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'Wreck Beach',
+        description: 'Dang, there\'s a lot of naked folks here',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025317/Wreck_Beach_10.13.16_Final_c77ty0.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'A Foreign Winter',
+        description: 'This one kinda sad tho',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025317/A_Foreign_Winter_s_Pink_12.18.16_Final_yahnzb.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'In 5 Years',
+        description: 'I\'m this 🖐 many',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025315/In_5_Years_6.17.16_Final_ys1unp.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'Wind Chimes',
+        description: 'Big pie guy',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025314/Wind_Chimes_10.15.16_Final_c07reh.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'Belleville',
+        description: 'Shout out Belleville!',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025310/Belleville_8.19.16_Final_lgvlun.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'Sea_Foam',
+        description: 'How can I say goodbye',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025310/Sea_Foam_6.1.16_Final_rr16j9.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'Sentimental Talks',
+        description: 'Here comes the sun',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025308/Sentimental_Talks_7.22.16_Final_qugtmz.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'Your Middle Name',
+        description: 'Mines David what about yours?',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025305/Your_Middle_Name_6.11.16_Final_shkcur.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
+      {
+        albumId: 6,
+        userId: 4,
+        title: 'See You In Paris',
+        description: 'Later Alligator!',
+        url: 'https://res.cloudinary.com/dy199z8qt/video/upload/v1677025305/See_You_In_Paris_7.20.16_gp3vsc.m4a',
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677028504/e2e8293b4da233f932b570fd42b64db3_vtzind.png'
+      },
     ])
   },
 
