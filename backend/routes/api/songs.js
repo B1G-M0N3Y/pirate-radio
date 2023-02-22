@@ -94,7 +94,15 @@ router.delete(
 router.get("/random", async(req, res) => {
   const songs = await Song.findAll({
     order: Sequelize.literal('random()'),
-    limit: 6
+    limit: 6,
+    include: [
+      {
+        model: User,
+        as: "Artist",
+        attributes: ["id", "username", "imageUrl"],
+      },
+      {model: Like}
+    ],
   })
   return res.json({ songs })
 })
@@ -163,9 +171,9 @@ router.get("/", async (req, res) => {
     whereParams.title = title;
   } else {
     if (!page) page = 1;
-    if (!size) size = 10;
+    if (!size) size = 12;
     if (page > 10) page = 10;
-    if (size > 10) size = 10;
+    if (size > 12) size = 12;
     pagination = { limit: size, offset: size * (page - 1) };
   }
 
