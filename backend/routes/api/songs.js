@@ -2,7 +2,7 @@
 const express = require("express");
 // const { json } = require('sequelize/types');
 const {Sequelize} = require("sequelize");
-
+const { Op } = require("sequelize")
 const { Song, User, Album, Comment, Like } = require("../../db/models");
 const { restoreUser, requireAuth } = require("../../utils/auth");
 
@@ -93,7 +93,7 @@ router.delete(
 
 router.get("/count", async(req ,res) => {
   const count = await Song.count()
-  
+
   return res.json(count)
 })
 
