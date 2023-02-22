@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf"
 
 const LOAD_SONGS = 'songs/loadSongs'
+const LOAD_RANDOM_SONGS = 'songs/loadRandomSongs'
 const SONG_DETAILS = 'songs/songDetails'
 const UPDATE_SONG = 'songs/updateSong'
 const DELETE_SONG = 'songs/deleteSong'
@@ -8,6 +9,13 @@ const DELETE_SONG = 'songs/deleteSong'
 const loadSongs = (songs) => {
     return {
         type: LOAD_SONGS,
+        songs
+    }
+}
+
+const loadRandomSongs = (songs) => {
+    return {
+        type: LOAD_RANDOM_SONGS,
         songs
     }
 }
@@ -52,6 +60,16 @@ export const fetchSongDetails = (id) => async (dispatch) => {
         return song
     }
     return null;
+}
+
+export const fetchRandomSongs = () => async (dispatch) => {
+    let response = await fetch('/api/songs/random');
+
+    if (response.ok) {
+        const songs = await response.json();
+        dispatch(loadRandomSongs(songs))
+        return songs
+    }
 }
 
 export const createNewSong = (song) => async dispatch => {
@@ -106,18 +124,24 @@ const songReducer = (state = initialState, action) => {
         case LOAD_SONGS:
             Object.values(action.songs.Songs).map((song) => (newState[song.id] = song))
             return newState;
-        case SONG_DETAILS:{
+        case LOAD_RANDOM_SONGS:
+            action.songs.songs.map(song => (
+                newState[song.id] = song
+            ))
+            return newState
+        case SONG_DETAILS: {
             // const newState = {...state}
             return {
                 ...state,
                 [action.details.id]: action.details,
                 singleSong: { ...action.details }
-            };}
+            };
+        }
         case UPDATE_SONG:
             newState = { ...state, singleSong: { ...action.song } };
             newState[action.song.id] = action.song;
         case DELETE_SONG:
-            newState = {...state}
+            newState = { ...state }
             delete newState[action.id];
             return newState;
         default:
