@@ -1,9 +1,22 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchRandomSongs } from "../../store/songs";
 import SignupFormModal from "../SignupFormModal";
+import SongCard from "../Songs/SongCard";
 import SongsIndex from "../Songs/SongsIndex";
 import './LandingPage.css'
 
 const LandingPage = () => {
+    const dispatch = useDispatch()
+    const songs = useSelector((state) => {
+        return state.songs;
+    })
+
+    useEffect(() => {
+        dispatch(fetchRandomSongs());
+    }, [dispatch])
+
     return (
         <>
             <div className='landing-page'>
@@ -20,7 +33,16 @@ const LandingPage = () => {
                     </div>
                 </div>
                 <h2 id='treasure-trove'>Search the treasure trove of good music:</h2>
-                <SongsIndex />
+                {/* <SongsIndex /> */}
+                <div className="song-grid">
+                {songs &&
+                    Object.values(songs).map(song => {
+                        if(song){
+                            return <SongCard song = {song} />
+                        }
+                    })
+                }
+                </div>
                 <div className='bottom-box'>
                     <img src="https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists-8081257b.jpg"></img>
                     <div className='box-text'>

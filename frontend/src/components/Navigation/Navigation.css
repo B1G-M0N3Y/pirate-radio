@@ -127,6 +127,7 @@ li {
     align-items: center;
     align-self: center;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .signup-button {

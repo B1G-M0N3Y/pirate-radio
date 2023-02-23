@@ -1,9 +1,9 @@
 // const { query } = require('express');
 const express = require("express");
 // const { json } = require('sequelize/types');
-// const { route } = require('express/lib/router');
-const { Op } = require("sequelize");
-const { Song, User, Album, Comment, Like, Sequelize } = require("../../db/models");
+const {Sequelize} = require("sequelize");
+const { Op } = require("sequelize")
+const { Song, User, Album, Comment, Like } = require("../../db/models");
 const { restoreUser, requireAuth } = require("../../utils/auth");
 
 const router = express.Router();
@@ -52,27 +52,27 @@ router.delete(
       })
     }
   }
-);
+  );
 
-// router.get("/:id/likes", async (req, res) => {
-//   const id = req.params.id
-//   if (!(await Song.findByPk(id))) {
-//     res.status(404);
-//     return res.send({
-//       message: "Song couldn't be found",
-//       statusCode: 404,
-//     });
-//   }
-//   const likes = await Like.count(
-//     { where: { songId: id } }
-//   )
-//   return res.json({ likes })
-// })
+  // router.get("/:id/likes", async (req, res) => {
+    //   const id = req.params.id
+    //   if (!(await Song.findByPk(id))) {
+      //     res.status(404);
+      //     return res.send({
+        //       message: "Song couldn't be found",
+        //       statusCode: 404,
+        //     });
+        //   }
+        //   const likes = await Like.count(
+          //     { where: { songId: id } }
+          //   )
+          //   return res.json({ likes })
+          // })
 
-router.get("/:id/comments", async (req, res) => {
-  const id = req.params.id;
-  if (!(await Song.findByPk(id))) {
-    res.status(404);
+          router.get("/:id/comments", async (req, res) => {
+            const id = req.params.id;
+            if (!(await Song.findByPk(id))) {
+              res.status(404);
     return res.send({
       message: "Song couldn't be found",
       statusCode: 404,
@@ -89,6 +89,31 @@ router.get("/:id/comments", async (req, res) => {
   });
   return res.json({ comments });
 });
+
+
+router.get("/count", async(req ,res) => {
+  const count = await Song.count()
+
+  return res.json(count)
+})
+
+
+router.get("/random", async(req, res) => {
+  const songs = await Song.findAll({
+    order: Sequelize.literal('random()'),
+    limit: 6,
+    include: [
+      {
+        model: User,
+        as: "Artist",
+        attributes: ["id", "username", "imageUrl"],
+      },
+      {model: Like}
+    ],
+  })
+  return res.json({ songs })
+})
+
 
 router.get("/current", restoreUser, async (req, res) => {
   const { user } = req;
@@ -127,6 +152,7 @@ router.get("/:id", async (req, res) => {
   return res.json(song);
 });
 
+
 router.get("/", async (req, res) => {
   let { page, size, search } = req.query;
 
@@ -152,9 +178,9 @@ router.get("/", async (req, res) => {
     whereParams.title = title;
   } else {
     if (!page) page = 1;
-    if (!size) size = 10;
+    if (!size) size = 12;
     if (page > 10) page = 10;
-    if (size > 10) size = 10;
+    if (size > 12) size = 12;
     pagination = { limit: size, offset: size * (page - 1) };
   }
 

@@ -70,6 +70,14 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('password'),
         imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1663956835/nickleback-nickelback-33858308-1024-768_kybkiz.jpg'
       },
+      {
+        username: 'Papa Peden',
+        firstName: 'Nate',
+        lastName: 'Peden',
+        email: 'nate@peden.com',
+        hashedPassword: bcrypt.hashSync('password'),
+        imageUrl: 'https://res.cloudinary.com/dy199z8qt/image/upload/v1677027399/15421012_1403615059671446_2160225034962768983_n_o2jxfu.jpg'
+      }
     ]);
   },
 
