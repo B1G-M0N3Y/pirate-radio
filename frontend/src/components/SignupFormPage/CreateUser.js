@@ -20,6 +20,7 @@ const CreateUser = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let newErrors = [];
+    console.log('form email', email)
     dispatch(createUser({ username, email, firstName, lastName, password, image }))
       .then(() => {
         setUsername("");

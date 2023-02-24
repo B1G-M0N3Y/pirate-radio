@@ -55,7 +55,6 @@ export const createUser = (user) => async (dispatch) => {
     formData.append("email", email);
     formData.append("firstName", firstName);
     formData.append("lastName", lastName);
-    formData.append("email", email);
     formData.append("password", password);
 
     // for multiple files
