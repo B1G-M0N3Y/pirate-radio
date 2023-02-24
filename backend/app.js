@@ -1,5 +1,6 @@
 //import dependencies
 const express = require('express');
+const { urlencoded } = require('express');
 require('express-async-errors');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -22,7 +23,7 @@ app.use(morgan('dev'));
 // middleware for parsing JSON bodies of requests with `Content-Type` of
 // "application/json"
 app.use(cookieParser());
-// app.use(urlencoded({ extended: false }));
+app.use(urlencoded({ extended: false }));
 app.use(express.json());
 
 //import routes

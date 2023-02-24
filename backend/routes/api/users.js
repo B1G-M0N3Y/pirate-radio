@@ -45,42 +45,42 @@ const validateSignup = [
 // )
 
 // Sign up
-router.post(
-    '/',
-    validateSignup,
-    async (req, res) => {
-        const { firstName, lastName, email, password, username } = req.body;
-        const user = await User.signup({ firstName, lastName, email, username, password });
+// router.post(
+//     '/',
+//     validateSignup,
+//     async (req, res) => {
+//         const { firstName, lastName, email, password, username } = req.body;
+//         const user = await User.signup({ firstName, lastName, email, username, password });
 
-        await setTokenCookie(res, user);
+//         await setTokenCookie(res, user);
 
-        return res.json(
-            user
-        );
-    }
-);
+//         return res.json(
+//             user
+//         );
+//     }
+// );
 
 // Post /api/users ---Sign up
-// router.post(
-//     "/",
-//     singleMulterUpload("image"),
-//     validateSignup,
-//     asyncHandler(async (req, res) => {
-//       const { email, password, username } = req.body;
-//       const profileImageUrl = await singlePublicFileUpload(req.file);
-//       const user = await User.signup({
-//         username,
-//         email,
-//         password,
-//         profileImageUrl,
-//       });
+router.post(
+    "/",
+    singleMulterUpload("image"),
+    validateSignup,
+    async (req, res) => {
+      const { email, password, username } = req.body;
+      const profileImageUrl = await singlePublicFileUpload(req.file);
+      const user = await User.signup({
+        username,
+        email,
+        password,
+        profileImageUrl,
+      });
 
-//       setTokenCookie(res, user);
+      setTokenCookie(res, user);
 
-//       return res.json({
-//         user,
-//       });
-//     })
-//   );
+      return res.json({
+        user,
+      });
+    }
+  );
 
 module.exports = router;

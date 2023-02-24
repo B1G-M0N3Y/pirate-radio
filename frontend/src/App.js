@@ -16,6 +16,7 @@ import DeletedComment from "./components/Comments/DeletedComment";
 import ArtistDetails from "./components/Artists/ArtistsDetails";
 import SearchPage from "./components/SearchPage";
 import AllSongsPage from "./components/Songs/AllSongsPage";
+import CreateUser from "./components/SignupFormPage/CreateUser";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,9 @@ function App() {
               </Route>
               <Route path='/results'>
                 <SearchPage />
+              </Route>
+              <Route path='/awstest'>
+                <CreateUser />
               </Route>
               <Route path='/' exact>
                 <LandingPage />
