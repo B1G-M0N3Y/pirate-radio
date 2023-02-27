@@ -31,23 +31,6 @@ export const login = (user) => async (dispatch) => {
 };
 
 
-// export const signup = (user) => async (dispatch) => {
-//     const { username, email, firstName, lastName, password } = user;
-//     const response = await csrfFetch("/api/users", {
-//         method: "POST",
-//         body: JSON.stringify({
-//             username,
-//             firstName,
-//             lastName,
-//             email,
-//             password,
-//         }),
-//     });
-//     const data = await response.json();
-//     dispatch(setUser(data));
-//     return response;
-// };
-
 export const createUser = (user) => async (dispatch) => {
     const { images, image, username, email, password, firstName, lastName } = user;
     const formData = new FormData();
