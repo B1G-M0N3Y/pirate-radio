@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { FileUploader } from "react-drag-drop-files";
 import { loadCurrUserAlbums } from "../../../store/albums";
 import { createNewSong } from "../../../store/songs";
 import "./CreateSong.css";
 
-const SONG_EXTENSIONS = ["mp3", "mp4", "wav"];
+const ALLOWED_TYPES = ["mp3", "mp4", "wav"];
 
 const CreateSong = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
+  const [song, setSong] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const [albumId, setAlbumId] = useState();
   const [validationErrors, setValidationErrors] = useState([]);
@@ -23,13 +24,17 @@ const CreateSong = () => {
     dispatch(loadCurrUserAlbums());
   }, [dispatch])
 
+  const handleSongUpload = (file) => {
+    setSong(file)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
       title,
       description,
-      url,
+      // url,
       imageUrl,
       albumId,
     };
@@ -40,10 +45,6 @@ const CreateSong = () => {
     }
     if (description.length < 1) {
       errors.push("Description is required");
-    }
-
-    if (!SONG_EXTENSIONS.includes(url.split(".").pop())) {
-      errors.push("Song url must link to valid");
     }
 
     if (errors.length > 0) {
@@ -60,6 +61,17 @@ const CreateSong = () => {
   return (
     <div className="create-song">
       <h2 className="shanty-message">Sing us yer shanty ye land-lubber!</h2>
+      <FileUploader
+        label='Something Groovy'
+        types={ALLOWED_TYPES}
+        handleChange={handleSongUpload}
+        children={
+          <div className="song-drag-drop-upload">
+            <h3>Drag and drop your booty here</h3>
+            <button> or choose files to upload </button>
+            <p>allowed file types: {ALLOWED_TYPES.map(type =>(`${type}, `))}</p>
+          </div>
+        } />
       <form className="song-form" onSubmit={handleSubmit}>
         {validationErrors.length > 0 && (
           <div className="errors">
@@ -76,7 +88,7 @@ const CreateSong = () => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            // required
+          // required
           />
         </label>
         <label>
@@ -85,18 +97,18 @@ const CreateSong = () => {
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            // required
+          // required
           />
         </label>
-        <label>
+        {/* <label>
           Song Url
           <input
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            // required
+          // required
           />
-        </label>
+        </label> */}
         <label>
           Image Url
           <input
@@ -114,7 +126,7 @@ const CreateSong = () => {
             onChange={(e) => setAlbumId(e.target.value)}
           >
             {Object.values(albums).map((album) => (
-              <option value = {album.id}>{album.title}</option>
+              <option value={album.id}>{album.title}</option>
             ))}
             <option> N/A </option>
           </select>
@@ -125,7 +137,7 @@ const CreateSong = () => {
         <h2 id="yo-ho">
           YO HO, YO HO, A PIRATES LIFE FOR ME! YO HO, YO HO, A PIRATES LIFE FOR
           ME! YO HO, YO HO, A PIRATES LIFE FOR ME! YO HO, YO HO, A PIRATES LIFE
-          FOR ME!{" "}
+          FOR ME!
         </h2>
       </div>
     </div>
