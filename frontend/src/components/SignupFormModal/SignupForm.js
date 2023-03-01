@@ -54,15 +54,17 @@ function SignupForm() {
         <label>
           Email
           <input
+            className="text-upload-form"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-          />
+            />
         </label>
         <label>
           Username
           <input
+            className="text-upload-form"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -73,6 +75,7 @@ function SignupForm() {
           First Name
           <input
             type='text'
+            className="text-upload-form"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
@@ -82,6 +85,7 @@ function SignupForm() {
           Last Name
           <input
             type='text'
+            className="text-upload-form"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
@@ -91,6 +95,7 @@ function SignupForm() {
           Profile Image
           <input
             type='file'
+            className="file-upload-form"
             onChange={updateFile}
           />
         </label>
@@ -98,6 +103,7 @@ function SignupForm() {
           Password
           <input
             type="password"
+            className="text-upload-form"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -107,6 +113,7 @@ function SignupForm() {
           Confirm Password
           <input
             type="password"
+            className="text-upload-form"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required

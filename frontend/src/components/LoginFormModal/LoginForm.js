@@ -33,6 +33,7 @@ function LoginForm() {
                     Username or Email
                     <input
                         type="text"
+                        className="text-upload-form"
                         value={credential}
                         onChange={(e) => setCredential(e.target.value)}
                         required
@@ -42,6 +43,7 @@ function LoginForm() {
                     Password
                     <input
                         type="password"
+                        className="text-upload-form"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
