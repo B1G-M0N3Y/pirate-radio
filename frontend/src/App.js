@@ -7,7 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SongsIndex from "./components/Songs/SongsIndex";
 import SongDetails from "./components/Songs/SongDetails";
-import CreateSong from "./components/Songs/CreateSong";
+import CreateSong from "./components/Songs/CreateSong/index";
 import EditSong from "./components/Songs/EditSong";
 import Player from "./components/AudioPlayer/AudioBar";
 import LandingPage from "./components/LandingPage";

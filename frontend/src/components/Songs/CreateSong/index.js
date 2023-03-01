@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { loadCurrUserAlbums } from "../../store/albums";
-import { createNewSong } from "../../store/songs";
+import { loadCurrUserAlbums } from "../../../store/albums";
+import { createNewSong } from "../../../store/songs";
 import "./CreateSong.css";
 
 const SONG_EXTENSIONS = ["mp3", "mp4", "wav"];
