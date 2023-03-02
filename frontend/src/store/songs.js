@@ -91,13 +91,22 @@ export const fetchRandomSongs = () => async (dispatch) => {
 }
 
 export const createNewSong = (song) => async dispatch => {
+    const { title, description, songFile, image, albumId } = song;
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('albumId', albumId);
+    formData.append('song', songFile);
+    formData.append('image', image);
+
     const response = await csrfFetch("/api/songs", {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         },
-        body: JSON.stringify(song)
+        body: formData
     });
+
     if (response.ok) {
         const song = await response.json();
         dispatch(songDetails(song));

@@ -14,7 +14,7 @@ const CreateSong = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [song, setSong] = useState(null);
-  const [imageUrl, setImageUrl] = useState("");
+  const [image, setImage] = useState("");
   const [albumId, setAlbumId] = useState();
   const [validationErrors, setValidationErrors] = useState([]);
 
@@ -34,9 +34,9 @@ const CreateSong = () => {
     const payload = {
       title,
       description,
-      // url,
-      imageUrl,
       albumId,
+      songFile: song,
+      image
     };
     const errors = [];
 
@@ -67,9 +67,9 @@ const CreateSong = () => {
         handleChange={handleSongUpload}
         children={
           <div className="song-drag-drop-upload">
-            <h3>Drag and drop your booty here</h3>
+            <h3 className="song-drag-drop-upload-title">Drag and drop your booty here</h3>
             <button> or choose files to upload </button>
-            <p>allowed file types: {ALLOWED_TYPES.map(type =>(`${type}, `))}</p>
+            <p>allowed file types: {ALLOWED_TYPES.map(type =>(` .${type} `))}</p>
           </div>
         } />
       <form className="song-form" onSubmit={handleSubmit}>
@@ -112,9 +112,8 @@ const CreateSong = () => {
         <label>
           Image Url
           <input
-            type="text"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
+            type="file"
+            onChange={(e) => setImage(e.target.value[0])}
           />
         </label>
         <label>

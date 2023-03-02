@@ -2,7 +2,8 @@
 const express = require("express");
 // const { json } = require('sequelize/types');
 const {Sequelize} = require("sequelize");
-const { Op } = require("sequelize")
+const { Op } = require("sequelize");
+const { multipleMulterUpload } = require("../../awsS3");
 const { Song, User, Album, Comment, Like } = require("../../db/models");
 const { restoreUser, requireAuth } = require("../../utils/auth");
 
@@ -237,7 +238,11 @@ router.post("/:id/comments", restoreUser, async (req, res) => {
   }
 });
 
-router.post("/", restoreUser, async (req, res) => {
+router.post(
+  "/",
+  multipleMulterUpload('songFiles'),
+  restoreUser,
+  async (req, res) => {
   const { user } = req;
   const { title, description, url, imageUrl, albumId } = req.body;
   if (!title || !url) {

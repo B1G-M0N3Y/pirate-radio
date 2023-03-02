@@ -69,6 +69,13 @@
 }
 
 .song-drag-drop-upload{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
     font-weight: 900;
+}
+
+.song-drag-drop-upload-title{
+    font-size: 1.5em;
 }
