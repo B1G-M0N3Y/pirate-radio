@@ -101,9 +101,6 @@ export const createNewSong = (song) => async dispatch => {
     formData.append('songFiles', songFile);
     formData.append('songFiles', image);
 
-    console.log('formdata song', songFile)
-    console.log('formdata iamge', image)
-
     const response = await csrfFetch("/api/songs", {
         method: 'POST',
         headers: {

@@ -28,7 +28,6 @@ const CreateSong = () => {
   const handleSongUpload = (file) => {
     setSong(file)
     setPosition(1)
-    console.log(position)
   }
 
   const handleImageUpload = (e) => {
@@ -38,9 +37,6 @@ const CreateSong = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log('song', song)
-    console.log('image', image)
 
     const payload = {
       title,
@@ -115,7 +111,7 @@ const CreateSong = () => {
               />
             </label>
             <label>
-              Image Url
+              Cover Image
               <input
                 type="file"
                 onChange={handleImageUpload}
