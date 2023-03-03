@@ -23,7 +23,10 @@
     width: 60%;
     display: flex;
     flex-direction: column;
+    min-width: 44em;
+    height: 34em;
 }
+
 .song-form label{
     color: rgb(56, 56, 56);
     font-weight: bolder;

@@ -16,7 +16,7 @@ const CreateSong = () => {
   const [song, setSong] = useState(null);
   const [image, setImage] = useState(null);
   const [albumId, setAlbumId] = useState();
-  const [position, setPostion] = useState(0);
+  const [position, setPosition] = useState(0);
   const [validationErrors, setValidationErrors] = useState([]);
 
   const albums = useSelector((state) => state.albums);
@@ -27,6 +27,8 @@ const CreateSong = () => {
 
   const handleSongUpload = (file) => {
     setSong(file)
+    setPosition(1)
+    console.log(position)
   }
 
   const handleImageUpload = (e) => {
@@ -71,7 +73,7 @@ const CreateSong = () => {
     <div className="create-song">
       <h2 className="shanty-message">Sing us yer shanty ye land-lubber!</h2>
       <div className="create-song-carousel">
-        <div className="create-song-inner" style={{ transform: `translateX(-${0 * 100}%)` }}>
+        <div className="create-song-inner" style={{ transform: `translateX(-${position * 100}%)` }}>
           <FileUploader
             label='Something Groovy'
             types={ALLOWED_TYPES}
