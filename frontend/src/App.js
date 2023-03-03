@@ -7,7 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SongsIndex from "./components/Songs/SongsIndex";
 import SongDetails from "./components/Songs/SongDetails";
-import CreateSong from "./components/Songs/CreateSong";
+import CreateSong from "./components/Songs/CreateSong/index";
 import EditSong from "./components/Songs/EditSong";
 import Player from "./components/AudioPlayer/AudioBar";
 import LandingPage from "./components/LandingPage";
@@ -16,6 +16,7 @@ import DeletedComment from "./components/Comments/DeletedComment";
 import ArtistDetails from "./components/Artists/ArtistsDetails";
 import SearchPage from "./components/SearchPage";
 import AllSongsPage from "./components/Songs/AllSongsPage";
+import CreateUser from "./components/SignupFormPage/CreateUser";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,9 @@ function App() {
               </Route>
               <Route path='/results'>
                 <SearchPage />
+              </Route>
+              <Route path='/awstest'>
+                <CreateUser />
               </Route>
               <Route path='/' exact>
                 <LandingPage />

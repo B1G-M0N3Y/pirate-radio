@@ -1,8 +1,9 @@
 // const { query } = require('express');
 const express = require("express");
 // const { json } = require('sequelize/types');
-const {Sequelize} = require("sequelize");
-const { Op } = require("sequelize")
+const { Sequelize } = require("sequelize");
+const { Op } = require("sequelize");
+const { multipleMulterUpload, singlePublicFileUpload, multiplePublicFileUpload } = require("../../awsS3");
 const { Song, User, Album, Comment, Like } = require("../../db/models");
 const { restoreUser, requireAuth } = require("../../utils/auth");
 
@@ -38,12 +39,14 @@ router.delete(
     const id = req.params.id
     const { user } = req;
 
-    const like = await Like.findOne({where:{
-      songId: id,
-      userId: user.id
-    }});
+    const like = await Like.findOne({
+      where: {
+        songId: id,
+        userId: user.id
+      }
+    });
 
-    if(like){
+    if (like) {
       await like.destroy();
 
       res.json({
@@ -52,27 +55,27 @@ router.delete(
       })
     }
   }
-  );
+);
 
-  // router.get("/:id/likes", async (req, res) => {
-    //   const id = req.params.id
-    //   if (!(await Song.findByPk(id))) {
-      //     res.status(404);
-      //     return res.send({
-        //       message: "Song couldn't be found",
-        //       statusCode: 404,
-        //     });
-        //   }
-        //   const likes = await Like.count(
-          //     { where: { songId: id } }
-          //   )
-          //   return res.json({ likes })
-          // })
+// router.get("/:id/likes", async (req, res) => {
+//   const id = req.params.id
+//   if (!(await Song.findByPk(id))) {
+//     res.status(404);
+//     return res.send({
+//       message: "Song couldn't be found",
+//       statusCode: 404,
+//     });
+//   }
+//   const likes = await Like.count(
+//     { where: { songId: id } }
+//   )
+//   return res.json({ likes })
+// })
 
-          router.get("/:id/comments", async (req, res) => {
-            const id = req.params.id;
-            if (!(await Song.findByPk(id))) {
-              res.status(404);
+router.get("/:id/comments", async (req, res) => {
+  const id = req.params.id;
+  if (!(await Song.findByPk(id))) {
+    res.status(404);
     return res.send({
       message: "Song couldn't be found",
       statusCode: 404,
@@ -91,14 +94,14 @@ router.delete(
 });
 
 
-router.get("/count", async(req ,res) => {
+router.get("/count", async (req, res) => {
   const count = await Song.count()
 
   return res.json(count)
 })
 
 
-router.get("/random", async(req, res) => {
+router.get("/random", async (req, res) => {
   const songs = await Song.findAll({
     order: Sequelize.literal('random()'),
     limit: 6,
@@ -108,7 +111,7 @@ router.get("/random", async(req, res) => {
         as: "Artist",
         attributes: ["id", "username", "imageUrl"],
       },
-      {model: Like}
+      { model: Like }
     ],
   })
   return res.json({ songs })
@@ -137,7 +140,7 @@ router.get("/:id", async (req, res) => {
         model: Album,
         attributes: ["id", "title", "imageUrl"],
       },
-      {model: Like}
+      { model: Like }
     ],
   });
 
@@ -193,7 +196,7 @@ router.get("/", async (req, res) => {
         as: "Artist",
         attributes: ["id", "username", "imageUrl"],
       },
-      {model: Like}
+      { model: Like }
     ],
   });
 
@@ -237,39 +240,48 @@ router.post("/:id/comments", restoreUser, async (req, res) => {
   }
 });
 
-router.post("/", restoreUser, async (req, res) => {
-  const { user } = req;
-  const { title, description, url, imageUrl, albumId } = req.body;
-  if (!title || !url) {
-    res.status(400);
-    res.send({
-      message: "Validation Error",
-      statusCode: 400,
-      errors: {
-        title: "Song title is required",
-        url: "Audio is required",
-      },
-    });
-  }
-  if (albumId < 0 || albumId > (await Album.count())) {
-    res.status(404);
-    res.send({
-      message: "Album couldn't be found",
-      statusCode: 404,
-    });
-  } else {
-    const newSong = await Song.create({
-      userId: user.toSafeObject().id,
-      title,
-      description,
-      url,
-      imageUrl,
-      albumId,
-    });
-    res.status(201);
-    res.json(newSong);
-  }
-});
+router.post(
+  "/",
+  multipleMulterUpload('songFiles'),
+  restoreUser,
+  async (req, res) => {
+    const { user } = req;
+    const { title, description, albumId } = req.body;
+    let fileUrls
+
+    if (req.files) fileUrls = await multiplePublicFileUpload(req.files)
+
+    if (!title || !fileUrls) {
+
+      res.status(400);
+      res.send({
+        message: "Validation Error",
+        statusCode: 400,
+        errors: {
+          title: "Song title is required",
+          url: "Audio is required",
+        },
+      });
+    }
+    if (albumId < 0 || albumId > (await Album.count())) {
+      res.status(404);
+      res.send({
+        message: "Album couldn't be found",
+        statusCode: 404,
+      });
+    } else {
+      const newSong = await Song.create({
+        userId: user.toSafeObject().id,
+        title,
+        description,
+        url: fileUrls[0],
+        imageUrl: fileUrls[1],
+        albumId,
+      });
+      res.status(201);
+      res.json(newSong);
+    }
+  });
 
 router.put("/:id", restoreUser, async (req, res) => {
   const song = await Song.findByPk(req.params.id);

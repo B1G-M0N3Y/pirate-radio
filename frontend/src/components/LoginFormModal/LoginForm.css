@@ -33,7 +33,7 @@
     font-size: 1.2em;
 }
 
-.modal label input {
+.text-upload-form {
     margin: 20px;
     padding: 5px;
     border: 2px solid lightgrey;
@@ -42,4 +42,8 @@
 .modal img {
     max-width: 20%;
     margin-top: 4em;
+}
+
+.file-upload-form{
+    border: none;
 }
