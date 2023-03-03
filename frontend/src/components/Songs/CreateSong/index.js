@@ -14,7 +14,7 @@ const CreateSong = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [song, setSong] = useState(null);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [albumId, setAlbumId] = useState();
   const [validationErrors, setValidationErrors] = useState([]);
 
@@ -28,8 +28,16 @@ const CreateSong = () => {
     setSong(file)
   }
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log('song', song)
+    console.log('image', image)
 
     const payload = {
       title,
@@ -113,7 +121,7 @@ const CreateSong = () => {
           Image Url
           <input
             type="file"
-            onChange={(e) => setImage(e.target.value[0])}
+            onChange={handleImageUpload}
           />
         </label>
         <label>
