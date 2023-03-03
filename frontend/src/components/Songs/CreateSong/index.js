@@ -16,6 +16,7 @@ const CreateSong = () => {
   const [song, setSong] = useState(null);
   const [image, setImage] = useState(null);
   const [albumId, setAlbumId] = useState();
+  const [position, setPostion] = useState(0);
   const [validationErrors, setValidationErrors] = useState([]);
 
   const albums = useSelector((state) => state.albums);
@@ -69,77 +70,73 @@ const CreateSong = () => {
   return (
     <div className="create-song">
       <h2 className="shanty-message">Sing us yer shanty ye land-lubber!</h2>
-      <FileUploader
-        label='Something Groovy'
-        types={ALLOWED_TYPES}
-        handleChange={handleSongUpload}
-        children={
-          <div className="song-drag-drop-upload">
-            <h3 className="song-drag-drop-upload-title">Drag and drop your booty here</h3>
-            <button> or choose files to upload </button>
-            <p>allowed file types: {ALLOWED_TYPES.map(type =>(` .${type} `))}</p>
-          </div>
-        } />
-      <form className="song-form" onSubmit={handleSubmit}>
-        {validationErrors.length > 0 && (
-          <div className="errors">
-            {validationErrors.map((error) => (
-              <p className="validation-error" key={error}>
-                {error}
-              </p>
-            ))}
-          </div>
-        )}
-        <label>
-          Title
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          // required
+      <div className="create-song-carousel">
+        <div className="create-song-inner" style={{ transform: `translateX(-${0 * 100}%)` }}>
+          <FileUploader
+            label='Something Groovy'
+            types={ALLOWED_TYPES}
+            handleChange={handleSongUpload}
+            children={
+              <div className="song-drag-drop-upload">
+                <h3 className="song-drag-drop-upload-title">Drag and drop your booty here</h3>
+                <button className="song-drag-drop-button"> or choose files to upload </button>
+                <p className="allowed-extensions">allowed file types: {ALLOWED_TYPES.map(type => (` .${type} `))}</p>
+              </div>
+            }
           />
-        </label>
-        <label>
-          Description
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          // required
-          />
-        </label>
-        {/* <label>
-          Song Url
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-          // required
-          />
-        </label> */}
-        <label>
-          Image Url
-          <input
-            type="file"
-            onChange={handleImageUpload}
-          />
-        </label>
-        <label>
-          Album
-          <select
-            className="album-select"
-            disabled={Object.values(albums).length === 0}
-            value={albumId}
-            onChange={(e) => setAlbumId(e.target.value)}
-          >
-            {Object.values(albums).map((album) => (
-              <option value={album.id}>{album.title}</option>
-            ))}
-            <option> N/A </option>
-          </select>
-        </label>
-        <button type="submit">Create Song</button>
-      </form>
+          <form className="song-form" onSubmit={handleSubmit}>
+            {validationErrors.length > 0 && (
+              <div className="errors">
+                {validationErrors.map((error) => (
+                  <p className="validation-error" key={error}>
+                    {error}
+                  </p>
+                ))}
+              </div>
+            )}
+            <label>
+              Title
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              // required
+              />
+            </label>
+            <label>
+              Description
+              <input
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              // required
+              />
+            </label>
+            <label>
+              Image Url
+              <input
+                type="file"
+                onChange={handleImageUpload}
+              />
+            </label>
+            <label>
+              Album
+              <select
+                className="album-select"
+                disabled={Object.values(albums).length === 0}
+                value={albumId}
+                onChange={(e) => setAlbumId(e.target.value)}
+              >
+                {Object.values(albums).map((album) => (
+                  <option value={album.id}>{album.title}</option>
+                ))}
+                <option> N/A </option>
+              </select>
+            </label>
+            <button type="submit">Create Song</button>
+          </form>
+        </div>
+      </div>
       <div id="yo-ho-box">
         <h2 id="yo-ho">
           YO HO, YO HO, A PIRATES LIFE FOR ME! YO HO, YO HO, A PIRATES LIFE FOR

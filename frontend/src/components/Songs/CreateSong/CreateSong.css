@@ -72,10 +72,37 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: white;
     font-weight: 900;
+    width: 44em;
+    height: 34em;
+}
+
+.song-drag-drop-button{
+    height: 4em;
+    width: 14em;
+    border: none;
+    background-color: #F26F23;
+    color: white;
 }
 
 .song-drag-drop-upload-title{
     font-size: 1.5em;
+}
+
+.create-song-carousel{
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    max-width: 44em;
+    max-height: 34em;
+}
+
+.create-song-inner{
+    white-space: nowrap;
+    display: flex;
+    max-width: 44em;
+    max-height: 34em;
 }
