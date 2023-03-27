@@ -45,5 +45,5 @@ Here is a list features I plan on implementing in the future:
 
 ### Likes feature COMPLETE ✅
 ### Plays feature TODO 📋
-### AWS Upload TODO 📋
+### AWS Upload COMPLETE ✅
 
